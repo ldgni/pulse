@@ -1,6 +1,6 @@
 # PSGoat
 
-PSGoat is all about PSG, keeping you updated with the team's upcoming fixtures and current league standings.
+PSGoat is all about [PSG](https://en.wikipedia.org/wiki/Paris_Saint-Germain_F.C.), keeping you updated with the team's upcoming fixtures and current league standings.
 
 ## Features
 
