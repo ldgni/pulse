@@ -44,13 +44,13 @@ export default async function Fixtures() {
         <h1 className="mb-4 text-center text-2xl font-bold">
           Upcoming Fixtures
         </h1>
-        <ul className="mx-auto flex max-w-xl flex-col gap-4 uppercase">
+        <ul className="mx-auto flex max-w-screen-sm flex-col gap-4 uppercase">
           {matches.map((match: any) => (
             <li
               key={match.id}
               className="flex flex-col gap-2 rounded-lg border border-[#093e62] bg-[#eaeaea] p-4 shadow-md sm:flex-col-reverse sm:gap-4">
-              <div className="flex flex-col gap-2 font-semibold sm:flex-row sm:justify-between">
-                <div className="flex items-center gap-2 sm:flex-row-reverse">
+              <div className="flex flex-col gap-2 font-semibold sm:flex-row sm:items-center">
+                <div className="flex items-center gap-2 sm:flex-1 sm:flex-row-reverse">
                   <Image
                     src={match.homeTeam.crest}
                     width={100}
@@ -60,7 +60,8 @@ export default async function Fixtures() {
                   />
                   <p>{match.homeTeam.shortName}</p>
                 </div>
-                <div className="flex items-center gap-2">
+                <span className="hidden sm:block">-</span>
+                <div className="flex items-center gap-2 sm:flex-1">
                   <Image
                     src={match.awayTeam.crest}
                     width={100}
@@ -71,7 +72,7 @@ export default async function Fixtures() {
                   <p>{match.awayTeam.shortName}</p>
                 </div>
               </div>
-              <div className="flex flex-col gap-2 sm:text-center">
+              <div className="flex flex-col gap-2 sm:items-center">
                 <p className="font-medium">
                   {new Date(match.utcDate)
                     .toLocaleDateString("en-US", {
