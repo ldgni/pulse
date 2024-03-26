@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import sportShoes from "@/public/images/sport-shoes.png";
 
-import { buttonVariants } from "@/components/ui/button";
-
 export default function Home() {
   return (
     <main className="container flex min-h-screen flex-col items-center justify-center gap-8">
@@ -15,14 +13,10 @@ export default function Home() {
         priority
       />
       <div className="flex gap-4">
-        <Link
-          href="/fixtures"
-          className={`${buttonVariants({ variant: "default" })} uppercase tracking-tighter`}>
+        <Link href="/fixtures" className="uppercase tracking-tighter">
           Fixtures
         </Link>
-        <Link
-          href="/standings"
-          className={`${buttonVariants({ variant: "default" })} uppercase tracking-tighter`}>
+        <Link href="/standings" className="uppercase tracking-tighter">
           Standings
         </Link>
       </div>

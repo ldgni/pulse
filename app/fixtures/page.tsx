@@ -83,9 +83,7 @@ export default async function Fixtures() {
                     })
                     .replace(/,/g, "")}
                 </p>
-                <p className="text-muted-foreground">
-                  {match.competition.name}
-                </p>
+                <p>{match.competition.name}</p>
               </div>
             </li>
           ))}

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -13,7 +12,7 @@ export default function Navbar() {
         <ul className="flex items-center justify-between">
           <li>
             <Link href="/" className="transition-opacity hover:opacity-75">
-              <ArrowLeft />
+              Home
             </Link>
           </li>
           <div className="flex gap-8">
