@@ -1,11 +1,12 @@
 # PSGoat
 
-PSGoat provides updates on [PSG](https://en.wikipedia.org/wiki/Paris_Saint-Germain_F.C.), including the team's upcoming fixtures and current league standings.
+PSGoat provides updates on [PSG](https://en.wikipedia.org/wiki/Paris_Saint-Germain_F.C.), including the team's upcoming fixtures, past results and current league standings.
 
 ## Features
 
 - **Fixtures**: Offers updates on upcoming matches and their timings.
 - **Standings**: Tracks PSG's position in the league.
+- **Results**: Displays past match results.
 
 ## Data Source
 
