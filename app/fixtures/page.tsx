@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Fixtures",
-  description: "All the upcoming PSG fixtures",
+  description: "PSG's fixtures",
 };
 
 async function getFixtures() {
