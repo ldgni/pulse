@@ -12,35 +12,33 @@ export default function Navbar() {
   return (
     <div className="border-b border-slate-700 bg-secondary font-medium text-slate-400">
       <nav className="container py-4">
-        <ul className="flex items-center gap-8 text-sm sm:text-base">
+        <ul className="flex items-center gap-4 text-sm sm:gap-8 sm:text-base">
           <li>
             <Link href="/">
               <Image src={goat} alt="Goat" className="size-6" />
             </Link>
           </li>
-          <div className="flex gap-4 sm:gap-6">
-            <li>
-              <Link
-                href="/fixtures"
-                className={`${pathname === "/fixtures" ? "text-primary" : ""} transition-colors hover:text-primary`}>
-                Fixtures
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/results"
-                className={`${pathname === "/results" ? "text-primary" : ""} transition-colors hover:text-primary`}>
-                Results
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/standings"
-                className={`${pathname === "/standings" ? "text-primary" : ""} transition-colors hover:text-primary`}>
-                Standings
-              </Link>
-            </li>
-          </div>
+          <li>
+            <Link
+              href="/fixtures"
+              className={`${pathname === "/fixtures" ? "text-primary" : ""} transition-colors hover:text-primary`}>
+              Fixtures
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/results"
+              className={`${pathname === "/results" ? "text-primary" : ""} transition-colors hover:text-primary`}>
+              Results
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/standings"
+              className={`${pathname === "/standings" ? "text-primary" : ""} transition-colors hover:text-primary`}>
+              Standings
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>
