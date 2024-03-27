@@ -12,6 +12,14 @@ const config: Config = {
         center: true,
         padding: "2rem",
       },
+      backgroundColor: {
+        primary: "#151e2d",
+        secondary: "#1a2434",
+      },
+      colors: {
+        primary: "#fafafa",
+        secondary: "#a1a1aa",
+      },
     },
   },
   plugins: [],
