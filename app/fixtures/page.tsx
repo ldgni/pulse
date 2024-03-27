@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
@@ -40,16 +41,14 @@ export default async function Fixtures() {
       <header>
         <Navbar />
       </header>
-      <main className="container py-8">
-        <h1 className="mb-4 text-center text-2xl font-bold">
-          Upcoming Fixtures
-        </h1>
-        <ul className="mx-auto flex max-w-screen-sm flex-col gap-4 uppercase">
+      <main className="container flex grow flex-col items-center py-8">
+        <h1 className="mb-4 text-center text-2xl font-bold">Fixtures</h1>
+        <ul className="flex w-full max-w-screen-sm flex-col gap-8 uppercase">
           {matches.map((match: any) => (
             <li
               key={match.id}
-              className="flex flex-col gap-2 rounded-lg border border-[#093e62] bg-[#eaeaea] p-4 shadow-md sm:flex-col-reverse sm:gap-4">
-              <div className="flex flex-col gap-2 font-semibold sm:flex-row sm:items-center">
+              className="flex flex-col gap-2 rounded-md border border-slate-700 p-4 shadow-md sm:flex-col-reverse">
+              <div className="flex flex-col gap-2 font-semibold sm:flex-row sm:items-center sm:gap-4">
                 <div className="flex items-center gap-2 sm:flex-1 sm:flex-row-reverse">
                   <Image
                     src={match.homeTeam.crest}
@@ -60,7 +59,9 @@ export default async function Fixtures() {
                   />
                   <p>{match.homeTeam.shortName}</p>
                 </div>
-                <span className="hidden sm:block">-</span>
+                <span className="hidden font-medium sm:block sm:text-sm">
+                  vs
+                </span>
                 <div className="flex items-center gap-2 sm:flex-1">
                   <Image
                     src={match.awayTeam.crest}
@@ -72,8 +73,8 @@ export default async function Fixtures() {
                   <p>{match.awayTeam.shortName}</p>
                 </div>
               </div>
-              <div className="flex flex-col gap-2 sm:items-center">
-                <p className="font-medium">
+              <div className="flex flex-col gap-1 text-[0.9rem] sm:items-center">
+                <p className="font-semibold">
                   {new Date(match.utcDate)
                     .toLocaleDateString("en-US", {
                       weekday: "long",
@@ -83,12 +84,23 @@ export default async function Fixtures() {
                     })
                     .replace(/,/g, "")}
                 </p>
-                <p>{match.competition.name}</p>
+                <div className="flex gap-1 text-secondary">
+                  <p>{match.competition.name}</p>
+                  {match.competition.name === "Ligue 1" && (
+                    <p>- Matchweek {match.matchday}</p>
+                  )}
+                  {match.competition.name === "UEFA Champions League" && (
+                    <p className="hidden sm:block">
+                      - {match.stage.replace("_", " ")}
+                    </p>
+                  )}
+                </div>
               </div>
             </li>
           ))}
         </ul>
       </main>
+      <Footer />
     </>
   );
 }

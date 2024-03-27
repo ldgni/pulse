@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
@@ -40,13 +41,13 @@ export default async function Standings() {
       <header>
         <Navbar />
       </header>
-      <main className="container py-8">
+      <main className="container flex grow flex-col py-8">
         <h1 className="sr-only">Standings</h1>
-        <table className="w-full divide-y divide-gray-200 text-xs sm:text-sm md:text-base">
+        <table className="w-full divide-y divide-primary text-xs sm:text-sm md:text-base">
           <caption className="mb-4 text-2xl font-bold">
             Ligue 1 Standings
           </caption>
-          <thead className="bg-[#eaeaea]">
+          <thead className="bg-secondary">
             <tr className="text-left">
               <th className="p-3">#</th>
               <th className="p-3">Team</th>
@@ -57,13 +58,13 @@ export default async function Standings() {
               <th className="p-3">Pts</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-400">
+          <tbody className="divide-y divide-secondary">
             {standings[0].table.map((team: any) => (
               <tr
                 key={team.team.id}
                 className={
                   team.team.name === "Paris Saint-Germain FC"
-                    ? "bg-blue-200"
+                    ? "bg-slate-700"
                     : ""
                 }>
                 <td className="p-3">{team.position}</td>
@@ -87,6 +88,7 @@ export default async function Standings() {
           </tbody>
         </table>
       </main>
+      <Footer />
     </>
   );
 }

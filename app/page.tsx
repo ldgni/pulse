@@ -1,25 +1,32 @@
 import Image from "next/image";
-import Link from "next/link";
-import sportShoes from "@/public/images/sport-shoes.png";
+
+import githubLogo from "@/public/images/github-white.svg";
+
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <main className="container flex min-h-screen flex-col items-center justify-center gap-8">
-      <h1 className="sr-only">PSGuide</h1>
-      <Image
-        src={sportShoes}
-        style={{ width: "200px", height: "auto" }}
-        alt="PSG logo"
-        priority
-      />
-      <div className="flex gap-4">
-        <Link href="/fixtures" className="uppercase tracking-tighter">
-          Fixtures
-        </Link>
-        <Link href="/standings" className="uppercase tracking-tighter">
-          Standings
-        </Link>
-      </div>
-    </main>
+    <>
+      <header>
+        <Navbar />
+      </header>
+      <main className="container flex grow flex-col justify-center gap-4 py-8 text-center">
+        <h1 className="text-4xl font-bold leading-tight tracking-tighter sm:text-5xl md:text-6xl">
+          Your ultimate PSG tracker
+        </h1>
+        <p className="text-lg text-secondary sm:text-xl">
+          Stay updated with the latest PSG fixtures and league standings.
+        </p>
+        <a
+          href="https://github.com/ldgni/psgoat"
+          className="inline-flex h-9 items-center gap-2 self-center rounded-md bg-secondary px-4 py-2 text-sm font-medium transition-colors hover:bg-slate-800"
+          target="_blank">
+          <Image src={githubLogo} alt="Github Logo" className="size-4" />
+          GitHub
+        </a>
+      </main>
+      <Footer />
+    </>
   );
 }

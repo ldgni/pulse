@@ -1,32 +1,35 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import goat from "@/public/images/goat.png";
 
 export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="border-b bg-[#1a2434] uppercase tracking-tighter text-white">
+    <div className="border-b border-slate-700 bg-secondary font-medium text-slate-400">
       <nav className="container py-4">
-        <ul className="flex items-center justify-between">
+        <ul className="flex items-center gap-8">
           <li>
-            <Link href="/" className="transition-opacity hover:opacity-75">
-              Home
+            <Link href="/">
+              <Image src={goat} alt="Goat" className="size-6" />
             </Link>
           </li>
-          <div className="flex gap-8">
+          <div className="flex gap-6">
             <li>
               <Link
                 href="/fixtures"
-                className={`${pathname === "/fixtures" ? "underline underline-offset-2" : ""} transition-opacity hover:opacity-75`}>
+                className={`${pathname === "/fixtures" ? "text-primary" : ""} transition-colors hover:text-primary`}>
                 Fixtures
               </Link>
             </li>
             <li>
               <Link
                 href="/standings"
-                className={`${pathname === "/standings" ? "underline underline-offset-2" : ""} transition-opacity hover:opacity-75`}>
+                className={`${pathname === "/standings" ? "text-primary" : ""} transition-colors hover:text-primary`}>
                 Standings
               </Link>
             </li>
