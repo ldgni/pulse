@@ -16,7 +16,8 @@ export default function Home() {
           Your ultimate PSG tracker
         </h1>
         <p className="text-lg text-secondary sm:text-xl">
-          Stay updated with the latest PSG fixtures and league standings.
+          Stay updated with the latest PSG fixtures, past results and league
+          standings.
         </p>
         <a
           href="https://github.com/ldgni/psgoat"

@@ -59,9 +59,7 @@ export default async function Fixtures() {
                   />
                   <p>{match.homeTeam.shortName}</p>
                 </div>
-                <span className="hidden font-medium sm:block sm:text-sm">
-                  vs
-                </span>
+                <p className="hidden font-medium sm:block sm:text-sm">vs</p>
                 <div className="flex items-center gap-2 sm:flex-1">
                   <Image
                     src={match.awayTeam.crest}
@@ -73,7 +71,7 @@ export default async function Fixtures() {
                   <p>{match.awayTeam.shortName}</p>
                 </div>
               </div>
-              <div className="flex flex-col gap-1 text-[0.9rem] sm:items-center">
+              <div className="flex flex-col text-[0.9rem] sm:items-center">
                 <p className="font-semibold">
                   {new Date(match.utcDate)
                     .toLocaleDateString("en-US", {
