@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import { fetchFromAPI } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
@@ -10,26 +11,7 @@ export const metadata: Metadata = {
 };
 
 async function getStandings() {
-  const apiToken = process.env.NEXT_PUBLIC_API_TOKEN;
-
-  if (!apiToken) {
-    throw new Error("API token is not set");
-  }
-
-  const res = await fetch(
-    `https://api.football-data.org/v4/competitions/FL1/standings`,
-    {
-      headers: {
-        "X-Auth-Token": apiToken,
-      },
-    }
-  );
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  const data = await res.json();
+  const data = await fetchFromAPI("competitions/FL1/standings");
   return data.standings;
 }
 
