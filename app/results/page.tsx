@@ -12,16 +12,14 @@ export const metadata: Metadata = {
 
 async function getResults() {
   const data = await fetchFromAPI("teams/524/matches?status=FINISHED");
-  return data.matches;
+  const sortedMatches = data.matches.sort((a: any, b: any) => {
+    return new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime();
+  });
+  return sortedMatches;
 }
 
 export default async function Results() {
-  let matches = await getResults();
-
-  matches = matches.sort(
-    (a: any, b: any) =>
-      new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime()
-  );
+  const matches = await getResults();
 
   return (
     <>
