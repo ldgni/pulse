@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { fetchFromAPI } from "@/lib/utils";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Standings",
@@ -20,9 +20,7 @@ export default async function Standings() {
 
   return (
     <>
-      <header>
-        <Navbar />
-      </header>
+      <Header />
       <main className="container flex grow flex-col py-8">
         <h1 className="sr-only">Standings</h1>
         <table className="w-full divide-y divide-primary text-xs sm:text-sm md:text-base">

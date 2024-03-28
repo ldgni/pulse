@@ -10,7 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="border-b border-slate-700 bg-secondary font-medium text-slate-400">
+    <header className="border-b border-slate-700 bg-secondary font-medium text-slate-400">
       <nav className="container py-4">
         <ul className="flex items-center gap-4 text-sm sm:gap-8 sm:text-base">
           <li>
@@ -41,6 +41,6 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
 }

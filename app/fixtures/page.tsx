@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { fetchFromAPI } from "@/lib/utils";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Fixtures",
@@ -20,9 +20,7 @@ export default async function Fixtures() {
 
   return (
     <>
-      <header>
-        <Navbar />
-      </header>
+      <Header />
       <main className="container flex grow flex-col items-center py-8">
         <h1 className="mb-4 text-center text-2xl font-bold">Fixtures</h1>
         <ul className="flex w-full max-w-screen-sm flex-col gap-8 uppercase">

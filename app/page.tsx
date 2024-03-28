@@ -3,14 +3,12 @@ import Image from "next/image";
 import githubLogo from "@/public/images/github-white.svg";
 
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <>
-      <header>
-        <Navbar />
-      </header>
+      <Header />
       <main className="container flex grow flex-col justify-center gap-4 py-8 text-center">
         <h1 className="text-4xl font-bold leading-tight tracking-tighter sm:text-5xl md:text-6xl">
           Your ultimate PSG tracker
