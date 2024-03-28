@@ -1,15 +1,16 @@
 import Image from "next/image";
 
-export default function MatchList({
-  matches,
-  showScores,
-}: {
-  matches: any;
+import { Match } from "@/types/matches";
+
+interface MatchListProps {
+  matches: Match[];
   showScores: boolean;
-}) {
+}
+
+export default function MatchList({ matches, showScores }: MatchListProps) {
   return (
     <ul className="flex w-full max-w-screen-sm flex-col gap-8 uppercase">
-      {matches.map((match: any) => (
+      {matches.map((match: Match) => (
         <li
           key={match.id}
           className="flex flex-col gap-2 rounded-md border border-slate-700 p-4 shadow-md sm:flex-col-reverse">
@@ -22,7 +23,7 @@ export default function MatchList({
                 style={{ width: "30px", height: "auto" }}
                 alt={`${match.homeTeam.name} logo`}
               />
-              {showScores ? (
+              {showScores && match.score ? (
                 <div className="flex w-full justify-between sm:flex-row-reverse">
                   <p>{match.homeTeam.shortName}</p>
                   <p className="sm:hidden">{match.score.fullTime.home}</p>
@@ -31,7 +32,7 @@ export default function MatchList({
                 <p>{match.homeTeam.shortName}</p>
               )}
             </div>
-            {showScores ? (
+            {showScores && match.score ? (
               <p className="hidden font-medium sm:block">
                 {match.score.fullTime.home} - {match.score.fullTime.away}
               </p>
@@ -46,7 +47,7 @@ export default function MatchList({
                 style={{ width: "30px", height: "auto" }}
                 alt={`${match.awayTeam.name} logo`}
               />
-              {showScores ? (
+              {showScores && match.score ? (
                 <div className="flex w-full justify-between">
                   <p>{match.awayTeam.shortName}</p>
                   <p className="sm:hidden">{match.score.fullTime.away}</p>
@@ -72,11 +73,12 @@ export default function MatchList({
               {match.competition.name === "Ligue 1" && (
                 <p>- Matchweek {match.matchday}</p>
               )}
-              {match.competition.name === "UEFA Champions League" && (
-                <p className="hidden sm:block">
-                  - {match.stage.replace("_", " ")}
-                </p>
-              )}
+              {match.competition.name === "UEFA Champions League" &&
+                match.stage && (
+                  <p className="hidden sm:block">
+                    - {match.stage.replace("_", " ")}
+                  </p>
+                )}
             </div>
           </div>
         </li>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import { Standing, StandingsTable } from "@/types/standings";
 import { fetchFromAPI } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -16,7 +17,7 @@ async function getStandings() {
 }
 
 export default async function Standings() {
-  const standings = await getStandings();
+  const standings: StandingsTable[] = await getStandings();
 
   return (
     <>
@@ -39,7 +40,7 @@ export default async function Standings() {
             </tr>
           </thead>
           <tbody className="divide-y divide-secondary">
-            {standings[0].table.map((team: any) => (
+            {standings[0].table.map((team: Standing) => (
               <tr
                 key={team.team.id}
                 className={
