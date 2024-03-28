@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import goat from "@/public/images/goat.png";
+import psgLogo from "@/public/images/psg-white.png";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -15,7 +15,11 @@ export default function Navbar() {
         <ul className="flex items-center gap-4 text-sm sm:gap-8 sm:text-base">
           <li>
             <Link href="/">
-              <Image src={goat} alt="Goat" className="size-6" />
+              <Image
+                src={psgLogo}
+                alt="Paris Saint-Germain logo"
+                className="size-6"
+              />
             </Link>
           </li>
           <li>
