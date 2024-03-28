@@ -14,7 +14,7 @@ export default function Home() {
           Your ultimate PSG tracker
         </h1>
         <p className="text-lg text-secondary sm:text-xl">
-          Stay updated with the latest PSG fixtures, past results and league
+          Stay updated with the latest fixtures, past results and league
           standings.
         </p>
         <a
