@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
 import { fetchFromAPI } from "@/lib/utils";
 import Footer from "@/components/Footer";
