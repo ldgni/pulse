@@ -14,12 +14,15 @@ export default function Navbar() {
       <nav className="container py-4">
         <ul className="flex items-center gap-4 text-sm sm:gap-8 sm:text-base">
           <li>
-            <Link href="/">
+            <Link
+              href="/"
+              className={`${pathname === "/" ? "text-primary" : ""} flex gap-2 transition-colors hover:text-primary`}>
               <Image
                 src={psgLogo}
                 alt="Paris Saint-Germain logo"
                 className="size-6"
               />
+              <span className="hidden font-bold sm:block">PSGoat</span>
             </Link>
           </li>
           <li>

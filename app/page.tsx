@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import githubLogo from "@/public/images/github-white.svg";
-import psgLogo from "@/public/images/psg-white.png";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -11,12 +10,7 @@ export default function Home() {
     <>
       <Header />
       <main className="container flex grow flex-col justify-center gap-4 py-8 text-center">
-        <Image
-          src={psgLogo}
-          alt="Paris Saint-Germain logo"
-          className="size-24 self-center"
-        />
-        <h1 className="text-4xl font-bold leading-tight tracking-tighter sm:text-5xl md:text-6xl">
+        <h1 className="text-3xl font-bold leading-tight tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
           Your ultimate PSG tracker
         </h1>
         <p className="text-secondary sm:text-lg md:text-xl">
