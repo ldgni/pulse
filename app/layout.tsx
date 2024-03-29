@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: "PSGoat",
     template: "%s | PSGoat",
   },
-  description: "Stuff about PSG",
+  description: "PSG Tracker",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",

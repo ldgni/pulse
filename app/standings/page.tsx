@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Standings",
-  description: "The current Ligue 1 standings",
+  description: "Ligue 1 standings",
 };
 
 async function getStandings() {
