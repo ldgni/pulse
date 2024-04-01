@@ -6,6 +6,7 @@ export async function fetchFromAPI(endpoint: string) {
   }
 
   const res = await fetch(`https://api.football-data.org/v4/${endpoint}`, {
+    cache: "no-store",
     headers: {
       "X-Auth-Token": apiToken,
     },
