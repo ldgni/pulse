@@ -35,7 +35,7 @@ npm install
 4. Create a `.env.local` file in the root directory of the project. You will need to get an API key from [football-data.org](https://www.football-data.org/). Once you have the key, add it to the `.env.local` file like this:
 
 ```sh
-FOOTBALL_DATA_API_KEY=<your-api-key>
+NEXT_PUBLIC_API_TOKEN=<your-api-key>
 ```
 
 5.  Start the development server:
