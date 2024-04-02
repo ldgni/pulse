@@ -22,7 +22,7 @@ export default function Navbar() {
                 alt="Paris Saint-Germain logo"
                 className="size-6"
               />
-              <span className="hidden font-bold sm:block">PSGoat</span>
+              <span className="hidden font-bold sm:block">Pulse</span>
             </Link>
           </li>
           <li>

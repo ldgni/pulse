@@ -6,10 +6,10 @@ import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "PSGoat",
-    template: "%s | PSGoat",
+    default: "Pulse",
+    template: "%s | Pulse",
   },
-  description: "PSG Tracker",
+  description: "Paris Saint-Germain Performance Tracker",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
