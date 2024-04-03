@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-
-import { GeistSans } from "geist/font/sans";
+import { Inter } from "next/font/google";
 
 import "@/styles/globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${GeistSans.className} flex min-h-screen w-screen flex-col overflow-x-hidden bg-primary text-primary antialiased`}>
+        className={`${inter.className} flex min-h-screen w-screen flex-col overflow-x-hidden bg-radial-gradient text-sm text-slate-200 antialiased sm:text-base`}>
         {children}
       </body>
     </html>

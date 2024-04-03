@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.win {
+  @apply bg-win;
+}
+
+.draw {
+  @apply bg-draw;
+}
+
+.lose {
+  @apply bg-lose;
+}
+
+.upcoming {
+  @apply bg-upcoming;
+}

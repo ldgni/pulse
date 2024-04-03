@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { fetchFromAPI } from "@/lib/utils";
+import { fetchFromAPI } from "@/lib/api";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import MatchList from "@/components/MatchList";
@@ -24,8 +24,8 @@ export default async function Results() {
   return (
     <>
       <Header />
-      <main className="container flex grow flex-col items-center py-8">
-        <h1 className="mb-4 text-center text-2xl font-bold">Results</h1>
+      <main className="container flex flex-col items-center py-8">
+        <h1 className="mb-4 text-3xl font-extrabold tracking-tight">Results</h1>
         <MatchList matches={matches} showScores={true} />
       </main>
       <Footer />

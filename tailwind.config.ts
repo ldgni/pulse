@@ -12,13 +12,18 @@ const config: Config = {
         center: true,
         padding: "2rem",
       },
-      backgroundColor: {
-        primary: "#151e2d",
-        secondary: "#1a2434",
+      backgroundImage: {
+        "radial-gradient": "radial-gradient(at center, #274271, #1A2C4B)",
       },
       colors: {
-        primary: "#fafafa",
-        secondary: "#a1a1aa",
+        primary: "#1A2C4B",
+        secondary: "#274271",
+      },
+      backgroundColor: {
+        win: "#2C4B1A",
+        draw: "#4B391A",
+        lose: "#4B1A2C",
+        upcoming: "#1A454B",
       },
     },
   },

@@ -6,7 +6,7 @@
 
 - **Fixtures**: Display data about upcoming matches
 - **Results**: Display past match results
-- **Standings**: Track Ligue 1 standings and highlight PSG's position
+- **Standings**: Track Ligue 1 standings
 
 ## Data Source
 
