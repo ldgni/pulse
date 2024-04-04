@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import psgLogo from "@/public/images/psg-white.png";
+import psgLogo from "@/assets/images/psg-white.png";
 
 export default function Navbar() {
   const pathname = usePathname();

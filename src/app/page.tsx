@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import githubLogo from "@/public/images/github-white.svg";
+import githubLogo from "@/assets/images/github-white.svg";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
