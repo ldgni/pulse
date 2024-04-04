@@ -1,14 +1,14 @@
-export async function fetchFromAPI(endpoint: string) {
-  const apiToken = process.env.NEXT_PUBLIC_API_TOKEN;
+export async function getFromAPI(endpoint: string) {
+  const token = process.env.NEXT_PUBLIC_API_TOKEN;
 
-  if (!apiToken) {
+  if (!token) {
     throw new Error("API token is not set");
   }
 
   const res = await fetch(`https://api.football-data.org/v4/${endpoint}`, {
     next: { revalidate: 300 },
     headers: {
-      "X-Auth-Token": apiToken,
+      "X-Auth-Token": token,
     },
   });
 

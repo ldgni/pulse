@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import MatchList from "@/components/MatchList";
-import { fetchFromAPI } from "@/lib/api";
+import { getFromAPI } from "@/services";
 
 export const metadata: Metadata = {
   title: "Fixtures",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 async function getFixtures() {
-  const data = await fetchFromAPI("teams/524/matches?status=SCHEDULED");
+  const data = await getFromAPI("teams/524/matches?status=SCHEDULED");
   return data.matches;
 }
 

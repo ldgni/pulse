@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { fetchFromAPI } from "@/lib/api";
+import { getFromAPI } from "@/services";
 import { Standing, StandingsTable } from "@/types/standings";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 async function getStandings() {
-  const data = await fetchFromAPI("competitions/FL1/standings");
+  const data = await getFromAPI("competitions/FL1/standings");
   return data.standings;
 }
 
