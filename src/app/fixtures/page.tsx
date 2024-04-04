@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-import { fetchFromAPI } from "@/lib/api";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import MatchList from "@/components/MatchList";
+import { fetchFromAPI } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Fixtures",

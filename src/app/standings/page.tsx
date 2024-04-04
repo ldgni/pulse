@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import { Standing, StandingsTable } from "@/types/standings";
-import { fetchFromAPI } from "@/lib/api";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { fetchFromAPI } from "@/lib/api";
+import { Standing, StandingsTable } from "@/types/standings";
 
 export const metadata: Metadata = {
   title: "Standings",

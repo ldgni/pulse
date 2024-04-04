@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { Match } from "@/types/matches";
 import { determineBgColor, determineOutcome } from "@/lib/helpers";
+import { Match } from "@/types/matches";
 
 interface MatchListProps {
   matches: Match[];
