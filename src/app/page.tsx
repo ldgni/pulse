@@ -1,6 +1,5 @@
-import Image from "next/image";
+import { Github } from "lucide-react";
 
-import githubLogo from "@/assets/images/github-white.svg";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
@@ -20,7 +19,7 @@ export default function Home() {
           href="https://github.com/ldgni/pulse"
           className="inline-flex h-9 items-center gap-2 self-center rounded-md border border-slate-400 px-4 py-2 font-semibold shadow transition-colors hover:bg-primary"
           target="_blank">
-          <Image src={githubLogo} alt="Github Logo" className="size-4" />
+          <Github size={18} />
           GitHub
         </a>
       </main>

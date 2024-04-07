@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import psgLogo from "@/assets/images/psg-white.png";
-
 export default function Navbar() {
   const pathname = usePathname();
 
@@ -18,9 +16,10 @@ export default function Navbar() {
               href="/"
               className={`${pathname === "/" ? "font-semibold text-slate-100" : ""} flex gap-2 transition-colors hover:text-slate-200`}>
               <Image
-                src={psgLogo}
+                src={`/images/psg-logo.png`}
+                width={24}
+                height={24}
                 alt="Paris Saint-Germain logo"
-                className="size-6"
               />
               <span className="hidden sm:block">Pulse</span>
             </Link>
