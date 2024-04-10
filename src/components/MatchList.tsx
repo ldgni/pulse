@@ -2,12 +2,7 @@ import Image from "next/image";
 
 import { Match } from "@/types/matches";
 
-interface MatchListProps {
-  matches: Match[];
-  showScores: boolean;
-}
-
-export function determineOutcome(match: Match, showScores: boolean) {
+function determineOutcome(match: Match, showScores: boolean) {
   if (!showScores || !match.score) {
     return "upcoming";
   }
@@ -29,7 +24,7 @@ export function determineOutcome(match: Match, showScores: boolean) {
   return "";
 }
 
-export function determineBgColor(outcome: string) {
+function determineBgColor(outcome: string) {
   switch (outcome) {
     case "win":
       return "win";
@@ -42,6 +37,11 @@ export function determineBgColor(outcome: string) {
     default:
       return "";
   }
+}
+
+interface MatchListProps {
+  matches: Match[];
+  showScores: boolean;
 }
 
 export default function MatchList({ matches, showScores }: MatchListProps) {
