@@ -1,5 +1,5 @@
 export async function getFromAPI(endpoint: string) {
-  const token = process.env.NEXT_PUBLIC_API_TOKEN;
+  const token = process.env.API_TOKEN;
 
   if (!token) {
     throw new Error("API token is not set");

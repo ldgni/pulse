@@ -14,31 +14,31 @@ All data on **Pulse** is fetched in real-time from the [football-data.org](https
 
 ## Running Locally
 
-1. Clone the repository to your local machine:
+1. Clone the repository to your local machine
 
 ```sh
 git clone https://github.com/ldgni/pulse.git
 ```
 
-2. Navigate inside the project directory:
+2. Navigate inside the project directory
 
 ```sh
 cd pulse
 ```
 
-3. Install dependencies:
+3. Install dependencies
 
 ```sh
 npm install
 ```
 
-4. Create a `.env.local` file in the root directory of the project. You will need to get an API key from [football-data.org](https://www.football-data.org/). Once you have the key, add it to the `.env.local` file like this:
+4. Copy [`.env.example`](.env.example) to `.env.local` and update the variables
 
 ```sh
-NEXT_PUBLIC_API_TOKEN=<your-api-key>
+cp .env.example .env.local
 ```
 
-5.  Start the development server:
+5.  Start the development server
 
 ```sh
 npm run dev
