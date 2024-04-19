@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-import NavLink from "./ui/NavLink";
+import NavLink from "@/components/ui/NavLink";
 
 export default function Navbar() {
   return (
     <header className="border-b border-slate-400 bg-primary">
       <nav className="container py-4">
-        <ul className="flex items-center gap-4 text-slate-400 sm:gap-8">
+        <ul className="flex items-center justify-between text-slate-400 lg:justify-normal lg:gap-8">
           <li>
             <NavLink href="/" className="flex gap-2">
               <Image
