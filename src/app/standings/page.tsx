@@ -19,15 +19,11 @@ export default async function Standings() {
   const standings = await getStandings();
 
   return (
-    <>
-      <Header />
-      <main className="container flex max-w-screen-sm flex-col py-8">
-        <h1 className="mb-4 text-center text-3xl font-extrabold tracking-tight">
-          Standings
-        </h1>
-        <StandingsList standings={standings} />
-      </main>
-      <Footer />
-    </>
+    <main className="container flex max-w-screen-sm flex-col py-8">
+      <h1 className="mb-4 text-center text-3xl font-extrabold tracking-tight">
+        Standings
+      </h1>
+      <StandingsList standings={standings} />
+    </main>
   );
 }

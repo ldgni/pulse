@@ -19,15 +19,9 @@ export default async function Fixtures() {
   const matches = await getFixtures();
 
   return (
-    <>
-      <Header />
-      <main className="container flex flex-col items-center py-8">
-        <h1 className="mb-4 text-3xl font-extrabold tracking-tight">
-          Fixtures
-        </h1>
-        <MatchList matches={matches} showScores={false} />
-      </main>
-      <Footer />
-    </>
+    <main className="container flex flex-col items-center py-8">
+      <h1 className="mb-4 text-3xl font-extrabold tracking-tight">Fixtures</h1>
+      <MatchList matches={matches} showScores={false} />
+    </main>
   );
 }

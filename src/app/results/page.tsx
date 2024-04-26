@@ -22,13 +22,9 @@ export default async function Results() {
   const matches = await getResults();
 
   return (
-    <>
-      <Header />
-      <main className="container flex flex-col items-center py-8">
-        <h1 className="mb-4 text-3xl font-extrabold tracking-tight">Results</h1>
-        <MatchList matches={matches} showScores={true} />
-      </main>
-      <Footer />
-    </>
+    <main className="container flex flex-col items-center py-8">
+      <h1 className="mb-4 text-3xl font-extrabold tracking-tight">Results</h1>
+      <MatchList matches={matches} showScores={true} />
+    </main>
   );
 }
