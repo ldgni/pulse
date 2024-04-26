@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-slate-400 bg-primary">
+    <footer className="mt-auto border-t border-slate-600 bg-primary">
       <div className="container flex justify-center py-4">
         <p>
           &copy; 2024{" "}

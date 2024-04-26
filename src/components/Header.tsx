@@ -4,7 +4,7 @@ import NavLink from "@/components/ui/NavLink";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 border-b border-slate-400 bg-primary">
+    <header className="sticky top-0 border-b border-slate-600 bg-primary">
       <nav className="container max-w-screen-lg py-4">
         <ul className="flex items-center justify-between gap-4 text-slate-400 sm:justify-normal sm:gap-12">
           <li>

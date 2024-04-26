@@ -22,7 +22,7 @@ export default function Home() {
         </h1>
       </Motion>
       <Motion delay={0.5}>
-        <p className="mx-auto mb-6 max-w-2xl sm:text-lg md:text-xl lg:text-2xl">
+        <p className="mx-auto mb-4 max-w-2xl sm:text-lg md:text-xl lg:text-2xl">
           Stay updated with the upcoming fixtures, past results and current
           league standings of the french football club.
         </p>
