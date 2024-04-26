@@ -10,7 +10,7 @@ export default function Header() {
           <li>
             <NavLink href="/" className="flex gap-2">
               <Image
-                src={`/images/psg-logo.png`}
+                src={`/images/psg-logo.webp`}
                 width={24}
                 height={24}
                 alt="Paris Saint-Germain logo"
