@@ -13,45 +13,49 @@ type StandingsListProps = {
 export default function StandingsList({ standings }: StandingsListProps) {
   return (
     <>
-      <motion.table
-        className="mb-4 border bg-secondary"
+      <motion.div
+        className="mb-4 overflow-hidden rounded border border-slate-500 bg-secondary shadow"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.25, ease: "easeIn" }}>
-        <thead className="bg-primary">
-          <tr className="text-left">
-            <th className="p-2 sm:p-4">#</th>
-            <th className="p-2 sm:p-4">Team</th>
-            <th className="p-2 sm:p-4">PL</th>
-            <th className="hidden p-4 sm:table-cell">W</th>
-            <th className="hidden p-4 sm:table-cell">D</th>
-            <th className="hidden p-4 sm:table-cell">L</th>
-            <th className="p-2 sm:p-4">Pts</th>
-          </tr>
-        </thead>
-        <tbody className="divide-y">
-          {standings[0].table.map((team: Standing, index, array) => (
-            <tr key={team.team.id} className={getRowClass(index, array.length)}>
-              <td className="p-2 sm:p-4">{team.position}</td>
-              <td className="flex items-center gap-4 p-2 font-semibold sm:p-4">
-                <Image
-                  src={team.team.crest}
-                  width={96}
-                  height={96}
-                  className="h-auto w-8"
-                  alt={`${team.team.name} logo`}
-                />
-                {team.team.shortName}
-              </td>
-              <td className="p-2 sm:p-4">{team.playedGames}</td>
-              <td className="hidden p-4 sm:table-cell">{team.won}</td>
-              <td className="hidden p-4 sm:table-cell">{team.draw}</td>
-              <td className="hidden p-4 sm:table-cell">{team.lost}</td>
-              <td className="p-2 font-semibold sm:p-4">{team.points}</td>
+        <table className="w-full">
+          <thead className="bg-primary">
+            <tr className="text-left">
+              <th className="p-2 sm:p-4">#</th>
+              <th className="p-2 sm:p-4">Team</th>
+              <th className="p-2 sm:p-4">PL</th>
+              <th className="hidden p-4 sm:table-cell">W</th>
+              <th className="hidden p-4 sm:table-cell">D</th>
+              <th className="hidden p-4 sm:table-cell">L</th>
+              <th className="p-2 sm:p-4">Pts</th>
             </tr>
-          ))}
-        </tbody>
-      </motion.table>
+          </thead>
+          <tbody className="divide-y">
+            {standings[0].table.map((team: Standing, index, array) => (
+              <tr
+                key={team.team.id}
+                className={getRowClass(index, array.length)}>
+                <td className="p-2 sm:p-4">{team.position}</td>
+                <td className="flex items-center gap-4 p-2 font-semibold sm:p-4">
+                  <Image
+                    src={team.team.crest}
+                    width={96}
+                    height={96}
+                    className="h-auto w-8"
+                    alt={`${team.team.name} logo`}
+                  />
+                  {team.team.shortName}
+                </td>
+                <td className="p-2 sm:p-4">{team.playedGames}</td>
+                <td className="hidden p-4 sm:table-cell">{team.won}</td>
+                <td className="hidden p-4 sm:table-cell">{team.draw}</td>
+                <td className="hidden p-4 sm:table-cell">{team.lost}</td>
+                <td className="p-2 font-semibold sm:p-4">{team.points}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
