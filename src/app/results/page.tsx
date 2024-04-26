@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import MatchList from "@/components/MatchList";
 import { getFromAPI } from "@/services";
 

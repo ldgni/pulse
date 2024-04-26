@@ -3,9 +3,6 @@
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
 
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-
 export default function Home() {
   return (
     <main className="container flex grow flex-col justify-center py-8 text-center">
