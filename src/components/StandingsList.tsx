@@ -30,7 +30,7 @@ export default function StandingsList({ standings }: StandingsListProps) {
               <th className="p-2 sm:p-4">Pts</th>
             </tr>
           </thead>
-          <tbody className="divide-y">
+          <tbody className="divide-y divide-slate-400">
             {standings[0].table.map((team: Standing, index, array) => (
               <tr
                 key={team.team.id}
