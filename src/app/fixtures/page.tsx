@@ -17,7 +17,7 @@ export default async function Fixtures() {
   const matches = await getFixtures();
 
   const content =
-    matches.length === 1 ? (
+    matches.length === 0 ? (
       <div className="flex flex-col gap-4 text-center sm:text-lg md:text-xl lg:text-2xl">
         <p>The season has ended.</p>
         <p>
