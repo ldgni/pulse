@@ -16,10 +16,23 @@ async function getFixtures() {
 export default async function Fixtures() {
   const matches = await getFixtures();
 
+  const content =
+    matches.length === 1 ? (
+      <div className="flex flex-col gap-4 text-center sm:text-lg md:text-xl lg:text-2xl">
+        <p>The season has ended.</p>
+        <p>
+          This page will automatically update once the new calendar is
+          available.
+        </p>
+      </div>
+    ) : (
+      <MatchList matches={matches} showScores={false} />
+    );
+
   return (
     <main className="container flex flex-col items-center py-8">
       <h1 className="mb-4 text-3xl font-extrabold tracking-tight">Fixtures</h1>
-      <MatchList matches={matches} showScores={false} />
+      {content}
     </main>
   );
 }
