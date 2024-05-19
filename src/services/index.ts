@@ -6,7 +6,6 @@ export async function getFromAPI(endpoint: string) {
   }
 
   const res = await fetch(`https://api.football-data.org/v4/${endpoint}`, {
-    next: { revalidate: 300 },
     headers: {
       "X-Auth-Token": token,
     },
