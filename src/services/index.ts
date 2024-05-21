@@ -9,6 +9,7 @@ export async function getFromAPI(endpoint: string) {
     headers: {
       "X-Auth-Token": token,
     },
+    cache: "no-store",
   });
 
   if (!res.ok) {
