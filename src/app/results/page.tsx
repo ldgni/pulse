@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import MatchList from "@/components/MatchList";
+import MatchList from "@/components/matchList";
 import { getFromAPI } from "@/services";
 
 export const metadata: Metadata = {
