@@ -9,6 +9,9 @@ export async function getFromAPI(endpoint: string) {
     headers: {
       "X-Auth-Token": token,
     },
+    next: {
+      revalidate: 300,
+    },
   });
 
   if (!res.ok) {
