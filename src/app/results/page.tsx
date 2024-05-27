@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import MatchList from "@/components/matchList";
+import LoadingSpinner from "@/components/ui/loadingSpinner";
 import { getFromAPI } from "@/services";
 
 export const metadata: Metadata = {
@@ -22,7 +24,9 @@ export default async function Results() {
   return (
     <main className="container flex flex-col items-center py-8">
       <h1 className="mb-4 text-3xl font-extrabold tracking-tight">Results</h1>
-      <MatchList matches={matches} showScores={true} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <MatchList matches={matches} showScores={true} />
+      </Suspense>
     </main>
   );
 }

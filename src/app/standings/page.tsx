@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import StandingsList from "@/components/standingsList";
+import LoadingSpinner from "@/components/ui/loadingSpinner";
 import { getFromAPI } from "@/services";
 
 export const metadata: Metadata = {
@@ -21,7 +23,9 @@ export default async function Standings() {
       <h1 className="mb-4 text-center text-3xl font-extrabold tracking-tight">
         Standings
       </h1>
-      <StandingsList standings={standings} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <StandingsList standings={standings} />
+      </Suspense>
     </main>
   );
 }

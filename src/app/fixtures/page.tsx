@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import MatchList from "@/components/matchList";
+import LoadingSpinner from "@/components/ui/loadingSpinner";
 import { getFromAPI } from "@/services";
 
 export const metadata: Metadata = {
@@ -26,7 +28,9 @@ export default async function Fixtures() {
         </p>
       </div>
     ) : (
-      <MatchList matches={matches} showScores={false} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <MatchList matches={matches} showScores={false} />
+      </Suspense>
     );
 
   return (
