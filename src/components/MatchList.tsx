@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { Match } from "@/types/matches";
@@ -21,11 +20,7 @@ export default function MatchList({ matches, showScores }: MatchListProps) {
   });
 
   return (
-    <motion.ul
-      className="flex w-full max-w-xl flex-col gap-8"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.25, ease: "easeIn" }}>
+    <ul className="flex w-full max-w-xl flex-col gap-8">
       {enhancedMatches.map(
         (match: Match & { outcome: string; bgColor: string }) => {
           return (
@@ -92,6 +87,6 @@ export default function MatchList({ matches, showScores }: MatchListProps) {
           );
         }
       )}
-    </motion.ul>
+    </ul>
   );
 }

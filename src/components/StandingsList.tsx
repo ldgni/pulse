@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { Standing, StandingsTable } from "@/types/standings";
@@ -13,11 +12,7 @@ type StandingsListProps = {
 export default function StandingsList({ standings }: StandingsListProps) {
   return (
     <>
-      <motion.div
-        className="mb-4 overflow-hidden rounded border border-slate-500 bg-secondary shadow"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.25, ease: "easeIn" }}>
+      <div className="mb-4 overflow-hidden rounded border border-slate-500 bg-secondary shadow">
         <table className="w-full">
           <thead className="bg-primary">
             <tr className="text-left">
@@ -55,11 +50,8 @@ export default function StandingsList({ standings }: StandingsListProps) {
             ))}
           </tbody>
         </table>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.25, delay: 0.1, ease: "easeIn" }}>
+      </div>
+      <div>
         <h2 className="mb-2 text-lg font-semibold tracking-tight sm:text-xl">
           Qualification/Relegation
         </h2>
@@ -85,7 +77,7 @@ export default function StandingsList({ standings }: StandingsListProps) {
             <p>Relegation</p>
           </div>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 }
