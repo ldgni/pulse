@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import StandingsList from "@/components/standingsList";
+import StandingsList from "@/components/StandingsList";
 import { getFromAPI } from "@/services";
 
 export const metadata: Metadata = {
