@@ -6,12 +6,13 @@ import { Match } from "@/types/matches";
 import { formatDate } from "@/utils/dateFormater";
 import { determineBgColor, determineOutcome } from "@/utils/matchUtils";
 
-interface MatchListProps {
+export default function MatchList({
+  matches,
+  showScores,
+}: {
   matches: Match[];
   showScores: boolean;
-}
-
-export default function MatchList({ matches, showScores }: MatchListProps) {
+}) {
   const enhancedMatches = matches.map((match) => {
     const outcome = determineOutcome(match, showScores);
     const bgColor = determineBgColor(outcome);
@@ -33,7 +34,7 @@ export default function MatchList({ matches, showScores }: MatchListProps) {
                     src={match.homeTeam.crest}
                     width={96}
                     height={96}
-                    className="h-auto w-8"
+                    className="h-auto w-8 sm:w-12"
                     alt={`${match.homeTeam.name} logo`}
                   />
                   {showScores && match.score ? (
@@ -57,7 +58,7 @@ export default function MatchList({ matches, showScores }: MatchListProps) {
                     src={match.awayTeam.crest}
                     width={96}
                     height={96}
-                    className="h-auto w-8"
+                    className="h-auto w-8 sm:w-12"
                     alt={`${match.awayTeam.name} logo`}
                   />
                   {showScores && match.score ? (

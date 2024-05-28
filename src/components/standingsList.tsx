@@ -5,11 +5,11 @@ import Image from "next/image";
 import { Standing, StandingsTable } from "@/types/standings";
 import { getRowClass } from "@/utils/standingsUtils";
 
-type StandingsListProps = {
+export default function StandingsList({
+  standings,
+}: {
   standings: StandingsTable[];
-};
-
-export default function StandingsList({ standings }: StandingsListProps) {
+}) {
   return (
     <>
       <div className="mb-4 overflow-hidden rounded border border-slate-500 bg-secondary shadow">
