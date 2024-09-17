@@ -8,10 +8,6 @@
 - **Results**: Display past match results
 - **Standings**: Track Ligue 1 standings
 
-## Data Source
-
-All data on **Pulse** is fetched in real-time from the [football-data.org](https://www.football-data.org/) API.
-
 ## Running Locally
 
 1. Clone the repository to your local machine
