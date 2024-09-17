@@ -3,6 +3,7 @@ import { Suspense } from "react";
 
 import MatchList from "@/components/matchList";
 import LoadingSpinner from "@/components/ui/loadingSpinner";
+import RefreshMessage from "@/components/ui/refreshMessage";
 import { getFromAPI } from "@/services";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default async function Fixtures() {
   return (
     <main className="container flex flex-col items-center py-8">
       <h1 className="mb-4 text-3xl font-extrabold tracking-tight">Fixtures</h1>
+      <RefreshMessage />
       {content}
     </main>
   );
