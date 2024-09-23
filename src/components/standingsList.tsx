@@ -69,6 +69,10 @@ export default function StandingsList({
             <p>Europa League group stage</p>
           </div>
           <div className="flex items-center gap-2">
+            <div className="size-4 bg-blue-300/60"></div>
+            <p>Europa Conference League qualifiers</p>
+          </div>
+          <div className="flex items-center gap-2">
             <div className="size-4 bg-yellow-500/60"></div>
             <p>Relegation play-offs</p>
           </div>
