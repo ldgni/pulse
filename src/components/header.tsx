@@ -23,7 +23,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 bg-primary">
+    <header className="sticky top-0 bg-secondary">
       <div className="container flex max-w-screen-lg gap-4 py-4 sm:gap-12">
         <Link href="/" className="flex gap-2">
           <Image

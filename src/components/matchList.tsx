@@ -27,7 +27,7 @@ export default function MatchList({
           return (
             <li
               key={match.id}
-              className={`flex flex-col gap-4 rounded border border-slate-500 p-4 uppercase shadow sm:flex-col-reverse ${match.bgColor}`}>
+              className={`flex flex-col gap-4 rounded border border-black p-4 uppercase shadow-xl sm:flex-col-reverse ${match.bgColor}`}>
               <div className="flex flex-col gap-2 font-semibold sm:flex-row sm:items-center sm:gap-4">
                 <div className="flex items-center gap-2 sm:flex-1 sm:flex-row-reverse">
                   <Image

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-primary">
+    <footer className="mt-auto bg-secondary">
       <div className="container flex justify-center py-4">
         <p>
           &copy; 2024{" "}
