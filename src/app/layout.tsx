@@ -9,10 +9,7 @@ import Header from "@/components/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Pulse",
-    template: "%s | Pulse",
-  },
+  title: "Paris Saint-Germain Performance Tracker",
   description: "Paris Saint-Germain Performance Tracker",
   icons: {
     icon: "/favicon.ico",
