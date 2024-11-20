@@ -12,7 +12,7 @@ export default function Home() {
       </p>
       <a
         href="https://github.com/ldgni/pulse"
-        className="inline-flex h-9 items-center gap-2 self-center rounded-md border border-slate-400 px-4 py-2 font-semibold shadow transition hover:scale-105 hover:bg-secondary"
+        className="inline-flex h-9 items-center gap-2 self-center rounded-md border border-slate-400 px-4 py-2 font-semibold shadow transition duration-300 hover:border-slate-600 hover:bg-slate-200 hover:text-slate-800"
         target="_blank">
         <Github size={18} />
         GitHub
