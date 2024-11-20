@@ -6,7 +6,7 @@ export default function Home() {
       <h1 className="mb-2 text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
         Track Paris Saint-Germain
       </h1>
-      <p className="mx-auto mb-4 max-w-2xl sm:text-lg md:text-xl lg:text-2xl">
+      <p className="mx-auto mb-4 max-w-2xl text-slate-300 sm:text-lg md:text-xl">
         Stay updated with the upcoming fixtures, past results and current league
         standings of the french football club.
       </p>
