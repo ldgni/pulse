@@ -3,8 +3,8 @@
 import Image from "next/image";
 
 import { Match } from "@/types/matches";
-import { formatDate } from "@/utils/dateFormater";
-import { determineBgColor, determineOutcome } from "@/utils/matchUtils";
+import { formatDate } from "@/utils/date-formater";
+import { determineBgColor, determineOutcome } from "@/utils/match-utils";
 
 export default function MatchList({
   matches,
@@ -86,7 +86,7 @@ export default function MatchList({
               </div>
             </li>
           );
-        }
+        },
       )}
     </ul>
   );

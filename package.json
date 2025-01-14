@@ -1,41 +1,41 @@
 {
-  "name": "pulse",
+  "name": "nextjs-starter",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky"
   },
   "dependencies": {
-    "lucide-react": "^0.365.0",
-    "next": "14.1.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "lucide-react": "^0.469.0",
+    "next": "15.1.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@types/node": "^20.16.5",
-    "@types/react": "^18.3.7",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.1.4",
-    "eslint-config-prettier": "^9.1.0",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.3",
+    "eslint-plugin-check-file": "^2.8.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
-    "postcss": "^8.4.47",
-    "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "tailwindcss": "^3.4.12",
-    "typescript": "^5.6.2"
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "postcss": "^8",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs}": "eslint --fix",
-    "*.{js,jsx,ts,tsx,mjs,cjs,css,json,md}": "prettier --write"
+    "*.{js,jsx,ts,tsx,mjs,cjs,html,css,json,md}": "prettier --write"
   }
 }

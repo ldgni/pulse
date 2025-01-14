@@ -1,6 +1,6 @@
 # Pulse
 
-**Pulse** provides performance updates on the french football club [Paris Saint-Germain](https://en.wikipedia.org/wiki/Paris_Saint-Germain_F.C.).
+Pulse provides performance updates on the french football club [Paris Saint-Germain](https://en.wikipedia.org/wiki/Paris_Saint-Germain_F.C.).
 
 ## Features
 
@@ -10,7 +10,7 @@
 
 ## Data Source
 
-All data on **Pulse** is fetched in real-time from the [football-data.org](https://www.football-data.org/) API.
+All data is fetched in real-time from the [football-data.org](https://www.football-data.org/) API.
 
 ## Running Locally
 

@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 import { Standing, StandingsTable } from "@/types/standings";
-import { getRowClass } from "@/utils/standingsUtils";
+import { getRowClass } from "@/utils/standings-utils";
 
 export default function StandingsList({
   standings,

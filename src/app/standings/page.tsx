@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-import StandingsList from "@/components/standingsList";
-import LoadingSpinner from "@/components/ui/loadingSpinner";
-import { getFromAPI } from "@/services";
+import { getFromAPI } from "@/api";
+import StandingsList from "@/components/standings-list";
+import LoadingSpinner from "@/components/ui/loading-spinner";
 
 export const metadata: Metadata = {
   title: "Standings",

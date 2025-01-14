@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-import MatchList from "@/components/matchList";
-import LoadingSpinner from "@/components/ui/loadingSpinner";
-import RefreshMessage from "@/components/ui/refreshMessage";
-import { getFromAPI } from "@/services";
+import { getFromAPI } from "@/api";
+import MatchList from "@/components/match-list";
+import LoadingSpinner from "@/components/ui/loading-spinner";
+import RefreshMessage from "@/components/ui/refresh-message";
 
 export const metadata: Metadata = {
   title: "Results",
@@ -13,9 +13,11 @@ export const metadata: Metadata = {
 
 async function getResults() {
   const data = await getFromAPI("teams/524/matches?status=FINISHED");
-  const sortedMatches = data.matches.sort((a: any, b: any) => {
-    return new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime();
-  });
+  const sortedMatches = data.matches.sort(
+    (a: { utcDate: string }, b: { utcDate: string }) => {
+      return new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime();
+    },
+  );
   return sortedMatches;
 }
 

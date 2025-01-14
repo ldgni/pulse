@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-import MatchList from "@/components/matchList";
-import LoadingSpinner from "@/components/ui/loadingSpinner";
-import RefreshMessage from "@/components/ui/refreshMessage";
-import { getFromAPI } from "@/services";
+import { getFromAPI } from "@/api";
+import MatchList from "@/components/match-list";
+import LoadingSpinner from "@/components/ui/loading-spinner";
+import RefreshMessage from "@/components/ui/refresh-message";
 
 export const metadata: Metadata = {
   title: "Fixtures",
@@ -16,7 +16,7 @@ async function getFixtures() {
   return data.matches;
 }
 
-export default async function Fixtures() {
+export default async function FixturesPage() {
   const matches = await getFixtures();
 
   const content =
