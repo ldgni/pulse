@@ -1,15 +1,14 @@
 import Image from "next/image";
 
-import RefereeFlag from "../../public/images/referee-flag.webp";
+import refereeFlag from "../../public/images/referee-flag.webp";
 
 export default function NotFound() {
   return (
     <main className="container flex grow flex-col items-center justify-center gap-4 py-8">
       <Image
-        src={RefereeFlag}
+        src={refereeFlag}
         alt="Referee flag"
-        width={256}
-        height={256}
+        className="size-60"
         placeholder="blur"
         priority
       />

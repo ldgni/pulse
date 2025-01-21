@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import psgLogo from "../../public/images/psg-logo.webp";
+
 const navLinks = [
   {
     href: "/fixtures",
@@ -27,11 +29,9 @@ export default function Header() {
       <div className="container flex max-w-screen-lg gap-4 py-4 sm:gap-12">
         <Link href="/" className="flex gap-2">
           <Image
-            src="/images/psg-logo.webp"
-            className="size-6"
-            width={24}
-            height={24}
+            src={psgLogo}
             alt="Paris Saint-Germain logo"
+            className="size-6"
           />
           <span className="hidden font-bold sm:block">Pulse</span>
         </Link>
