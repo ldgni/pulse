@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex min-h-screen w-screen flex-col overflow-x-hidden bg-primary text-sm text-slate-200 antialiased sm:text-base`}>
+        className={`${inter.className} flex min-h-screen flex-col bg-primary text-sm text-slate-200 antialiased sm:text-base`}>
         <Header />
         {children}
         <Footer />
