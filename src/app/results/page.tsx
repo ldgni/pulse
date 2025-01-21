@@ -21,7 +21,7 @@ async function getResults() {
   return sortedMatches;
 }
 
-export default async function Results() {
+export default async function ResultsPage() {
   const matches = await getResults();
 
   return (

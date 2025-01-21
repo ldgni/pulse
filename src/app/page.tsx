@@ -1,6 +1,6 @@
 import { Github } from "lucide-react";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main className="container flex grow flex-col items-center justify-center py-8 text-center">
       <h1 className="mb-2 text-3xl font-extrabold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">

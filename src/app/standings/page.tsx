@@ -15,7 +15,7 @@ async function getStandings() {
   return data.standings;
 }
 
-export default async function Standings() {
+export default async function StandingsPage() {
   const standings = await getStandings();
 
   return (
