@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import refereeFlag from "../../public/images/referee-flag.webp";
 
-export default function NotFound() {
+export default function NotFoundPage() {
   return (
     <main className="container flex grow flex-col items-center justify-center gap-4 py-8">
       <Image
