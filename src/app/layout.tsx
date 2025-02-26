@@ -9,7 +9,7 @@ import Header from "@/components/header";
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Paris Saint-Germain F.C. Performance Tracker",
+  title: "Paris Saint-Germain FC Performance Tracker",
   description:
     "Track the fixtures, results and Ligue 1 standings of the french football club Paris Saint-Germain",
 };
