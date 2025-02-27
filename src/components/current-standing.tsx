@@ -37,7 +37,7 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
               src={standing.team.crest}
               alt={standing.team.name}
               fill
-              sizes="24px"
+              sizes="40px"
               className="object-contain"
             />
           </div>
