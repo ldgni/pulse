@@ -12,18 +12,17 @@ export default function MatchCard({ match }: MatchCardProps) {
   const matchDate = new Date(match.utcDate);
 
   return (
-    <div className="mb-4 rounded-lg bg-white p-3 shadow-md sm:p-4 dark:bg-gray-800">
-      <div className="mb-2 text-xs text-gray-500 dark:text-gray-400">
+    <div className="mb-4 rounded-lg bg-white p-3 shadow-md sm:p-4">
+      <div className="mb-2 text-center text-xs text-gray-500">
         {match.competition.name}
-        <span className="ml-2">
-          {format(matchDate, "MMM d, yyyy • h:mm a")}
-        </span>
+        <span className="mx-2">•</span>
+        {format(matchDate, "MMM d, yyyy")}
       </div>
 
       <div className="flex items-center justify-between">
         {/* Home Team */}
         <div className="flex min-w-0 flex-1 items-center">
-          <div className="relative mr-1 h-8 w-8 flex-shrink-0 sm:mr-2 sm:h-10 sm:w-10">
+          <div className="relative mr-2 h-8 w-8 flex-shrink-0 sm:mr-2 sm:h-10 sm:w-10">
             <Image
               src={match.homeTeam.crest}
               alt={match.homeTeam.name}
@@ -55,7 +54,7 @@ export default function MatchCard({ match }: MatchCardProps) {
           <span className="truncate text-right text-sm font-medium sm:text-base">
             {match.awayTeam.shortName}
           </span>
-          <div className="relative ml-1 h-8 w-8 flex-shrink-0 sm:ml-2 sm:h-10 sm:w-10">
+          <div className="relative ml-2 h-8 w-8 flex-shrink-0 sm:ml-2 sm:h-10 sm:w-10">
             <Image
               src={match.awayTeam.crest}
               alt={match.awayTeam.name}

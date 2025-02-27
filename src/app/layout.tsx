@@ -1,12 +1,12 @@
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist } from "next/font/google";
 
 import Container from "@/components/container";
 import Header from "@/components/header";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const geist = Geist({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: "Paris Saint-Germain FC Performance Tracker",
@@ -21,8 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-y-scroll">
-      <body
-        className={`${inter.className} bg-light text-dark antialiased dark:bg-dark dark:text-light`}>
+      <body className={`${geist.className} `}>
         <Container>
           <Header />
           <main>{children}</main>

@@ -13,52 +13,52 @@ export default function StandingsTable({
 }: StandingsTableProps) {
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-        <thead className="bg-gray-50 dark:bg-gray-800">
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
           <tr>
             <th
               scope="col"
-              className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
               Pos
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
               Club
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
               MP
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
               W
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
               D
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
               L
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
               Pts
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-800 dark:bg-gray-900">
+        <tbody className="divide-y divide-gray-200 bg-white">
           {standings.map((entry) => (
             <tr
               key={entry.team.id}
-              className={`${entry.team.id === highlightTeamId ? "bg-blue-50 dark:bg-blue-900/30" : ""}`}>
-              <td className="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">
+              className={`${entry.team.id === highlightTeamId ? "bg-blue-50" : ""}`}>
+              <td className="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900">
                 {entry.position}
               </td>
               <td className="whitespace-nowrap px-3 py-4 text-sm">

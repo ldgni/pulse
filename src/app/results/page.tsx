@@ -5,8 +5,8 @@ export default async function ResultsPage() {
   const results = await getResults();
 
   return (
-    <div className="py-8">
-      <h1 className="mb-6 text-3xl font-bold">PSG Recent Results</h1>
+    <>
+      <h1 className="mb-6 text-center text-3xl font-bold">Results</h1>
       {results.length > 0 ? (
         <div className="space-y-4">
           {results.map((match) => (
@@ -14,10 +14,10 @@ export default async function ResultsPage() {
           ))}
         </div>
       ) : (
-        <div className="rounded-lg bg-white py-12 text-center shadow dark:bg-gray-800">
+        <div className="rounded-lg bg-white py-12 text-center shadow">
           <p className="text-gray-500">No recent results found</p>
         </div>
       )}
-    </div>
+    </>
   );
 }

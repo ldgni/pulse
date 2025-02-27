@@ -8,11 +8,11 @@ export default async function StandingsPage() {
   const leagueTable = standings.standings[0].table;
 
   return (
-    <div className="py-8">
-      <h1 className="mb-6 text-3xl font-bold">Ligue 1 Standings</h1>
-      <div className="rounded-lg bg-white p-4 shadow-md dark:bg-gray-800">
+    <>
+      <h1 className="mb-6 text-center text-3xl font-bold">Ligue 1 Standings</h1>
+      <div className="rounded-lg bg-white p-4 shadow-md">
         <StandingsTable standings={leagueTable} highlightTeamId={PSG_TEAM_ID} />
       </div>
-    </div>
+    </>
   );
 }

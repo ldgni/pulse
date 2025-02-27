@@ -10,8 +10,8 @@ interface CurrentStandingProps {
 export default function CurrentStanding({ standing }: CurrentStandingProps) {
   if (!standing) {
     return (
-      <div className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
-        <h2 className="mb-4 text-xl font-bold">League Position</h2>
+      <div className="rounded-lg border bg-neutral-100 p-3 shadow-md sm:p-6">
+        <h2 className="mb-4 font-semibold">League Position</h2>
         <p className="py-8 text-center text-gray-500">
           Standing information not available
         </p>
@@ -20,17 +20,17 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
   }
 
   return (
-    <div className="flex flex-col rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
+    <div className="flex flex-col rounded-lg border bg-neutral-100 p-3 shadow-md sm:p-6">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="font-bold">League Position</h2>
+        <h2 className="font-semibold">League Position</h2>
         <Link
           href="/standings"
-          className="hidden text-sm text-blue-600 hover:underline sm:inline dark:text-blue-400">
+          className="hidden text-sm text-blue-600 hover:underline sm:inline">
           Full standings →
         </Link>
       </div>
-      <div className="flex items-center justify-between rounded-lg bg-gray-50 p-4 dark:bg-gray-700">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between rounded-lg bg-white p-4">
+        <div className="flex items-center gap-4">
           <div className="text-2xl font-bold">{standing.position}</div>
           <div className="relative h-10 w-10">
             <Image
@@ -45,30 +45,30 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
         </div>
         <div className="text-center">
           <div className="text-xl font-bold">{standing.points}</div>
-          <div className="text-xs text-gray-500 dark:text-gray-400">points</div>
+          <div className="text-xs text-gray-500 sm:text-sm">points</div>
         </div>
       </div>
       <div className="mt-4 grid grid-cols-4 gap-2 text-center">
-        <div className="rounded bg-gray-50 p-2 dark:bg-gray-700">
+        <div className="rounded bg-gray-50 p-2">
           <div className="font-bold">{standing.playedGames}</div>
-          <div className="text-xs text-gray-500 dark:text-gray-400">played</div>
+          <div className="text-xs text-gray-500 sm:text-sm">played</div>
         </div>
-        <div className="rounded bg-gray-50 p-2 dark:bg-gray-700">
+        <div className="rounded bg-gray-50 p-2">
           <div className="font-bold">{standing.won}</div>
-          <div className="text-xs text-gray-500 dark:text-gray-400">won</div>
+          <div className="text-xs text-gray-500 sm:text-sm">won</div>
         </div>
-        <div className="rounded bg-gray-50 p-2 dark:bg-gray-700">
+        <div className="rounded bg-gray-50 p-2">
           <div className="font-bold">{standing.draw}</div>
-          <div className="text-xs text-gray-500 dark:text-gray-400">drawn</div>
+          <div className="text-xs text-gray-500 sm:text-sm">drawn</div>
         </div>
-        <div className="rounded bg-gray-50 p-2 dark:bg-gray-700">
+        <div className="rounded bg-gray-50 p-2">
           <div className="font-bold">{standing.lost}</div>
-          <div className="text-xs text-gray-500 dark:text-gray-400">lost</div>
+          <div className="text-xs text-gray-500 sm:text-sm">lost</div>
         </div>
       </div>
       <Link
         href="/standings"
-        className="mt-4 text-center text-sm text-blue-600 hover:underline sm:hidden dark:text-blue-400">
+        className="mt-4 text-center text-sm text-blue-600 hover:underline sm:hidden">
         Full standings →
       </Link>
     </div>

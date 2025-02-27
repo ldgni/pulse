@@ -11,12 +11,13 @@ export default async function HomePage() {
   ]);
 
   return (
-    <div className="py-8">
+    <>
+      <h1 className="mb-6 text-center text-3xl font-bold">Pulse</h1>
       <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
         <LatestResult match={latestResult} />
         <NextFixture match={nextFixture} />
       </div>
       <CurrentStanding standing={psgStanding} />
-    </div>
+    </>
   );
 }
