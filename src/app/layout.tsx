@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-y-scroll">
       <body
         className={`${inter.className} bg-light text-dark antialiased dark:bg-dark dark:text-light`}>
         <Container>
