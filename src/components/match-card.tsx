@@ -12,7 +12,7 @@ export default function MatchCard({ match }: MatchCardProps) {
   const matchDate = new Date(match.utcDate);
 
   return (
-    <div className="mb-4 rounded-lg bg-white p-3 shadow-md sm:p-4">
+    <div className="rounded-lg border p-3 sm:p-4">
       <div className="mb-2 text-center text-xs text-gray-500">
         {match.competition.name}
         <span className="mx-2">•</span>

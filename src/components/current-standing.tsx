@@ -10,7 +10,7 @@ interface CurrentStandingProps {
 export default function CurrentStanding({ standing }: CurrentStandingProps) {
   if (!standing) {
     return (
-      <div className="rounded-lg border bg-neutral-100 p-3 shadow-md sm:p-6">
+      <div className="rounded-lg border p-3 shadow-md sm:p-6">
         <h2 className="mb-4 font-semibold">League Position</h2>
         <p className="py-8 text-center text-gray-500">
           Standing information not available
@@ -20,7 +20,7 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
   }
 
   return (
-    <div className="flex flex-col rounded-lg border bg-neutral-100 p-3 shadow-md sm:p-6">
+    <div className="flex flex-col rounded-lg border p-3 shadow-md sm:p-6">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="font-semibold">League Position</h2>
         <Link
@@ -29,7 +29,7 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
           Full standings →
         </Link>
       </div>
-      <div className="flex items-center justify-between rounded-lg bg-white p-4">
+      <div className="flex items-center justify-between rounded border p-4">
         <div className="flex items-center gap-4">
           <div className="text-2xl font-bold">{standing.position}</div>
           <div className="relative h-10 w-10">
@@ -49,19 +49,19 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
         </div>
       </div>
       <div className="mt-4 grid grid-cols-4 gap-2 text-center">
-        <div className="rounded bg-gray-50 p-2">
+        <div className="rounded border p-2">
           <div className="font-bold">{standing.playedGames}</div>
           <div className="text-xs text-gray-500 sm:text-sm">played</div>
         </div>
-        <div className="rounded bg-gray-50 p-2">
+        <div className="rounded border p-2">
           <div className="font-bold">{standing.won}</div>
           <div className="text-xs text-gray-500 sm:text-sm">won</div>
         </div>
-        <div className="rounded bg-gray-50 p-2">
+        <div className="rounded border p-2">
           <div className="font-bold">{standing.draw}</div>
           <div className="text-xs text-gray-500 sm:text-sm">drawn</div>
         </div>
-        <div className="rounded bg-gray-50 p-2">
+        <div className="rounded border p-2">
           <div className="font-bold">{standing.lost}</div>
           <div className="text-xs text-gray-500 sm:text-sm">lost</div>
         </div>

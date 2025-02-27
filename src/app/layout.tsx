@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-y-scroll">
-      <body className={`${geist.className} `}>
+      <body className={`${geist.className} bg-slate-50`}>
         <Container>
           <Header />
           <main>{children}</main>
