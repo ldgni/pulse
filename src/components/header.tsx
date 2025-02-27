@@ -78,7 +78,7 @@ export default function Header() {
 
         {/* Mobile Menu Sidebar */}
         <div
-          className={`fixed right-0 top-0 z-40 h-full w-1/2 transform bg-secondary pt-16 transition-transform duration-300 ease-in-out sm:hidden ${
+          className={`fixed right-0 top-0 z-40 h-full w-40 transform bg-secondary pt-16 transition-transform duration-300 ease-in-out sm:hidden ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}>
           <nav className="p-4">
