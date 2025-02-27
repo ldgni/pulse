@@ -10,19 +10,23 @@ interface MatchCardProps {
 export default function MatchCard({ match }: MatchCardProps) {
   const isFinished = match.status === "FINISHED";
   const matchDate = new Date(match.utcDate);
+  const PSG_TEAM_ID = 524;
 
   return (
-    <div className="rounded-lg border p-3 sm:p-4">
+    <div className="rounded border p-3 sm:p-4">
       <div className="mb-2 text-center text-xs text-gray-500">
         {match.competition.name}
         <span className="mx-2">•</span>
         {format(matchDate, "MMM d, yyyy")}
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-center">
         {/* Home Team */}
-        <div className="flex min-w-0 flex-1 items-center">
-          <div className="relative mr-2 h-8 w-8 flex-shrink-0 sm:mr-2 sm:h-10 sm:w-10">
+        <div className="flex min-w-0 flex-1 items-center justify-end px-2">
+          <span className="mr-2 truncate text-sm font-medium sm:text-base">
+            {match.homeTeam.shortName}
+          </span>
+          <div className="relative h-8 w-8 flex-shrink-0 sm:h-10 sm:w-10">
             <Image
               src={match.homeTeam.crest}
               alt={match.homeTeam.name}
@@ -31,16 +35,21 @@ export default function MatchCard({ match }: MatchCardProps) {
               className="object-contain"
             />
           </div>
-          <span className="truncate text-sm font-medium sm:text-base">
-            {match.homeTeam.shortName}
-          </span>
         </div>
 
         {/* Score/Time */}
-        <div className="flex-shrink-0 px-2 text-center sm:px-4">
+        <div className="flex-shrink-0 px-2 text-center">
           {isFinished ? (
-            <div className="text-base font-bold sm:text-lg">
-              {match.score.fullTime.home} - {match.score.fullTime.away}
+            <div className="rounded-md px-2 py-1 text-base font-bold sm:text-lg">
+              <span
+                className={`rounded px-2 py-1 ${match.homeTeam.id === PSG_TEAM_ID ? "bg-blue-200" : "bg-gray-200"}`}>
+                {match.score.fullTime.home}
+              </span>
+              <span className="px-1">-</span>
+              <span
+                className={`rounded px-2 py-1 ${match.awayTeam.id === PSG_TEAM_ID ? "bg-blue-200" : "bg-gray-200"}`}>
+                {match.score.fullTime.away}
+              </span>
             </div>
           ) : (
             <div className="text-sm font-medium text-gray-500">
@@ -50,11 +59,8 @@ export default function MatchCard({ match }: MatchCardProps) {
         </div>
 
         {/* Away Team */}
-        <div className="flex min-w-0 flex-1 items-center justify-end">
-          <span className="truncate text-right text-sm font-medium sm:text-base">
-            {match.awayTeam.shortName}
-          </span>
-          <div className="relative ml-2 h-8 w-8 flex-shrink-0 sm:ml-2 sm:h-10 sm:w-10">
+        <div className="flex min-w-0 flex-1 items-center justify-start px-2">
+          <div className="relative mr-2 h-8 w-8 flex-shrink-0 sm:h-10 sm:w-10">
             <Image
               src={match.awayTeam.crest}
               alt={match.awayTeam.name}
@@ -63,6 +69,9 @@ export default function MatchCard({ match }: MatchCardProps) {
               className="object-contain"
             />
           </div>
+          <span className="truncate text-sm font-medium sm:text-base">
+            {match.awayTeam.shortName}
+          </span>
         </div>
       </div>
     </div>

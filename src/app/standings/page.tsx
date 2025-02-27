@@ -10,9 +10,7 @@ export default async function StandingsPage() {
   return (
     <>
       <h1 className="mb-6 text-center text-3xl font-bold">Ligue 1 Standings</h1>
-      <div className="rounded-lg bg-white p-4 shadow-md">
-        <StandingsTable standings={leagueTable} highlightTeamId={PSG_TEAM_ID} />
-      </div>
+      <StandingsTable standings={leagueTable} highlightTeamId={PSG_TEAM_ID} />
     </>
   );
 }
