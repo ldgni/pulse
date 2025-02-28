@@ -18,37 +18,37 @@ export default function StandingsTable({
           <tr>
             <th
               scope="col"
-              className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-              Pos
+              className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4">
+              #
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4">
               Club
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
+              className="p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4">
               MP
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
+              className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4">
               W
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
+              className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4">
               D
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
+              className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4">
               L
             </th>
             <th
               scope="col"
-              className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider text-gray-500">
+              className="p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4">
               Pts
             </th>
           </tr>
@@ -58,10 +58,10 @@ export default function StandingsTable({
             <tr
               key={entry.team.id}
               className={`${entry.team.id === highlightTeamId ? "bg-blue-50" : ""}`}>
-              <td className="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900">
+              <td className="whitespace-nowrap p-2 text-sm font-medium text-gray-900 sm:p-4">
                 {entry.position}
               </td>
-              <td className="whitespace-nowrap px-3 py-4 text-sm">
+              <td className="whitespace-nowrap p-2 text-sm sm:p-4">
                 <div className="flex items-center">
                   <div className="relative mr-2 h-6 w-6">
                     <Image
@@ -77,19 +77,19 @@ export default function StandingsTable({
                   </span>
                 </div>
               </td>
-              <td className="whitespace-nowrap px-3 py-4 text-center text-sm">
+              <td className="whitespace-nowrap p-2 text-center text-sm sm:p-4">
                 {entry.playedGames}
               </td>
-              <td className="whitespace-nowrap px-3 py-4 text-center text-sm">
+              <td className="hidden whitespace-nowrap p-2 text-center text-sm sm:table-cell sm:p-4">
                 {entry.won}
               </td>
-              <td className="whitespace-nowrap px-3 py-4 text-center text-sm">
+              <td className="hidden whitespace-nowrap p-2 text-center text-sm sm:table-cell sm:p-4">
                 {entry.draw}
               </td>
-              <td className="whitespace-nowrap px-3 py-4 text-center text-sm">
+              <td className="hidden whitespace-nowrap p-2 text-center text-sm sm:table-cell sm:p-4">
                 {entry.lost}
               </td>
-              <td className="whitespace-nowrap px-3 py-4 text-center text-sm font-bold">
+              <td className="whitespace-nowrap p-2 text-center text-sm font-bold sm:p-4">
                 {entry.points}
               </td>
             </tr>
