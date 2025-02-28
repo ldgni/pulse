@@ -1,7 +1,11 @@
 import { format } from "date-fns";
+import { formatInTimeZone } from "date-fns-tz";
 import Image from "next/image";
 
 import { Match } from "@/lib/types";
+
+// PSG_TEAM_ID constant
+const PSG_TEAM_ID = 524;
 
 interface MatchCardProps {
   match: Match;
@@ -10,7 +14,15 @@ interface MatchCardProps {
 export default function MatchCard({ match }: MatchCardProps) {
   const isFinished = match.status === "FINISHED";
   const matchDate = new Date(match.utcDate);
-  const PSG_TEAM_ID = 524;
+
+  // Format time in French time zone (Europe/Paris) instead of UTC
+  const formattedTime = formatInTimeZone(matchDate, "Europe/Paris", "HH:mm");
+
+  // Use this formatted time display logic instead of the current time display
+  const displayTime =
+    formattedTime === "01:00" || formattedTime === "02:00"
+      ? "TBA"
+      : formattedTime;
 
   return (
     <div className="rounded border p-3 sm:p-4">
@@ -53,10 +65,7 @@ export default function MatchCard({ match }: MatchCardProps) {
             </div>
           ) : (
             <div className="rounded bg-gray-200 px-2 py-1 text-sm font-medium text-gray-500">
-              {format(matchDate, "HH:mm") === "01:00" ||
-              format(matchDate, "HH:mm") === "02:00"
-                ? "TBA"
-                : format(matchDate, "HH:mm")}
+              {displayTime}
             </div>
           )}
         </div>
