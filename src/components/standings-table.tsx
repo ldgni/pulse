@@ -25,8 +25,8 @@ function getPositionBorderStyle(position: number): React.CSSProperties {
     18: "#ef4444", // Relegation
   };
 
-  const color = borderColors[pos];
-  return color ? { borderLeft: `4px solid ${color}` } : {};
+  const color = borderColors[pos] || "#e2e8f0"; // Default to slate-200 for positions without special meaning
+  return { borderLeft: `4px solid ${color}` };
 }
 
 export default function StandingsTable({
