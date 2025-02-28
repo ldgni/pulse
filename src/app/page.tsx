@@ -12,7 +12,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <h1 className="mb-6 text-center text-3xl font-bold">PSG Tracker</h1>
+      <h1 className="mb-6 text-center text-3xl font-bold">Overview</h1>
       <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
         <LatestResult match={latestResult} />
         <NextFixture match={nextFixture} />
