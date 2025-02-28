@@ -1,16 +1,6 @@
 # Pulse
 
-Pulse provides performance updates on the french football club [Paris Saint-Germain](https://en.wikipedia.org/wiki/Paris_Saint-Germain_F.C.).
-
-## Features
-
-- **Fixtures**: Display data about upcoming matches
-- **Results**: Display past match results
-- **Standings**: Track Ligue 1 standings
-
-## Data Source
-
-All data is fetched in real-time from the [football-data.org](https://www.football-data.org/) API.
+> Performance tracker for Paris Saint-Germain FC
 
 ## Running Locally
 
