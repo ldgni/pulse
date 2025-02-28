@@ -52,8 +52,11 @@ export default function MatchCard({ match }: MatchCardProps) {
               </span>
             </div>
           ) : (
-            <div className="text-sm font-medium text-gray-500">
-              {format(matchDate, "HH:mm")}
+            <div className="rounded bg-gray-200 px-2 py-1 text-sm font-medium text-gray-500">
+              {format(matchDate, "HH:mm") === "01:00" ||
+              format(matchDate, "HH:mm") === "02:00"
+                ? "TBA"
+                : format(matchDate, "HH:mm")}
             </div>
           )}
         </div>
