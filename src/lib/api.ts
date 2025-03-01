@@ -1,22 +1,28 @@
+import { API_BASE_URL, LIGUE_1_ID, PSG_TEAM_ID } from "./constants";
 import { Match, StandingEntry, StandingsResponse } from "./types";
 
-const API_BASE_URL = "https://api.football-data.org/v4";
-const PSG_TEAM_ID = 524; // Paris Saint-Germain team ID in the API
-
-// Generic fetch function with proper typing
+// Generic fetch function with proper typing and improved error handling
 async function fetchFromAPI<T>(endpoint: string): Promise<T> {
-  const res = await fetch(`${API_BASE_URL}${endpoint}`, {
-    headers: {
-      "X-Auth-Token": process.env.FOOTBALL_DATA_API_KEY || "",
-    },
-    next: { revalidate: 3600 }, // Cache for 1 hour
-  });
+  try {
+    const res = await fetch(`${API_BASE_URL}${endpoint}`, {
+      headers: {
+        "X-Auth-Token": process.env.FOOTBALL_DATA_API_KEY || "",
+      },
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    });
 
-  if (!res.ok) {
-    throw new Error(`API request failed with status ${res.status}`);
+    if (!res.ok) {
+      const errorText = await res.text().catch(() => "Unknown error");
+      throw new Error(
+        `API request failed with status ${res.status}: ${errorText}`,
+      );
+    }
+
+    return res.json() as Promise<T>;
+  } catch (error) {
+    console.error(`Error fetching from API (${endpoint}):`, error);
+    throw error;
   }
-
-  return res.json() as Promise<T>;
 }
 
 // API functions with proper type parameters
@@ -38,8 +44,10 @@ export async function getResults(): Promise<Match[]> {
 }
 
 export async function getStandings(): Promise<StandingsResponse> {
-  // Assuming Ligue 1 competition ID is 2015
-  return fetchFromAPI<StandingsResponse>("/competitions/FL1/standings");
+  // Using the constant for Ligue 1 competition ID
+  return fetchFromAPI<StandingsResponse>(
+    `/competitions/${LIGUE_1_ID}/standings`,
+  );
 }
 
 export async function getLatestResult(): Promise<Match | null> {

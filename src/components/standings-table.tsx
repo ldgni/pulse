@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { POSITION_COLORS } from "@/lib/constants";
 import { StandingEntry } from "@/lib/types";
 
 interface StandingsTableProps {
@@ -7,26 +8,85 @@ interface StandingsTableProps {
   highlightTeamId?: number;
 }
 
+// Position legend data for reusability
+const positionLegends = [
+  { color: "#3b82f6", label: "UEFA Champions League group stage" },
+  { color: "#f97316", label: "UEFA Champions League qualifiers" },
+  { color: "#22c55e", label: "Europa League group stage" },
+  { color: "#93c5fd", label: "Europa Conference League qualifiers" },
+  { color: "#eab308", label: "Relegation play-offs" },
+  { color: "#ef4444", label: "Relegation" },
+];
+
 function getPositionBorderStyle(position: number): React.CSSProperties {
-  const pos = Number(position);
-
-  if (isNaN(pos)) return {};
-
-  const borderColors: Record<number, string> = {
-    // We use inline styles because tailwind doesn't work
-    1: "#3b82f6", // Champions League group stage
-    2: "#3b82f6", // Champions League group stage
-    3: "#3b82f6", // Champions League group stage
-    4: "#f97316", // Champions League qualifiers
-    5: "#22c55e", // Europa League group stage
-    6: "#93c5fd", // Conference League qualifiers
-    16: "#eab308", // Relegation play-offs
-    17: "#ef4444", // Relegation
-    18: "#ef4444", // Relegation
-  };
-
-  const color = borderColors[pos] || "#e2e8f0"; // Default to slate-200 for positions without special meaning
+  if (isNaN(position)) return {};
+  const color =
+    POSITION_COLORS[position as keyof typeof POSITION_COLORS] || "#e2e8f0"; // Default to slate-200
   return { borderLeft: `4px solid ${color}` };
+}
+
+// Table header component
+function TableHeader() {
+  return (
+    <thead>
+      <tr>
+        <th
+          scope="col"
+          className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
+          #
+        </th>
+        <th
+          scope="col"
+          className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
+          Club
+        </th>
+        <th
+          scope="col"
+          className="p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
+          MP
+        </th>
+        <th
+          scope="col"
+          className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4 sm:text-sm">
+          W
+        </th>
+        <th
+          scope="col"
+          className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4 sm:text-sm">
+          D
+        </th>
+        <th
+          scope="col"
+          className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4 sm:text-sm">
+          L
+        </th>
+        <th
+          scope="col"
+          className="p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
+          Pts
+        </th>
+      </tr>
+    </thead>
+  );
+}
+
+// Position legend component
+function PositionLegend() {
+  return (
+    <div className="mt-4 text-xs sm:text-sm">
+      <h3 className="mb-2 font-medium">Qualification/Relegation</h3>
+      <ul className="space-y-1">
+        {positionLegends.map((legend) => (
+          <li key={legend.label} className="flex items-center">
+            <span
+              className="mr-2 block h-4 w-4"
+              style={{ backgroundColor: legend.color }}></span>
+            <span>{legend.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default function StandingsTable({
@@ -37,45 +97,7 @@ export default function StandingsTable({
     <div>
       <div className="overflow-x-auto rounded border">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead>
-            <tr>
-              <th
-                scope="col"
-                className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
-                #
-              </th>
-              <th
-                scope="col"
-                className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
-                Club
-              </th>
-              <th
-                scope="col"
-                className="p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
-                MP
-              </th>
-              <th
-                scope="col"
-                className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4 sm:text-sm">
-                W
-              </th>
-              <th
-                scope="col"
-                className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4 sm:text-sm">
-                D
-              </th>
-              <th
-                scope="col"
-                className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4 sm:text-sm">
-                L
-              </th>
-              <th
-                scope="col"
-                className="p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
-                Pts
-              </th>
-            </tr>
-          </thead>
+          <TableHeader />
           <tbody className="divide-y divide-gray-200 bg-white">
             {standings.map((entry) => {
               const highlightClass =
@@ -127,48 +149,7 @@ export default function StandingsTable({
         </table>
       </div>
 
-      {/* Position Legend */}
-      <div className="mt-4 text-xs sm:text-sm">
-        <h3 className="mb-2 font-medium">Qualification/Relegation</h3>
-        <ul className="space-y-1">
-          <li className="flex items-center">
-            <span
-              className="mr-2 block h-4 w-4"
-              style={{ backgroundColor: "#3b82f6" }}></span>
-            <span>UEFA Champions League group stage</span>
-          </li>
-          <li className="flex items-center">
-            <span
-              className="mr-2 block h-4 w-4"
-              style={{ backgroundColor: "#f97316" }}></span>
-            <span>UEFA Champions League qualifiers</span>
-          </li>
-          <li className="flex items-center">
-            <span
-              className="mr-2 block h-4 w-4"
-              style={{ backgroundColor: "#22c55e" }}></span>
-            <span>Europa League group stage</span>
-          </li>
-          <li className="flex items-center">
-            <span
-              className="mr-2 block h-4 w-4"
-              style={{ backgroundColor: "#93c5fd" }}></span>
-            <span>Europa Conference League qualifiers</span>
-          </li>
-          <li className="flex items-center">
-            <span
-              className="mr-2 block h-4 w-4"
-              style={{ backgroundColor: "#eab308" }}></span>
-            <span>Relegation play-offs</span>
-          </li>
-          <li className="flex items-center">
-            <span
-              className="mr-2 block h-4 w-4"
-              style={{ backgroundColor: "#ef4444" }}></span>
-            <span>Relegation</span>
-          </li>
-        </ul>
-      </div>
+      <PositionLegend />
     </div>
   );
 }
