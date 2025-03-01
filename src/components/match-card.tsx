@@ -34,7 +34,7 @@ export default function MatchCard({ match }: MatchCardProps) {
 
       <div className="flex items-center justify-center">
         {/* Home Team */}
-        <div className="flex min-w-0 flex-1 items-center justify-end px-2">
+        <div className="flex min-w-0 flex-1 items-center justify-end">
           <span className="mr-2 truncate text-sm font-medium sm:text-base">
             {match.homeTeam.shortName}
           </span>
@@ -50,9 +50,9 @@ export default function MatchCard({ match }: MatchCardProps) {
         </div>
 
         {/* Score/Time */}
-        <div className="flex-shrink-0 px-2 text-center">
+        <div className="mx-4">
           {isFinished ? (
-            <div className="rounded-md px-2 py-1 text-base font-bold sm:text-lg">
+            <div className="rounded-md text-base font-bold sm:text-lg">
               <span
                 className={`rounded px-2 py-1 ${match.homeTeam.id === PSG_TEAM_ID ? "bg-blue-200" : "bg-gray-200"}`}>
                 {match.score.fullTime.home}
@@ -71,7 +71,7 @@ export default function MatchCard({ match }: MatchCardProps) {
         </div>
 
         {/* Away Team */}
-        <div className="flex min-w-0 flex-1 items-center justify-start px-2">
+        <div className="flex min-w-0 flex-1 items-center justify-start">
           <div className="relative mr-2 h-8 w-8 flex-shrink-0 sm:h-10 sm:w-10">
             <Image
               src={match.awayTeam.crest}

@@ -29,7 +29,7 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
           Full standings →
         </Link>
       </div>
-      <div className="flex items-center justify-between rounded border p-4">
+      <div className="flex items-center justify-between gap-4 rounded border p-4">
         <div className="flex items-center gap-4">
           <div className="text-2xl font-bold">{standing.position}</div>
           <div className="relative h-10 w-10">

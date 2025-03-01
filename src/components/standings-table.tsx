@@ -91,7 +91,7 @@ export default function StandingsTable({
                   </td>
                   <td className="whitespace-nowrap p-2 text-sm sm:p-4 sm:text-base">
                     <div className="flex items-center">
-                      <div className="relative mr-2 h-6 w-6">
+                      <div className="relative mr-2 h-6 w-6 sm:mr-4">
                         <Image
                           src={entry.team.crest}
                           alt={entry.team.name}
