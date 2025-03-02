@@ -16,7 +16,7 @@ export default function AboutPage() {
         <p className="mb-4">
           To optimize page load times, the API is limited to 20 matches.
         </p>
-        <p>The times are displayed in the UTC+1 timezone.</p>
+        <p>Times are displayed in the UTC+1 timezone.</p>
       </div>
     </>
   );
