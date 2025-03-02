@@ -9,7 +9,7 @@ import Header from "@/components/header";
 const geist = Geist({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Paris Saint-Germain FC Performance Tracker",
+  title: "PSG Performance Tracker",
   description:
     "Track the upcoming fixtures, last results and current league standing of PSG",
 };

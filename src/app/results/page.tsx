@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
+
 import MatchCard from "@/components/match-card";
 import { getResults } from "@/lib/api";
+
+export const metadata: Metadata = {
+  title: "Results",
+};
 
 export default async function ResultsPage() {
   const results = await getResults();

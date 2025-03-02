@@ -1,5 +1,11 @@
+import { Metadata } from "next";
+
 import MatchCard from "@/components/match-card";
 import { getFixtures } from "@/lib/api";
+
+export const metadata: Metadata = {
+  title: "Fixtures",
+};
 
 export default async function FixturesPage() {
   const fixtures = await getFixtures();

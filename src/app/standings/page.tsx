@@ -1,5 +1,11 @@
+import { Metadata } from "next";
+
 import StandingsTable from "@/components/standings-table";
 import { getStandings } from "@/lib/api";
+
+export const metadata: Metadata = {
+  title: "Standings",
+};
 
 const PSG_TEAM_ID = 524;
 
