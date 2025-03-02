@@ -28,7 +28,7 @@ async function fetchFromAPI<T>(endpoint: string): Promise<T> {
 // API functions with proper type parameters
 export async function getFixtures(): Promise<Match[]> {
   const data = await fetchFromAPI<{ matches: Match[] }>(
-    `/teams/${PSG_TEAM_ID}/matches?status=SCHEDULED`,
+    `/teams/${PSG_TEAM_ID}/matches?status=SCHEDULED&limit=20`,
   );
   return data.matches;
 }
