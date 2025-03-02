@@ -1,6 +1,6 @@
 export const API_BASE_URL = "https://api.football-data.org/v4";
-export const PSG_TEAM_ID = 524; // Paris Saint-Germain team ID in the API
-export const LIGUE_1_ID = "FL1"; // Ligue 1 competition ID
+export const PSG_TEAM_ID = 524;
+export const LIGUE_1_ID = "FL1";
 
 // Position border colors for standings table
 export const POSITION_COLORS = {
