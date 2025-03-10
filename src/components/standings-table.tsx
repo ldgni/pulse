@@ -32,37 +32,37 @@ function TableHeader() {
       <tr>
         <th
           scope="col"
-          className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
+          className="p-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase sm:p-4 sm:text-sm">
           #
         </th>
         <th
           scope="col"
-          className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
+          className="p-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase sm:p-4 sm:text-sm">
           Club
         </th>
         <th
           scope="col"
-          className="p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
+          className="p-2 text-center text-xs font-medium tracking-wider text-gray-500 uppercase sm:p-4 sm:text-sm">
           MP
         </th>
         <th
           scope="col"
-          className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4 sm:text-sm">
+          className="hidden p-2 text-center text-xs font-medium tracking-wider text-gray-500 uppercase sm:table-cell sm:p-4 sm:text-sm">
           W
         </th>
         <th
           scope="col"
-          className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4 sm:text-sm">
+          className="hidden p-2 text-center text-xs font-medium tracking-wider text-gray-500 uppercase sm:table-cell sm:p-4 sm:text-sm">
           D
         </th>
         <th
           scope="col"
-          className="hidden p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:table-cell sm:p-4 sm:text-sm">
+          className="hidden p-2 text-center text-xs font-medium tracking-wider text-gray-500 uppercase sm:table-cell sm:p-4 sm:text-sm">
           L
         </th>
         <th
           scope="col"
-          className="p-2 text-center text-xs font-medium uppercase tracking-wider text-gray-500 sm:p-4 sm:text-sm">
+          className="p-2 text-center text-xs font-medium tracking-wider text-gray-500 uppercase sm:p-4 sm:text-sm">
           Pts
         </th>
       </tr>
@@ -95,7 +95,7 @@ export default function StandingsTable({
 }: StandingsTableProps) {
   return (
     <div>
-      <div className="overflow-x-auto rounded border">
+      <div className="overflow-x-auto rounded border border-zinc-300">
         <table className="min-w-full divide-y divide-gray-200">
           <TableHeader />
           <tbody className="divide-y divide-gray-200 bg-white">
@@ -108,10 +108,10 @@ export default function StandingsTable({
                   key={entry.team.id}
                   className={highlightClass}
                   style={getPositionBorderStyle(Number(entry.position))}>
-                  <td className="whitespace-nowrap p-2 text-sm font-medium text-gray-900 sm:p-4 sm:text-base">
+                  <td className="p-2 text-sm font-medium whitespace-nowrap text-gray-900 sm:p-4 sm:text-base">
                     {entry.position}
                   </td>
-                  <td className="whitespace-nowrap p-2 text-sm sm:p-4 sm:text-base">
+                  <td className="p-2 text-sm whitespace-nowrap sm:p-4 sm:text-base">
                     <div className="flex items-center">
                       <div className="relative mr-2 h-6 w-6 sm:mr-4">
                         <Image
@@ -127,19 +127,19 @@ export default function StandingsTable({
                       </span>
                     </div>
                   </td>
-                  <td className="whitespace-nowrap p-2 text-center text-sm sm:p-4 sm:text-base">
+                  <td className="p-2 text-center text-sm whitespace-nowrap sm:p-4 sm:text-base">
                     {entry.playedGames}
                   </td>
-                  <td className="hidden whitespace-nowrap p-2 text-center text-sm sm:table-cell sm:p-4 sm:text-base">
+                  <td className="hidden p-2 text-center text-sm whitespace-nowrap sm:table-cell sm:p-4 sm:text-base">
                     {entry.won}
                   </td>
-                  <td className="hidden whitespace-nowrap p-2 text-center text-sm sm:table-cell sm:p-4 sm:text-base">
+                  <td className="hidden p-2 text-center text-sm whitespace-nowrap sm:table-cell sm:p-4 sm:text-base">
                     {entry.draw}
                   </td>
-                  <td className="hidden whitespace-nowrap p-2 text-center text-sm sm:table-cell sm:p-4 sm:text-base">
+                  <td className="hidden p-2 text-center text-sm whitespace-nowrap sm:table-cell sm:p-4 sm:text-base">
                     {entry.lost}
                   </td>
-                  <td className="whitespace-nowrap p-2 text-center text-sm font-bold sm:p-4 sm:text-base">
+                  <td className="p-2 text-center text-sm font-bold whitespace-nowrap sm:p-4 sm:text-base">
                     {entry.points}
                   </td>
                 </tr>

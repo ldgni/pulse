@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <>
       <h1 className="mb-6 text-center text-3xl font-bold">About</h1>
-      <div className="mx-auto max-w-screen-sm rounded border p-2 text-center text-sm shadow-sm sm:p-4 sm:text-base">
+      <div className="mx-auto max-w-screen-sm rounded border border-zinc-300 p-2 text-center text-sm shadow-sm sm:p-4 sm:text-base">
         <p className="mb-4">
           The data displayed on this website is fetched from the{" "}
           <a

@@ -1,24 +1,10 @@
-import { format } from "date-fns";
-import { formatInTimeZone } from "date-fns-tz";
 import Image from "next/image";
 
-import { DEFAULT_TIMEZONE, PSG_TEAM_ID } from "@/lib/constants";
+import { PSG_TEAM_ID } from "@/lib/constants";
 import { Match } from "@/lib/types";
 
 interface MatchCardProps {
   match: Match;
-}
-
-// Helper function to format match time
-function formatMatchTime(dateString: string): string {
-  const matchDate = new Date(dateString);
-  // Format time in French time zone instead of UTC
-  const formattedTime = formatInTimeZone(matchDate, DEFAULT_TIMEZONE, "HH:mm");
-
-  // Use this formatted time display logic
-  return formattedTime === "01:00" || formattedTime === "02:00"
-    ? "TBA"
-    : formattedTime;
 }
 
 // Team display component to reduce duplication
@@ -59,16 +45,19 @@ function TeamDisplay({
 export default function MatchCard({ match }: MatchCardProps) {
   const isFinished = match.status === "FINISHED";
   const matchDate = new Date(match.utcDate);
-  const displayTime = formatMatchTime(match.utcDate);
   const isPsgHome = match.homeTeam.id === PSG_TEAM_ID;
   const isPsgAway = match.awayTeam.id === PSG_TEAM_ID;
 
   return (
-    <div className="rounded border p-3 sm:p-4">
+    <div className="rounded border border-zinc-200 p-3 sm:p-4">
       <div className="mb-2 text-center text-xs text-gray-500">
         {match.competition.name}
         <span className="mx-2">•</span>
-        {format(matchDate, "MMM d, yyyy")}
+        {matchDate.toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        })}
       </div>
 
       <div className="flex items-center justify-center">
@@ -91,7 +80,11 @@ export default function MatchCard({ match }: MatchCardProps) {
             </div>
           ) : (
             <div className="rounded bg-gray-200 px-2 py-1 text-sm font-medium text-gray-500">
-              {displayTime}
+              {matchDate.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+              })}
             </div>
           )}
         </div>

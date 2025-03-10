@@ -1,9 +1,8 @@
-import "@/styles/globals.css";
+import "./globals.css";
 
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
-import Container from "@/components/container";
 import Header from "@/components/header";
 
 const geist = Geist({ subsets: ["latin"], display: "swap" });
@@ -11,7 +10,7 @@ const geist = Geist({ subsets: ["latin"], display: "swap" });
 export const metadata: Metadata = {
   title: "PSG Performance Tracker",
   description:
-    "Track the upcoming fixtures, last results and current league standing of PSG",
+    "Track the last results, upcoming fixtures and current league standing of PSG",
 };
 
 export default function RootLayout({
@@ -20,12 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-y-scroll">
-      <body className={`${geist.className} bg-slate-50 text-slate-800`}>
-        <Container>
+    <html lang="en">
+      <body
+        className={`${geist.className} min-h-screen bg-gradient-to-b from-sky-50 to-zinc-50 text-zinc-900`}>
+        <div className="container max-w-3xl">
           <Header />
           <main>{children}</main>
-        </Container>
+        </div>
       </body>
     </html>
   );
