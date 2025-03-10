@@ -48,6 +48,14 @@ export default function MatchCard({ match }: MatchCardProps) {
   const isPsgHome = match.homeTeam.id === PSG_TEAM_ID;
   const isPsgAway = match.awayTeam.id === PSG_TEAM_ID;
 
+  // Check if the time is likely a placeholder (midnight to 4am in UTC+1)
+  const isProbablyTBD = () => {
+    // Convert UTC to UTC+1
+    const utcPlus1Date = new Date(matchDate.getTime() + 60 * 60 * 1000);
+    const hours = utcPlus1Date.getUTCHours();
+    return hours >= 0 && hours < 4;
+  };
+
   return (
     <div className="rounded border border-zinc-200 p-3 sm:p-4">
       <div className="mb-2 text-center text-xs text-gray-500">
@@ -80,11 +88,13 @@ export default function MatchCard({ match }: MatchCardProps) {
             </div>
           ) : (
             <div className="rounded bg-gray-200 px-2 py-1 text-sm font-medium text-gray-500">
-              {matchDate.toLocaleTimeString("en-US", {
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: false,
-              })}
+              {isProbablyTBD()
+                ? "TBD"
+                : matchDate.toLocaleTimeString("en-US", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: false,
+                  })}
             </div>
           )}
         </div>
