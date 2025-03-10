@@ -20,6 +20,7 @@ export default function AboutPage() {
           API.
         </p>
         <p>To optimize page load times, the API is limited to 20 matches.</p>
+        <p>Times are being shown in UTC+1 format.</p>
       </div>
     </>
   );
