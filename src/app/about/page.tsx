@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <h1 className="mb-6 text-center text-3xl font-bold">About</h1>
-      <div className="mx-auto max-w-screen-sm rounded border border-zinc-300 p-2 text-center text-sm shadow-sm sm:p-4 sm:text-base">
-        <p className="mb-4">
+      <h1 className="mb-6 text-center text-3xl font-semibold">About</h1>
+      <div className="mx-auto max-w-2xl space-y-2 rounded-lg border border-zinc-300 p-4 text-center">
+        <p>
           The data displayed on this website is fetched from the{" "}
           <a
             href="https://www.football-data.org/"
@@ -19,10 +19,7 @@ export default function AboutPage() {
           </a>{" "}
           API.
         </p>
-        <p className="mb-4">
-          To optimize page load times, the API is limited to 20 matches.
-        </p>
-        <p>Times are displayed in the UTC+1 timezone.</p>
+        <p>To optimize page load times, the API is limited to 20 matches.</p>
       </div>
     </>
   );

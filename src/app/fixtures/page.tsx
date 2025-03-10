@@ -12,7 +12,7 @@ export default async function FixturesPage() {
 
   return (
     <>
-      <h1 className="mb-6 text-center text-3xl font-bold">Fixtures</h1>
+      <h1 className="mb-6 text-center text-3xl font-semibold">Fixtures</h1>
       {fixtures.length > 0 ? (
         <div className="space-y-4">
           {fixtures.map((match) => (

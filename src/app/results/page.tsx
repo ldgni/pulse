@@ -12,7 +12,7 @@ export default async function ResultsPage() {
 
   return (
     <>
-      <h1 className="mb-6 text-center text-3xl font-bold">Results</h1>
+      <h1 className="mb-6 text-center text-3xl font-semibold">Results</h1>
       {results.length > 0 ? (
         <div className="space-y-4">
           {results.map((match) => (

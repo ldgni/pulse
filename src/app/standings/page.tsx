@@ -15,7 +15,9 @@ export default async function StandingsPage() {
 
   return (
     <>
-      <h1 className="mb-6 text-center text-3xl font-bold">Ligue 1 Standings</h1>
+      <h1 className="mb-6 text-center text-3xl font-semibold">
+        Ligue 1 Standings
+      </h1>
       <StandingsTable standings={leagueTable} highlightTeamId={PSG_TEAM_ID} />
     </>
   );

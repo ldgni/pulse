@@ -11,7 +11,7 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
   if (!standing) {
     return (
       <div className="rounded-lg border border-zinc-300 p-3 shadow-md sm:p-6">
-        <h2 className="mb-4 font-semibold">League Position</h2>
+        <h2 className="mb-4 font-medium">League Position</h2>
         <p className="py-8 text-center text-gray-500">
           Standing information not available
         </p>
@@ -22,7 +22,7 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
   return (
     <div className="flex flex-col rounded-lg border border-zinc-300 p-3 shadow-md sm:p-6">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="font-semibold">League Position</h2>
+        <h2 className="font-medium">League Position</h2>
         <Link
           href="/standings"
           className="hidden text-sm text-blue-600 hover:underline sm:inline">
