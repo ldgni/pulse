@@ -50,10 +50,23 @@ export default function MatchCard({ match }: MatchCardProps) {
 
   // Check if the time is likely a placeholder (midnight to 4am in UTC+1)
   const isProbablyTBD = () => {
-    // Convert UTC to UTC+1
-    const utcPlus1Date = new Date(matchDate.getTime() + 60 * 60 * 1000);
-    const hours = utcPlus1Date.getUTCHours();
-    return hours >= 0 && hours < 4;
+    let hours = matchDate.getUTCHours() + 1;
+    if (hours >= 24) {
+      hours -= 24;
+    }
+    return hours >= 0 && hours < 4; // Midnight to 4am in UTC+1
+  };
+
+  // Format time explicitly in UTC +1
+  const formatMatchTime = () => {
+    // Get UTC hours and add 1 for UTC+1
+    let hours = matchDate.getUTCHours() + 1;
+    // Handle day rollover if needed
+    if (hours >= 24) {
+      hours -= 24;
+    }
+    const minutes = matchDate.getUTCMinutes();
+    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
   };
 
   return (
@@ -61,11 +74,8 @@ export default function MatchCard({ match }: MatchCardProps) {
       <div className="mb-2 text-center text-xs text-gray-500">
         {match.competition.name}
         <span className="mx-2">•</span>
-        {matchDate.toLocaleDateString("en-US", {
-          month: "short",
-          day: "numeric",
-          year: "numeric",
-        })}
+        {/* Use explicit UTC date formatting */}
+        {`${matchDate.getUTCDate()} ${new Intl.DateTimeFormat("en-US", { month: "short" }).format(matchDate)} ${matchDate.getUTCFullYear()}`}
       </div>
 
       <div className="flex items-center justify-center">
@@ -88,13 +98,7 @@ export default function MatchCard({ match }: MatchCardProps) {
             </div>
           ) : (
             <div className="rounded bg-gray-200 px-2 py-1 text-sm font-medium text-gray-500">
-              {isProbablyTBD()
-                ? "TBD"
-                : matchDate.toLocaleTimeString("en-US", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: false,
-                  })}
+              {isProbablyTBD() ? "TBD" : formatMatchTime()}
             </div>
           )}
         </div>
