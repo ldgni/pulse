@@ -70,7 +70,7 @@ export default function MatchCard({ match }: MatchCardProps) {
   };
 
   return (
-    <div className="rounded border border-zinc-300 bg-gradient-to-br from-zinc-50 to-sky-100 p-3 sm:p-4">
+    <div className="rounded border border-zinc-300 bg-gradient-to-br from-zinc-50 to-sky-100 p-3 focus:ring-2 focus:ring-sky-500 focus:outline-none sm:p-4">
       <div className="mb-2 text-center text-xs text-zinc-600">
         {match.competition.name}
         <span className="mx-2">•</span>

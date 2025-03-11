@@ -25,7 +25,7 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
         <h2 className="font-medium">League Position</h2>
         <Link
           href="/standings"
-          className="hidden text-sm text-sky-600 hover:underline sm:inline">
+          className="hidden text-sm text-sky-600 hover:underline focus:ring-2 focus:ring-sky-500 focus:outline-none active:text-sky-800 sm:inline">
           Full standings →
         </Link>
       </div>
@@ -68,7 +68,7 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
       </div>
       <Link
         href="/standings"
-        className="mt-4 text-center text-sm text-sky-600 hover:underline sm:hidden">
+        className="mt-4 text-center text-sm text-sky-600 hover:underline focus:ring-2 focus:ring-sky-500 focus:outline-none active:text-sky-800 sm:hidden">
         Full standings →
       </Link>
     </div>

@@ -23,14 +23,14 @@ export default function LatestResult({ match }: LatestResultProps) {
         <h2 className="font-medium">Latest Result</h2>
         <Link
           href="/results"
-          className="hidden text-sm text-sky-600 hover:underline sm:inline">
+          className="hidden text-sm text-sky-600 hover:underline focus:ring-2 focus:ring-sky-500 focus:outline-none active:text-sky-800 sm:inline">
           View all results →
         </Link>
       </div>
       <MatchCard match={match} />
       <Link
         href="/results"
-        className="mt-4 text-center text-sm text-sky-600 hover:underline sm:hidden">
+        className="mt-4 text-center text-sm text-sky-600 hover:underline focus:ring-2 focus:ring-sky-500 focus:outline-none active:text-sky-800 sm:hidden">
         View all results →
       </Link>
     </div>
