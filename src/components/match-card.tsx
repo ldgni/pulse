@@ -70,8 +70,8 @@ export default function MatchCard({ match }: MatchCardProps) {
   };
 
   return (
-    <div className="rounded border border-zinc-200 p-3 sm:p-4">
-      <div className="mb-2 text-center text-xs text-gray-500">
+    <div className="rounded border border-zinc-300 bg-gradient-to-br from-zinc-50 to-sky-100 p-3 sm:p-4">
+      <div className="mb-2 text-center text-xs text-zinc-600">
         {match.competition.name}
         <span className="mx-2">•</span>
         {/* Use explicit UTC date formatting */}
@@ -85,7 +85,7 @@ export default function MatchCard({ match }: MatchCardProps) {
         {/* Score/Time */}
         <div className="mx-4">
           {isFinished ? (
-            <div className="rounded-md text-base font-bold sm:text-lg">
+            <div className="rounded-md text-base font-semibold sm:text-lg">
               <span
                 className={`rounded px-2 py-1 ${isPsgHome ? "bg-blue-200" : "bg-gray-200"}`}>
                 {match.score.fullTime.home}
@@ -97,7 +97,7 @@ export default function MatchCard({ match }: MatchCardProps) {
               </span>
             </div>
           ) : (
-            <div className="rounded bg-gray-200 px-2 py-1 text-sm font-medium text-gray-500">
+            <div className="rounded bg-gray-200 px-2 py-1 text-sm font-medium text-zinc-600">
               {isProbablyTBD() ? "TBD" : formatMatchTime()}
             </div>
           )}

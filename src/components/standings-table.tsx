@@ -94,8 +94,8 @@ export default function StandingsTable({
   highlightTeamId,
 }: StandingsTableProps) {
   return (
-    <div>
-      <div className="overflow-x-auto rounded border border-zinc-300">
+    <>
+      <div className="overflow-x-auto rounded border border-zinc-300 bg-sky-100">
         <table className="min-w-full divide-y divide-gray-200">
           <TableHeader />
           <tbody className="divide-y divide-gray-200 bg-white">
@@ -148,8 +148,7 @@ export default function StandingsTable({
           </tbody>
         </table>
       </div>
-
       <PositionLegend />
-    </div>
+    </>
   );
 }

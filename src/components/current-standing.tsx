@@ -10,7 +10,7 @@ interface CurrentStandingProps {
 export default function CurrentStanding({ standing }: CurrentStandingProps) {
   if (!standing) {
     return (
-      <div className="rounded-lg border border-zinc-300 p-3 shadow-md sm:p-6">
+      <div className="rounded-md border border-zinc-500 p-3 shadow-md sm:p-6">
         <h2 className="mb-4 font-medium">League Position</h2>
         <p className="py-8 text-center text-gray-500">
           Standing information not available
@@ -20,16 +20,16 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
   }
 
   return (
-    <div className="flex flex-col rounded-lg border border-zinc-300 p-3 shadow-md sm:p-6">
+    <div className="flex flex-col rounded-md border border-zinc-400 p-3 shadow-md sm:p-6">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="font-medium">League Position</h2>
         <Link
           href="/standings"
-          className="hidden text-sm text-blue-600 hover:underline sm:inline">
+          className="hidden text-sm text-sky-600 hover:underline sm:inline">
           Full standings →
         </Link>
       </div>
-      <div className="flex items-center justify-between gap-4 rounded border border-zinc-200 p-4">
+      <div className="flex items-center justify-between gap-4 rounded border border-zinc-300 bg-gradient-to-bl from-zinc-50 to-sky-200 p-4">
         <div className="flex items-center gap-4">
           <div className="text-2xl font-bold">{standing.position}</div>
           <div className="relative h-10 w-10">
@@ -49,26 +49,26 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
         </div>
       </div>
       <div className="mt-4 grid grid-cols-4 gap-2 text-center">
-        <div className="rounded border border-zinc-200 p-2">
+        <div className="rounded border border-zinc-300 p-2">
           <div className="font-bold">{standing.playedGames}</div>
           <div className="text-xs text-gray-500 sm:text-sm">played</div>
         </div>
-        <div className="rounded border border-zinc-200 p-2">
+        <div className="rounded border border-zinc-300 p-2">
           <div className="font-bold">{standing.won}</div>
           <div className="text-xs text-gray-500 sm:text-sm">won</div>
         </div>
-        <div className="rounded border border-zinc-200 p-2">
+        <div className="rounded border border-zinc-300 p-2">
           <div className="font-bold">{standing.draw}</div>
           <div className="text-xs text-gray-500 sm:text-sm">drawn</div>
         </div>
-        <div className="rounded border border-zinc-200 p-2">
+        <div className="rounded border border-zinc-300 p-2">
           <div className="font-bold">{standing.lost}</div>
           <div className="text-xs text-gray-500 sm:text-sm">lost</div>
         </div>
       </div>
       <Link
         href="/standings"
-        className="mt-4 text-center text-sm text-blue-600 hover:underline sm:hidden">
+        className="mt-4 text-center text-sm text-sky-600 hover:underline sm:hidden">
         Full standings →
       </Link>
     </div>

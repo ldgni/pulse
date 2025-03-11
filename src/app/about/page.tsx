@@ -14,7 +14,7 @@ export default function AboutPage() {
           <a
             href="https://www.football-data.org/"
             target="blank"
-            className="text-blue-500 hover:underline">
+            className="text-sky-600 hover:underline">
             football-data.org
           </a>{" "}
           API.

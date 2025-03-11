@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geist.className} min-h-screen bg-gradient-to-b from-sky-50 to-zinc-50 text-zinc-900`}>
+        className={`${geist.className} min-h-screen bg-gradient-to-b from-zinc-100 to-sky-100 text-zinc-900`}>
         <div className="container max-w-3xl">
           <Header />
           <main>{children}</main>
