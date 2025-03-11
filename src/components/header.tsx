@@ -25,8 +25,8 @@ export default function Header() {
                 href={link.href}
                 className={`${
                   pathname === link.href
-                    ? "bg-sky-200"
-                    : "transition-colors hover:bg-sky-200"
+                    ? "bg-sky-100"
+                    : "transition-colors hover:bg-sky-100"
                 } flex items-center rounded-lg px-3 py-2`}>
                 <span className="md:mr-2">{link.icon}</span>
                 <span className="hidden md:inline">{link.label}</span>
