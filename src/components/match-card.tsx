@@ -48,27 +48,6 @@ export default function MatchCard({ match }: MatchCardProps) {
   const isPsgHome = match.homeTeam.id === PSG_TEAM_ID;
   const isPsgAway = match.awayTeam.id === PSG_TEAM_ID;
 
-  // Check if the time is likely a placeholder (midnight to 4am in UTC+1)
-  const isProbablyTBD = () => {
-    let hours = matchDate.getUTCHours() + 1;
-    if (hours >= 24) {
-      hours -= 24;
-    }
-    return hours >= 0 && hours < 4; // Midnight to 4am in UTC+1
-  };
-
-  // Format time explicitly in UTC +1
-  const formatMatchTime = () => {
-    // Get UTC hours and add 1 for UTC+1
-    let hours = matchDate.getUTCHours() + 1;
-    // Handle day rollover if needed
-    if (hours >= 24) {
-      hours -= 24;
-    }
-    const minutes = matchDate.getUTCMinutes();
-    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
-  };
-
   // Get the correct score to display (regular + extra time, without penalties)
   const getScoreDisplay = () => {
     if (!isFinished) return { home: 0, away: 0 };
@@ -96,6 +75,13 @@ export default function MatchCard({ match }: MatchCardProps) {
 
   // Format the date once for better performance
   const formattedDate = `${matchDate.getUTCDate()} ${new Intl.DateTimeFormat("en-US", { month: "short" }).format(matchDate)} ${matchDate.getUTCFullYear()}`;
+
+  // Time formatting in 24-hour format
+  const formattedTime = matchDate.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
 
   return (
     <div className="rounded border border-zinc-300 bg-gradient-to-br from-zinc-50 to-sky-100 p-3 focus:ring-2 focus:ring-sky-500 focus:outline-none sm:p-4">
@@ -125,7 +111,7 @@ export default function MatchCard({ match }: MatchCardProps) {
             </div>
           ) : (
             <div className="rounded bg-gray-200 px-2 py-1 text-sm font-medium text-zinc-600">
-              {isProbablyTBD() ? "TBD" : formatMatchTime()}
+              {formattedTime}
             </div>
           )}
         </div>
