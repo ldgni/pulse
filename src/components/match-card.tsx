@@ -76,16 +76,17 @@ export default function MatchCard({ match }: MatchCardProps) {
   // Format the date once for better performance
   const formattedDate = `${matchDate.getUTCDate()} ${new Intl.DateTimeFormat("en-US", { month: "short" }).format(matchDate)} ${matchDate.getUTCFullYear()}`;
 
-  // Time formatting in 24-hour format
-  const formattedTime = matchDate.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
+  // Get hours and minutes in UTC
+  const hours = matchDate.getUTCHours();
+  const minutes = matchDate.getUTCMinutes();
 
-  // Check if time is the placeholder "02:00"
-  const isPlaceholderTime = formattedTime === "02:00";
-  const displayTime = isPlaceholderTime ? "TBD" : formattedTime;
+  // Check if the time is the placeholder (02:00 UTC)
+  const isPlaceholderTime = hours === 2 && minutes === 0;
+
+  // Format time in 24-hour format, using UTC
+  const formattedTime = isPlaceholderTime
+    ? "TBD"
+    : `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
 
   return (
     <div className="rounded border border-zinc-300 bg-gradient-to-br from-zinc-50 to-sky-100 p-3 focus:ring-2 focus:ring-sky-500 focus:outline-none sm:p-4">
@@ -115,7 +116,7 @@ export default function MatchCard({ match }: MatchCardProps) {
             </div>
           ) : (
             <div className="rounded bg-gray-200 px-2 py-1 text-sm font-medium text-zinc-600">
-              {displayTime}
+              {formattedTime}
             </div>
           )}
         </div>
