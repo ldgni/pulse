@@ -80,13 +80,21 @@ export default function MatchCard({ match }: MatchCardProps) {
   const hours = matchDate.getUTCHours();
   const minutes = matchDate.getUTCMinutes();
 
-  // Check if the time is the placeholder (02:00 UTC)
-  const isPlaceholderTime = hours === 2 && minutes === 0;
+  // Check if the time is the placeholder (now at 00:00 UTC)
+  const isPlaceholderTime = hours === 0 && minutes === 0;
 
-  // Format time in 24-hour format, using UTC
+  // Determine if DST is active in Europe (rough approximation)
+  const currentDate = new Date();
+  const isDST = currentDate.getMonth() > 2 && currentDate.getMonth() < 10;
+
+  // Add timezone offset (+1 for CET, +2 for CEST during daylight saving)
+  const localHours = isPlaceholderTime ? hours : hours + (isDST ? 2 : 1);
+  const adjustedHours = localHours >= 24 ? localHours - 24 : localHours;
+
+  // Format time in 24-hour format, with timezone adjustment
   const formattedTime = isPlaceholderTime
     ? "TBD"
-    : `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+    : `${adjustedHours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
 
   return (
     <div className="rounded border border-zinc-300 bg-gradient-to-br from-zinc-50 to-sky-100 p-3 focus:ring-2 focus:ring-sky-500 focus:outline-none sm:p-4">
