@@ -83,6 +83,10 @@ export default function MatchCard({ match }: MatchCardProps) {
     hour12: false,
   });
 
+  // Check if time is the placeholder "02:00"
+  const isPlaceholderTime = formattedTime === "02:00";
+  const displayTime = isPlaceholderTime ? "TBD" : formattedTime;
+
   return (
     <div className="rounded border border-zinc-300 bg-gradient-to-br from-zinc-50 to-sky-100 p-3 focus:ring-2 focus:ring-sky-500 focus:outline-none sm:p-4">
       <div className="mb-2 text-center text-xs text-zinc-600">
@@ -111,7 +115,7 @@ export default function MatchCard({ match }: MatchCardProps) {
             </div>
           ) : (
             <div className="rounded bg-gray-200 px-2 py-1 text-sm font-medium text-zinc-600">
-              {formattedTime}
+              {displayTime}
             </div>
           )}
         </div>
