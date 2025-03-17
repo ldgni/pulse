@@ -83,9 +83,26 @@ export default function MatchCard({ match }: MatchCardProps) {
   // Check if the time is the placeholder (now at 00:00 UTC)
   const isPlaceholderTime = hours === 0 && minutes === 0;
 
-  // Determine if DST is active in Europe (rough approximation)
-  const currentDate = new Date();
-  const isDST = currentDate.getMonth() > 2 && currentDate.getMonth() < 10;
+  // More accurate DST detection based on the actual match date
+  const isDST = (() => {
+    // Get year from match date
+    const year = matchDate.getUTCFullYear();
+
+    // European DST starts on last Sunday of March
+    const marchLastDay = new Date(Date.UTC(year, 2, 31));
+    const marchLastSunday = new Date(
+      Date.UTC(year, 2, 31 - ((marchLastDay.getUTCDay() + 7) % 7)),
+    );
+
+    // European DST ends on last Sunday of October
+    const octoberLastDay = new Date(Date.UTC(year, 9, 31));
+    const octoberLastSunday = new Date(
+      Date.UTC(year, 9, 31 - ((octoberLastDay.getUTCDay() + 7) % 7)),
+    );
+
+    // Check if match date is between DST start and end
+    return matchDate >= marchLastSunday && matchDate < octoberLastSunday;
+  })();
 
   // Add timezone offset (+1 for CET, +2 for CEST during daylight saving)
   const localHours = isPlaceholderTime ? hours : hours + (isDST ? 2 : 1);
