@@ -1,21 +1,14 @@
+"use client";
+
 import Link from "next/link";
 
 import MatchCard from "@/components/match-card";
-import { Match } from "@/lib/types";
+import LoadingSpinner from "@/components/ui/loading-spinner";
+import { useLatestResult } from "@/lib/api";
 
-interface LatestResultProps {
-  match: Match | null;
-}
-
-export default function LatestResult({ match }: LatestResultProps) {
-  if (!match) {
-    return (
-      <div className="rounded-md border border-zinc-400 p-3 shadow-md sm:p-6">
-        <h2 className="mb-4 font-medium">Latest Result</h2>
-        <p className="py-8 text-center text-gray-500">No recent match found</p>
-      </div>
-    );
-  }
+export default function LatestResult() {
+  const { match, isLoading, isValidating } = useLatestResult();
+  const isRefreshing = isLoading || isValidating;
 
   return (
     <div className="flex flex-col rounded-md border border-zinc-400 p-3 shadow-md sm:p-6">
@@ -27,7 +20,22 @@ export default function LatestResult({ match }: LatestResultProps) {
           View all results →
         </Link>
       </div>
-      <MatchCard match={match} />
+
+      {isRefreshing && !match ? (
+        <LoadingSpinner />
+      ) : !match ? (
+        <p className="py-8 text-center text-gray-500">No recent match found</p>
+      ) : (
+        <>
+          {isRefreshing && (
+            <div className="absolute top-4 right-4">
+              <LoadingSpinner />
+            </div>
+          )}
+          <MatchCard match={match} />
+        </>
+      )}
+
       <Link
         href="/results"
         className="mt-4 text-center text-sm text-sky-600 hover:underline focus:ring-2 focus:ring-sky-500 focus:outline-none active:text-sky-800 sm:hidden">

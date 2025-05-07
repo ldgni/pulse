@@ -1,13 +1,24 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
-import { StandingEntry } from "@/lib/types";
+import LoadingSpinner from "@/components/ui/loading-spinner";
+import { usePsgStanding } from "@/lib/api";
 
-interface CurrentStandingProps {
-  standing: StandingEntry | null | undefined;
-}
+export default function CurrentStanding() {
+  const { standing, isLoading, isValidating } = usePsgStanding();
+  const isRefreshing = isLoading || isValidating;
 
-export default function CurrentStanding({ standing }: CurrentStandingProps) {
+  if (isRefreshing && !standing) {
+    return (
+      <div className="rounded-md border border-zinc-500 p-3 shadow-md sm:p-6">
+        <h2 className="mb-4 font-medium">League Position</h2>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
   if (!standing) {
     return (
       <div className="rounded-md border border-zinc-500 p-3 shadow-md sm:p-6">
@@ -20,7 +31,12 @@ export default function CurrentStanding({ standing }: CurrentStandingProps) {
   }
 
   return (
-    <div className="flex flex-col rounded-md border border-zinc-400 p-3 shadow-md sm:p-6">
+    <div className="relative flex flex-col rounded-md border border-zinc-400 p-3 shadow-md sm:p-6">
+      {isRefreshing && (
+        <div className="absolute top-4 right-4">
+          <LoadingSpinner />
+        </div>
+      )}
       <div className="mb-4 flex items-center justify-between">
         <h2 className="font-medium">League Position</h2>
         <Link

@@ -1,23 +1,14 @@
+"use client";
+
 import Link from "next/link";
 
 import MatchCard from "@/components/match-card";
-import { Match } from "@/lib/types";
+import LoadingSpinner from "@/components/ui/loading-spinner";
+import { useNextFixture } from "@/lib/api";
 
-interface NextFixtureProps {
-  match: Match | null;
-}
-
-export default function NextFixture({ match }: NextFixtureProps) {
-  if (!match) {
-    return (
-      <div className="rounded-md border border-zinc-400 p-3 shadow-md sm:p-6">
-        <h2 className="mb-4 font-medium">Next Fixture</h2>
-        <p className="py-8 text-center text-gray-500">
-          No upcoming match found
-        </p>
-      </div>
-    );
-  }
+export default function NextFixture() {
+  const { match, isLoading, isValidating } = useNextFixture();
+  const isRefreshing = isLoading || isValidating;
 
   return (
     <div className="flex flex-col rounded-md border border-zinc-400 p-3 shadow-md sm:p-6">
@@ -29,7 +20,24 @@ export default function NextFixture({ match }: NextFixtureProps) {
           View all fixtures →
         </Link>
       </div>
-      <MatchCard match={match} />
+
+      {isRefreshing && !match ? (
+        <LoadingSpinner />
+      ) : !match ? (
+        <p className="py-8 text-center text-gray-500">
+          No upcoming match found
+        </p>
+      ) : (
+        <>
+          {isRefreshing && (
+            <div className="absolute top-4 right-4">
+              <LoadingSpinner />
+            </div>
+          )}
+          <MatchCard match={match} />
+        </>
+      )}
+
       <Link
         href="/fixtures"
         className="mt-4 text-center text-sm text-sky-600 hover:underline focus:ring-2 focus:ring-sky-500 focus:outline-none active:text-sky-800 sm:hidden">
