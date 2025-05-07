@@ -51,8 +51,11 @@ export interface StandingEntry {
   points: number;
 }
 
+export interface StandingType {
+  type: string; // "TOTAL", "HOME", "AWAY", etc.
+  table: StandingEntry[];
+}
+
 export interface StandingsResponse {
-  standings: {
-    table: StandingEntry[];
-  }[];
+  standings: StandingType[];
 }
