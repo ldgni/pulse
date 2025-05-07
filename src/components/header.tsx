@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, ChartLine, House, Info, ListOrdered } from "lucide-react";
+import { Calendar, ChartLine, House, ListOrdered } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -9,7 +9,6 @@ const navItems = [
   { href: "/results", label: "Results", icon: <ChartLine /> },
   { href: "/fixtures", label: "Fixtures", icon: <Calendar /> },
   { href: "/standings", label: "Standings", icon: <ListOrdered /> },
-  { href: "/about", label: "About", icon: <Info /> },
 ];
 
 export default function Header() {
