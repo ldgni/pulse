@@ -29,11 +29,7 @@ export default function NextFixture() {
         </p>
       ) : (
         <>
-          {isRefreshing && (
-            <div className="absolute top-4 right-4">
-              <LoadingSpinner />
-            </div>
-          )}
+          {isRefreshing && <LoadingSpinner />}
           <MatchCard match={match} />
         </>
       )}

@@ -21,11 +21,7 @@ export default function StandingsPage() {
         <LoadingSpinner />
       ) : leagueTable.length > 0 ? (
         <div className="relative">
-          {isRefreshing && (
-            <div className="absolute top-0 right-4">
-              <LoadingSpinner />
-            </div>
-          )}
+          {isRefreshing && <LoadingSpinner />}
           <StandingsTable
             standings={leagueTable}
             highlightTeamId={PSG_TEAM_ID}

@@ -32,11 +32,7 @@ export default function CurrentStanding() {
 
   return (
     <div className="relative flex flex-col rounded-md border border-zinc-400 p-3 shadow-md sm:p-6">
-      {isRefreshing && (
-        <div className="absolute top-4 right-4">
-          <LoadingSpinner />
-        </div>
-      )}
+      {isRefreshing && <LoadingSpinner />}
       <div className="mb-4 flex items-center justify-between">
         <h2 className="font-medium">League Position</h2>
         <Link

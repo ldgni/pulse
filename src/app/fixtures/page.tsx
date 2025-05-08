@@ -17,11 +17,7 @@ export default function FixturesPage() {
         <LoadingSpinner />
       ) : matches.length > 0 ? (
         <div className="relative space-y-4">
-          {isRefreshing && (
-            <div className="absolute top-0 right-4">
-              <LoadingSpinner />
-            </div>
-          )}
+          {isRefreshing && <LoadingSpinner />}
           {matches.map((match: Match) => (
             <MatchCard key={match.id} match={match} />
           ))}

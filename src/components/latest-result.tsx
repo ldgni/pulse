@@ -27,11 +27,7 @@ export default function LatestResult() {
         <p className="py-8 text-center text-gray-500">No recent match found</p>
       ) : (
         <>
-          {isRefreshing && (
-            <div className="absolute top-4 right-4">
-              <LoadingSpinner />
-            </div>
-          )}
+          {isRefreshing && <LoadingSpinner />}
           <MatchCard match={match} />
         </>
       )}
