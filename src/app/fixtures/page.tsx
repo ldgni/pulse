@@ -23,8 +23,10 @@ export default function FixturesPage() {
           ))}
         </div>
       ) : (
-        <div className="rounded-lg bg-white py-12 text-center shadow">
-          <p className="text-gray-500">No upcoming fixtures found</p>
+        <div className="rounded border border-zinc-300 bg-gradient-to-br from-zinc-50 to-sky-100 p-3 sm:p-4">
+          <p className="py-4 text-center text-sm text-zinc-600 sm:text-base">
+            No upcoming fixtures found
+          </p>
         </div>
       )}
     </>
