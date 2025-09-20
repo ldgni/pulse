@@ -2,12 +2,24 @@
 
 import MatchCard from "@/components/match-card";
 import LoadingSpinner from "@/components/ui/loading-spinner";
+import Pagination from "@/components/ui/pagination";
 import { useResults } from "@/lib/api";
+import { usePagination } from "@/lib/hooks/use-pagination";
 import { Match } from "@/lib/types";
 
 export default function ResultsPage() {
   const { matches, isLoading, isValidating } = useResults();
   const isRefreshing = isLoading || isValidating;
+
+  const {
+    currentPage,
+    totalPages,
+    paginatedData: paginatedMatches,
+    setCurrentPage,
+  } = usePagination<Match>({
+    data: matches,
+    itemsPerPage: 5,
+  });
 
   return (
     <>
@@ -16,11 +28,20 @@ export default function ResultsPage() {
       {isRefreshing && matches.length === 0 ? (
         <LoadingSpinner />
       ) : matches.length > 0 ? (
-        <div className="relative space-y-4">
-          {isRefreshing && <LoadingSpinner />}
-          {matches.map((match: Match) => (
-            <MatchCard key={match.id} match={match} />
-          ))}
+        <div className="space-y-6">
+          <div className="relative space-y-4">
+            {isRefreshing && <LoadingSpinner />}
+            {paginatedMatches.map((match) => (
+              <MatchCard key={match.id} match={match} />
+            ))}
+          </div>
+
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+            className="mt-8"
+          />
         </div>
       ) : (
         <div className="rounded border border-zinc-300 bg-gradient-to-br from-zinc-50 to-sky-100 p-3 sm:p-4">
