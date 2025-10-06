@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const navLinks = [
+  { href: "/", name: "Home" },
   { href: "/results", name: "Results" },
   { href: "/fixtures", name: "Fixtures" },
   { href: "/standings", name: "Standings" },
@@ -16,14 +17,9 @@ const navLinks = [
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between">
+    <header className="mb-6 flex items-center justify-between">
       <NavigationMenu>
         <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild>
-              <Link href="/">P</Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
           {navLinks.map((link) => (
             <NavigationMenuItem key={link.href}>
               <NavigationMenuLink asChild>
