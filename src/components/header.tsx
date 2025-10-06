@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { Activity, Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -68,7 +68,9 @@ export default function Header() {
           {navLinks.map((link) => (
             <NavigationMenuItem key={link.href}>
               <NavigationMenuLink asChild>
-                <Link href={link.href}>{link.name}</Link>
+                <Link href={link.href}>
+                  {link.href === "/" ? <Activity /> : link.name}
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           ))}
