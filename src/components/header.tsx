@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ModeSwitcher } from "@/components/ui/mode-switcher";
+import { ModeToggle } from "@/components/mode-toggle";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -29,7 +29,7 @@ export default function Header() {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-      <ModeSwitcher />
+      <ModeToggle />
     </header>
   );
 }
