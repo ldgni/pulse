@@ -29,7 +29,7 @@ export default function RootLayout({
           disableTransitionOnChange>
           <div className="mx-auto flex min-h-screen max-w-xl flex-col p-4">
             <Header />
-            <main className="flex-grow px-4">{children}</main>
+            <main className="flex-grow px-3">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>
