@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { Github, Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -57,7 +57,7 @@ export default function Header() {
       </Sheet>
 
       {/* Desktop Menu */}
-      <nav className="hidden sm:flex">
+      <nav className="hidden gap-0.5 sm:flex">
         {navLinks.map((link) => (
           <Button key={link.href} variant="ghost" size="sm" asChild>
             <Link href={link.href}>{link.label}</Link>
@@ -65,7 +65,14 @@ export default function Header() {
         ))}
       </nav>
 
-      <ModeToggle />
+      <div className="flex gap-0.5">
+        <Button variant="ghost" size="icon" asChild>
+          <a href="https://github.com/ldgni/pulse" target="_blank">
+            <Github />
+          </a>
+        </Button>
+        <ModeToggle />
+      </div>
     </header>
   );
 }
