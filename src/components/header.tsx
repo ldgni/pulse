@@ -22,10 +22,10 @@ import {
 } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "/", name: "Home" },
-  { href: "/results", name: "Results" },
-  { href: "/fixtures", name: "Fixtures" },
-  { href: "/standings", name: "Standings" },
+  { href: "/", label: "Home" },
+  { href: "/results", label: "Results" },
+  { href: "/fixtures", label: "Fixtures" },
+  { href: "/standings", label: "Standings" },
 ];
 
 export default function Header() {
@@ -55,7 +55,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}>
-                {link.name}
+                {link.label}
               </Link>
             ))}
           </nav>
@@ -69,7 +69,7 @@ export default function Header() {
             <NavigationMenuItem key={link.href}>
               <NavigationMenuLink asChild>
                 <Link href={link.href}>
-                  {link.href === "/" ? <Activity /> : link.name}
+                  {link.href === "/" ? <Activity /> : link.label}
                 </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
