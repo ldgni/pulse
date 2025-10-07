@@ -1,17 +1,11 @@
 "use client";
 
-import { Activity, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
 import {
   Sheet,
   SheetContent,
@@ -63,19 +57,13 @@ export default function Header() {
       </Sheet>
 
       {/* Desktop Menu */}
-      <NavigationMenu className="hidden sm:block">
-        <NavigationMenuList>
-          {navLinks.map((link) => (
-            <NavigationMenuItem key={link.href}>
-              <NavigationMenuLink asChild>
-                <Link href={link.href}>
-                  {link.href === "/" ? <Activity /> : link.label}
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          ))}
-        </NavigationMenuList>
-      </NavigationMenu>
+      <nav className="hidden sm:flex">
+        {navLinks.map((link) => (
+          <Button key={link.href} variant="ghost" size="sm" asChild>
+            <Link href={link.href}>{link.label}</Link>
+          </Button>
+        ))}
+      </nav>
 
       <ModeToggle />
     </header>
