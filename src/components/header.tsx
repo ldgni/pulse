@@ -65,12 +65,13 @@ export default function Header() {
         ))}
       </nav>
 
-      <div className="flex gap-0.5">
+      <div className="flex items-center gap-0.5">
         <Button variant="ghost" size="icon" asChild>
           <a href="https://github.com/ldgni/pulse" target="_blank">
             <Github />
           </a>
         </Button>
+        <div className="bg-border mx-2 h-4 w-px" />
         <ModeToggle />
       </div>
     </header>
