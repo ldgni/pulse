@@ -57,7 +57,7 @@ export default function Header() {
       </Sheet>
 
       {/* Desktop Menu */}
-      <nav className="hidden gap-0.5 sm:flex">
+      <nav className="hidden gap-2 sm:flex">
         {navLinks.map((link) => (
           <Button key={link.href} variant="ghost" size="sm" asChild>
             <Link href={link.href}>{link.label}</Link>
@@ -65,7 +65,7 @@ export default function Header() {
         ))}
       </nav>
 
-      <div className="flex items-center gap-0.5">
+      <div className="flex items-center">
         <Button variant="ghost" size="icon" asChild>
           <a href="https://github.com/ldgni/pulse" target="_blank">
             <Github />
