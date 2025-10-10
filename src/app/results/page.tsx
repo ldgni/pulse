@@ -39,7 +39,7 @@ export default async function ResultsPage() {
                 </time>
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex gap-6">
+            <CardContent className="flex gap-4 sm:gap-6">
               {/* Home Team */}
               <div className="flex flex-1 items-center justify-end gap-4">
                 <span className="hidden font-medium sm:block">
