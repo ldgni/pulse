@@ -10,14 +10,14 @@ import {
 import { Match } from "@/types/api";
 
 export default async function FixturesPage() {
-  const data = await fetch(
+  const response = await fetch(
     "https://api.football-data.org/v4/teams/524/matches?status=SCHEDULED",
     {
       headers: { "X-Auth-Token": process.env.FOOTBALL_DATA_API_KEY || "" },
       next: { revalidate: 300 },
     },
   );
-  const fixtures = await data.json();
+  const { matches } = await response.json();
 
   return (
     <>
@@ -25,7 +25,7 @@ export default async function FixturesPage() {
         Fixtures
       </h1>
       <div className="space-y-4">
-        {fixtures.matches.map((match: Match) => (
+        {matches.map((match: Match) => (
           <Card key={match.id}>
             <CardHeader className="text-center">
               <CardTitle>{match.competition.name}</CardTitle>
