@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
-      <body className="antialiased">
+      <body className="overflow-y-scroll antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
