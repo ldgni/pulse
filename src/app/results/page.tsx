@@ -1,6 +1,12 @@
 import Image from "next/image";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Match } from "@/types/api";
 
 export default async function ResultsPage() {
@@ -8,6 +14,7 @@ export default async function ResultsPage() {
     "https://api.football-data.org/v4/teams/524/matches?status=FINISHED",
     {
       headers: { "X-Auth-Token": process.env.FOOTBALL_DATA_API_KEY || "" },
+      next: { revalidate: 300 },
     },
   );
   const results = await data.json();
@@ -20,10 +27,9 @@ export default async function ResultsPage() {
       <div className="space-y-4">
         {results.matches.map((match: Match) => (
           <Card key={match.id}>
-            <CardHeader>
-              <CardTitle className="text-muted-foreground text-center text-xs font-normal sm:text-sm">
-                {match.competition.name}
-                <span className="mx-2">•</span>
+            <CardHeader className="text-center">
+              <CardTitle>{match.competition.name}</CardTitle>
+              <CardDescription>
                 <time dateTime={match.utcDate}>
                   {new Date(match.utcDate).toLocaleDateString("en-GB", {
                     day: "numeric",
@@ -31,7 +37,7 @@ export default async function ResultsPage() {
                     year: "numeric",
                   })}
                 </time>
-              </CardTitle>
+              </CardDescription>
             </CardHeader>
             <CardContent className="flex gap-6">
               {/* Home Team */}
