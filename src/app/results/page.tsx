@@ -10,14 +10,15 @@ import {
 import { Match } from "@/types/api";
 
 export default async function ResultsPage() {
-  const data = await fetch(
+  const response = await fetch(
     "https://api.football-data.org/v4/teams/524/matches?status=FINISHED",
     {
       headers: { "X-Auth-Token": process.env.FOOTBALL_DATA_API_KEY || "" },
       next: { revalidate: 300 },
     },
   );
-  const results = await data.json();
+  const { matches } = await response.json();
+  const sortedMatches = matches.toReversed();
 
   return (
     <>
@@ -25,7 +26,7 @@ export default async function ResultsPage() {
         Results
       </h1>
       <div className="space-y-4">
-        {results.matches.map((match: Match) => (
+        {sortedMatches.map((match: Match) => (
           <Card key={match.id}>
             <CardHeader className="text-center">
               <CardTitle>{match.competition.name}</CardTitle>
