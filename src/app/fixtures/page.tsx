@@ -1,15 +1,9 @@
 import { MatchCard } from "@/components/match-card";
+import { getFixtures } from "@/lib/api";
 import { Match } from "@/types/api";
 
 export default async function FixturesPage() {
-  const response = await fetch(
-    "https://api.football-data.org/v4/teams/524/matches?status=SCHEDULED",
-    {
-      headers: { "X-Auth-Token": process.env.FOOTBALL_DATA_API_KEY || "" },
-      next: { revalidate: 300 },
-    },
-  );
-  const { matches } = await response.json();
+  const matches = await getFixtures();
 
   return (
     <>

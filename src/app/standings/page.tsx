@@ -8,18 +8,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TeamStanding } from "@/types/api";
+import { getStandings } from "@/lib/api";
 
 export default async function StandingsPage() {
-  const response = await fetch(
-    "https://api.football-data.org/v4/competitions/FL1/standings",
-    {
-      headers: { "X-Auth-Token": process.env.FOOTBALL_DATA_API_KEY || "" },
-      next: { revalidate: 300 },
-    },
-  );
-  const { standings } = await response.json();
-  const tableStandings: TeamStanding[] = standings[0].table;
+  const standings = await getStandings();
 
   return (
     <>
@@ -39,7 +31,7 @@ export default async function StandingsPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {tableStandings.map((team) => (
+          {standings.map((team) => (
             <TableRow key={team.position}>
               <TableCell>{team.position}</TableCell>
               <TableCell>
