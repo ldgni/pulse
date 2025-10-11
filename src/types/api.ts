@@ -14,11 +14,7 @@ export interface Match {
 
 export interface TeamStanding {
   position: number;
-  team: {
-    name: string;
-    crest: string;
-    tla: string;
-  };
+  team: { name: string; tla: string; crest: string };
   playedGames: number;
   won: number;
   draw: number;
