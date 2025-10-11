@@ -25,6 +25,7 @@ export function MatchCard({ match, type }: MatchCardProps) {
               day: "numeric",
               month: "short",
               year: "numeric",
+              timeZone: "Europe/Paris",
             })}
           </time>
         </CardDescription>
@@ -56,6 +57,7 @@ export function MatchCard({ match, type }: MatchCardProps) {
               {new Date(match.utcDate).toLocaleTimeString("en-GB", {
                 hour: "2-digit",
                 minute: "2-digit",
+                timeZone: "Europe/Paris",
               })}
             </time>
           )}
