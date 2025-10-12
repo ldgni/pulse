@@ -27,7 +27,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          <div className="mx-auto flex min-h-screen max-w-xl flex-col p-4">
+          <div className="mx-auto flex min-h-screen max-w-2xl flex-col p-4">
             <Header />
             <main className="flex-grow px-3">{children}</main>
             <Footer />
