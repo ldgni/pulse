@@ -21,7 +21,7 @@ export default async function StandingsPage() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>#</TableHead>
+            <TableHead className="text-center">#</TableHead>
             <TableHead>Club</TableHead>
             <TableHead className="text-center">MP</TableHead>
             <TableHead className="text-center">W</TableHead>
@@ -33,7 +33,7 @@ export default async function StandingsPage() {
         <TableBody>
           {standings.map((team) => (
             <TableRow key={team.position}>
-              <TableCell>{team.position}</TableCell>
+              <TableCell className="text-center">{team.position}</TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
                   <Image
