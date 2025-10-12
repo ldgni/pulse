@@ -67,7 +67,10 @@ export default function Header() {
 
       <div className="flex items-center">
         <Button variant="ghost" size="icon" asChild>
-          <a href="https://github.com/ldgni/pulse" target="_blank">
+          <a
+            href="https://github.com/ldgni/pulse"
+            target="_blank"
+            aria-label="View source on GitHub">
             <Github />
           </a>
         </Button>
