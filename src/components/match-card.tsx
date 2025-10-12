@@ -46,7 +46,7 @@ export function MatchCard({ match, type }: MatchCardProps) {
         </div>
 
         {/* Score or Time */}
-        <div className="bg-muted flex items-center gap-2 rounded-lg px-4 py-2 text-xl font-semibold sm:text-2xl">
+        <div className="bg-muted flex items-center gap-2 rounded-lg px-3 py-2 text-xl font-semibold sm:px-4 sm:text-2xl">
           {type === "result" ? (
             <>
               {match.score.fullTime.home}
