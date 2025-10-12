@@ -1,8 +1,18 @@
 export interface Match {
   id: number;
   utcDate: string;
-  homeTeam: { name: string; shortName: string; tla: string; crest: string };
-  awayTeam: { name: string; shortName: string; tla: string; crest: string };
+  homeTeam: {
+    name: string;
+    shortName: string;
+    tla: string;
+    crest: string;
+  };
+  awayTeam: {
+    name: string;
+    shortName: string;
+    tla: string;
+    crest: string;
+  };
   score: {
     fullTime: { home: number; away: number };
   };
