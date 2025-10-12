@@ -34,7 +34,7 @@ export function MatchCard({ match, type }: MatchCardProps) {
         {/* Home Team */}
         <div className="flex flex-1 items-center justify-end gap-4">
           <span className="hidden font-semibold sm:block">
-            {match.homeTeam.tla}
+            {match.homeTeam.shortName}
           </span>
           <Image
             src={match.homeTeam.crest}
@@ -72,7 +72,7 @@ export function MatchCard({ match, type }: MatchCardProps) {
             height={40}
           />
           <span className="hidden font-semibold sm:block">
-            {match.awayTeam.tla}
+            {match.awayTeam.shortName}
           </span>
         </div>
       </CardContent>
