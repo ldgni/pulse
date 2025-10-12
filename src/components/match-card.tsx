@@ -39,8 +39,9 @@ export function MatchCard({ match, type }: MatchCardProps) {
           <Image
             src={match.homeTeam.crest}
             alt={match.homeTeam.name}
-            width={40}
-            height={40}
+            width={200}
+            height={200}
+            className="size-12"
           />
         </div>
 
@@ -68,8 +69,9 @@ export function MatchCard({ match, type }: MatchCardProps) {
           <Image
             src={match.awayTeam.crest}
             alt={match.awayTeam.name}
-            width={40}
-            height={40}
+            width={200}
+            height={200}
+            className="size-12"
           />
           <span className="hidden font-semibold sm:block">
             {match.awayTeam.shortName}

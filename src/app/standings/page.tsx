@@ -41,6 +41,7 @@ export default async function StandingsPage() {
                     alt={team.team.name}
                     width={24}
                     height={24}
+                    className="size-6"
                   />
                   <span className="sm:hidden">{team.team.tla}</span>
                   <span className="hidden sm:block">{team.team.name}</span>
