@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { formatMatchDate, formatMatchTime } from "@/lib/utils";
 import { Match } from "@/types/api";
 
 const geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -23,14 +24,7 @@ export function MatchCard({ match, type }: MatchCardProps) {
       <CardHeader className="text-center">
         <CardTitle>{match.competition.name}</CardTitle>
         <CardDescription>
-          <time dateTime={match.utcDate}>
-            {new Date(match.utcDate).toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-              timeZone: "Europe/Paris",
-            })}
-          </time>
+          <time dateTime={match.utcDate}>{formatMatchDate(match.utcDate)}</time>
         </CardDescription>
       </CardHeader>
       <CardContent className="flex gap-4 sm:gap-6">
@@ -59,11 +53,7 @@ export function MatchCard({ match, type }: MatchCardProps) {
             </>
           ) : (
             <time dateTime={match.utcDate}>
-              {new Date(match.utcDate).toLocaleTimeString("en-GB", {
-                hour: "2-digit",
-                minute: "2-digit",
-                timeZone: "Europe/Paris",
-              })}
+              {formatMatchTime(match.utcDate)}
             </time>
           )}
         </div>
