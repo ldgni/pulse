@@ -39,8 +39,8 @@ export default async function StandingsPage() {
                   <Image
                     src={team.team.crest}
                     alt={team.team.name}
-                    width={24}
-                    height={24}
+                    width={200}
+                    height={200}
                     className="size-6"
                   />
                   <span className="sm:hidden">{team.team.tla}</span>
