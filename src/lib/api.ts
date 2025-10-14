@@ -9,7 +9,6 @@ async function fetchAPI(endpoint: string) {
     next: { revalidate: 300 },
   });
 
-  if (!response.ok) throw new Error(`API error: ${response.status}`);
   return response.json();
 }
 
