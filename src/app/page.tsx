@@ -1,19 +1,20 @@
 import Image from "next/image";
 
-import { MatchCard } from "@/components/match-card";
+import ErrorCard from "@/components/error-card";
+import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getFixtures, getResults, getStandings } from "@/lib/api";
 
 export default async function HomePage() {
   const [results, fixtures, standings] = await Promise.all([
-    getResults(),
-    getFixtures(),
-    getStandings(),
+    getResults().catch(() => null),
+    getFixtures().catch(() => null),
+    getStandings().catch(() => null),
   ]);
 
-  const latestResult = results[0];
-  const nextFixture = fixtures[0];
-  const clubStanding = standings.find((team) => team.team.tla === "PSG");
+  const latestResult = results?.[0];
+  const nextFixture = fixtures?.[0];
+  const clubStanding = standings?.find((team) => team.team.tla === "PSG");
 
   return (
     <>
@@ -21,15 +22,23 @@ export default async function HomePage() {
       <div className="space-y-8">
         {/* Latest result */}
         <h2 className="mb-4 text-xl font-semibold">Latest result</h2>
-        <MatchCard match={latestResult} type="result" />
+        {latestResult ? (
+          <MatchCard match={latestResult} type="result" />
+        ) : (
+          <ErrorCard />
+        )}
 
         {/* Next fixture */}
         <h2 className="mb-4 text-xl font-semibold">Next fixture</h2>
-        <MatchCard match={nextFixture} type="fixture" />
+        {nextFixture ? (
+          <MatchCard match={nextFixture} type="fixture" />
+        ) : (
+          <ErrorCard />
+        )}
 
         {/* League standing */}
         <h2 className="mb-4 text-xl font-semibold">Current ranking</h2>
-        {clubStanding && (
+        {clubStanding ? (
           <Card>
             <CardContent>
               <div className="flex justify-between">
@@ -64,6 +73,8 @@ export default async function HomePage() {
               </div>
             </CardContent>
           </Card>
+        ) : (
+          <ErrorCard />
         )}
       </div>
     </>
