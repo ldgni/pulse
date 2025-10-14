@@ -4,7 +4,7 @@ import { Github, Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-import { ModeToggle } from "@/components/mode-toggle";
+import ModeToggle from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
