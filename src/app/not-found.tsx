@@ -1,3 +1,3 @@
 export default function NotFoundPage() {
-  return <p>This page doesn&apos;t exist.</p>;
+  return <h1>This page does not exist.</h1>;
 }

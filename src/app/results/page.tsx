@@ -1,54 +1,24 @@
-"use client";
-
+import ErrorCard from "@/components/error-card";
 import MatchCard from "@/components/match-card";
-import LoadingSpinner from "@/components/ui/loading-spinner";
-import Pagination from "@/components/ui/pagination";
-import { useResults } from "@/lib/api";
-import { usePagination } from "@/lib/hooks/use-pagination";
-import { Match } from "@/lib/types";
+import { getResults } from "@/lib/api";
+import { Match } from "@/types/api";
 
-export default function ResultsPage() {
-  const { matches, isLoading, isValidating } = useResults();
-  const isRefreshing = isLoading || isValidating;
-
-  const {
-    currentPage,
-    totalPages,
-    paginatedData: paginatedMatches,
-    setCurrentPage,
-  } = usePagination<Match>({
-    data: matches,
-    itemsPerPage: 5,
-  });
+export default async function ResultsPage() {
+  const matches = await getResults().catch(() => null);
 
   return (
     <>
-      <h1 className="mb-6 text-center text-3xl font-semibold">Results</h1>
-
-      {isRefreshing && matches.length === 0 ? (
-        <LoadingSpinner />
-      ) : matches.length > 0 ? (
-        <div className="space-y-6">
-          <div className="relative space-y-4">
-            {isRefreshing && <LoadingSpinner />}
-            {paginatedMatches.map((match) => (
-              <MatchCard key={match.id} match={match} />
-            ))}
-          </div>
-
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-            className="mt-8"
-          />
+      <h1 className="mb-6 text-center text-2xl font-bold sm:text-3xl">
+        Results
+      </h1>
+      {matches ? (
+        <div className="space-y-4">
+          {matches.map((match: Match) => (
+            <MatchCard key={match.id} match={match} type="result" />
+          ))}
         </div>
       ) : (
-        <div className="rounded border border-zinc-300 bg-gradient-to-br from-zinc-50 to-sky-100 p-3 sm:p-4">
-          <p className="py-4 text-center text-sm text-zinc-600 sm:text-base">
-            No recent results found
-          </p>
-        </div>
+        <ErrorCard />
       )}
     </>
   );

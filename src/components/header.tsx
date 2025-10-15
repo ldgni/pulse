@@ -1,39 +1,82 @@
 "use client";
 
-import { Calendar, ChartLine, House, ListOrdered } from "lucide-react";
+import { Github, Menu } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
 
-const navItems = [
-  { href: "/", label: "Home", icon: <House /> },
-  { href: "/results", label: "Results", icon: <ChartLine /> },
-  { href: "/fixtures", label: "Fixtures", icon: <Calendar /> },
-  { href: "/standings", label: "Standings", icon: <ListOrdered /> },
+import ModeToggle from "@/components/mode-toggle";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/results", label: "Results" },
+  { href: "/fixtures", label: "Fixtures" },
+  { href: "/standings", label: "Standings" },
 ];
 
 export default function Header() {
-  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="mb-8 flex justify-center">
-      <nav>
-        <ul className="flex gap-4">
-          {navItems.map((link) => (
-            <li key={link.href}>
+    <header className="mb-6 flex items-center justify-between">
+      {/* Mobile Menu */}
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Toggle menu"
+            className="sm:hidden">
+            <Menu />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left">
+          <SheetHeader>
+            <SheetTitle>Menu</SheetTitle>
+            <SheetDescription />
+          </SheetHeader>
+          <nav className="flex flex-col gap-4 px-4">
+            {navLinks.map((link) => (
               <Link
+                key={link.href}
                 href={link.href}
-                className={`${
-                  pathname === link.href
-                    ? "bg-sky-100"
-                    : "transition-colors hover:bg-sky-100 focus:bg-sky-100 active:bg-sky-200"
-                } flex items-center rounded-lg px-3 py-2 focus:ring-2 focus:ring-sky-500 focus:outline-none`}>
-                <span className="md:mr-2">{link.icon}</span>
-                <span className="hidden md:inline">{link.label}</span>
+                onClick={() => setOpen(false)}>
+                {link.label}
               </Link>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </nav>
+        </SheetContent>
+      </Sheet>
+
+      {/* Desktop Menu */}
+      <nav className="hidden gap-2 sm:flex">
+        {navLinks.map((link) => (
+          <Button key={link.href} variant="ghost" size="sm" asChild>
+            <Link href={link.href}>{link.label}</Link>
+          </Button>
+        ))}
       </nav>
+
+      <div className="flex items-center">
+        <Button variant="ghost" size="icon" asChild>
+          <a
+            href="https://github.com/ldgni/pulse"
+            target="_blank"
+            aria-label="View source on GitHub">
+            <Github />
+          </a>
+        </Button>
+        <div className="bg-border mx-2 h-4 w-px" />
+        <ModeToggle />
+      </div>
     </header>
   );
 }

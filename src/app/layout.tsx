@@ -3,14 +3,15 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
+import Footer from "@/components/footer";
 import Header from "@/components/header";
+import ThemeProvider from "@/components/theme-provider";
 
-const geist = Geist({ subsets: ["latin"], display: "swap" });
+const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "PSG Performance Tracker",
-  description:
-    "Track the last results, upcoming fixtures and current league standing of PSG",
+  description: "Track Paris Saint-Germain's FC results, fixtures and standings",
 };
 
 export default function RootLayout({
@@ -19,13 +20,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geist.className} min-h-screen bg-sky-50 text-zinc-900`}>
-        <div className="container max-w-3xl">
-          <Header />
-          <main>{children}</main>
-        </div>
+    <html lang="en" className={geist.className} suppressHydrationWarning>
+      <body className="overflow-y-scroll antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange>
+          <div className="mx-auto flex min-h-screen max-w-2xl flex-col p-4">
+            <Header />
+            <main className="flex-grow px-3">{children}</main>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

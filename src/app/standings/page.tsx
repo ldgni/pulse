@@ -1,36 +1,69 @@
-"use client";
+import Image from "next/image";
 
-import StandingsTable from "@/components/standings-table";
-import LoadingSpinner from "@/components/ui/loading-spinner";
-import { useStandings } from "@/lib/api";
-import { PSG_TEAM_ID } from "@/lib/constants";
+import ErrorCard from "@/components/error-card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { getStandings } from "@/lib/api";
 
-export default function StandingsPage() {
-  const { standings, isLoading, isValidating } = useStandings();
-  const isRefreshing = isLoading || isValidating;
-
-  const leagueTable = standings?.standings?.[0]?.table || [];
+export default async function StandingsPage() {
+  const standings = await getStandings().catch(() => null);
 
   return (
     <>
-      <h1 className="mb-6 text-center text-3xl font-semibold">
-        Ligue 1 Standings
+      <h1 className="mb-6 text-center text-2xl font-bold sm:text-3xl">
+        Standings
       </h1>
-
-      {isRefreshing && leagueTable.length === 0 ? (
-        <LoadingSpinner />
-      ) : leagueTable.length > 0 ? (
-        <div className="relative">
-          {isRefreshing && <LoadingSpinner />}
-          <StandingsTable
-            standings={leagueTable}
-            highlightTeamId={PSG_TEAM_ID}
-          />
-        </div>
+      {standings ? (
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="text-center">#</TableHead>
+              <TableHead>Club</TableHead>
+              <TableHead className="text-center">MP</TableHead>
+              <TableHead className="text-center">W</TableHead>
+              <TableHead className="text-center">D</TableHead>
+              <TableHead className="text-center">L</TableHead>
+              <TableHead className="text-center font-bold">Pts</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {standings.map((team) => (
+              <TableRow key={team.position}>
+                <TableCell className="text-center">{team.position}</TableCell>
+                <TableCell>
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src={team.team.crest}
+                      alt={team.team.name}
+                      width={200}
+                      height={200}
+                      className="size-6"
+                    />
+                    <span className="sm:hidden">{team.team.tla}</span>
+                    <span className="hidden sm:block">{team.team.name}</span>
+                  </div>
+                </TableCell>
+                <TableCell className="text-center">
+                  {team.playedGames}
+                </TableCell>
+                <TableCell className="text-center">{team.won}</TableCell>
+                <TableCell className="text-center">{team.draw}</TableCell>
+                <TableCell className="text-center">{team.lost}</TableCell>
+                <TableCell className="text-center font-bold">
+                  {team.points}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       ) : (
-        <div className="rounded-lg bg-white py-12 text-center shadow">
-          <p className="text-gray-500">Standings information not available</p>
-        </div>
+        <ErrorCard />
       )}
     </>
   );
