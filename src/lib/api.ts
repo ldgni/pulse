@@ -5,8 +5,12 @@ const API_KEY = process.env.FOOTBALL_DATA_API_KEY || "";
 
 async function fetchAPI(endpoint: string) {
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-    headers: { "X-Auth-Token": API_KEY },
-    next: { revalidate: 300 },
+    headers: {
+      "X-Auth-Token": API_KEY,
+    },
+    next: {
+      revalidate: 300,
+    },
   });
 
   return response.json();

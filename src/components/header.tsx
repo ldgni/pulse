@@ -16,10 +16,22 @@ import {
 } from "@/components/ui/sheet";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/results", label: "Results" },
-  { href: "/fixtures", label: "Fixtures" },
-  { href: "/standings", label: "Standings" },
+  {
+    href: "/",
+    label: "Home",
+  },
+  {
+    href: "/results",
+    label: "Results",
+  },
+  {
+    href: "/fixtures",
+    label: "Fixtures",
+  },
+  {
+    href: "/standings",
+    label: "Standings",
+  },
 ];
 
 export default function Header() {

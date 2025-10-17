@@ -14,14 +14,23 @@ export interface Match {
     crest: string;
   };
   score: {
-    fullTime: { home: number; away: number };
+    fullTime: {
+      home: number;
+      away: number;
+    };
   };
-  competition: { name: string };
+  competition: {
+    name: string;
+  };
 }
 
 export interface TeamStanding {
   position: number;
-  team: { name: string; tla: string; crest: string };
+  team: {
+    name: string;
+    tla: string;
+    crest: string;
+  };
   playedGames: number;
   won: number;
   draw: number;
