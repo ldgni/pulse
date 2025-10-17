@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import EmptyState from "@/components/empty-state";
 import ErrorCard from "@/components/error-card";
 import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,18 +23,22 @@ export default async function HomePage() {
       <div className="space-y-8">
         {/* Latest result */}
         <h2 className="mb-4 text-xl font-semibold">Latest result</h2>
-        {latestResult ? (
-          <MatchCard match={latestResult} type="result" />
-        ) : (
+        {results === null ? (
           <ErrorCard />
+        ) : !latestResult ? (
+          <EmptyState />
+        ) : (
+          <MatchCard match={latestResult} type="result" />
         )}
 
         {/* Next fixture */}
         <h2 className="mb-4 text-xl font-semibold">Next fixture</h2>
-        {nextFixture ? (
-          <MatchCard match={nextFixture} type="fixture" />
-        ) : (
+        {fixtures === null ? (
           <ErrorCard />
+        ) : !nextFixture ? (
+          <EmptyState />
+        ) : (
+          <MatchCard match={nextFixture} type="fixture" />
         )}
 
         {/* League standing */}
