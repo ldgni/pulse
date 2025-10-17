@@ -1,3 +1,4 @@
+import EmptyState from "@/components/empty-state";
 import ErrorCard from "@/components/error-card";
 import MatchCard from "@/components/match-card";
 import { getFixtures } from "@/lib/api";
@@ -11,14 +12,16 @@ export default async function FixturesPage() {
       <h1 className="mb-6 text-center text-2xl font-bold sm:text-3xl">
         Fixtures
       </h1>
-      {matches ? (
+      {matches === null ? (
+        <ErrorCard />
+      ) : matches.length === 0 ? (
+        <EmptyState />
+      ) : (
         <div className="space-y-4">
           {matches.map((match: Match) => (
             <MatchCard key={match.id} match={match} type="fixture" />
           ))}
         </div>
-      ) : (
-        <ErrorCard />
       )}
     </>
   );
