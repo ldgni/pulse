@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import ModeToggle from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
   SheetContent,
@@ -77,7 +78,7 @@ export default function Header() {
         ))}
       </nav>
 
-      <div className="flex items-center">
+      <div className="flex h-4 items-center gap-2">
         <Button variant="ghost" size="icon" asChild>
           <a
             href="https://github.com/ldgni/pulse"
@@ -86,7 +87,7 @@ export default function Header() {
             <Github />
           </a>
         </Button>
-        <div className="bg-border mx-2 h-4 w-px" />
+        <Separator orientation="vertical" />
         <ModeToggle />
       </div>
     </header>
