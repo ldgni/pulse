@@ -9,9 +9,10 @@ export default async function ResultsPage() {
 
   return (
     <>
-      <h1 className="mb-6 text-center text-2xl font-bold sm:text-3xl">
-        Results
-      </h1>
+      <div className="mb-6 space-y-2 text-center">
+        <h1 className="text-2xl font-bold sm:text-3xl">Results</h1>
+        <p className="text-muted-foreground">All matches played</p>
+      </div>
       {matches === null ? (
         <ErrorCard />
       ) : matches.length === 0 ? (
