@@ -5,6 +5,7 @@ import { Geist } from "next/font/google";
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import SWRProvider from "@/components/swr-provider";
 import ThemeProvider from "@/components/theme-provider";
 
 const geist = Geist({ subsets: ["latin"] });
@@ -27,11 +28,13 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          <div className="mx-auto flex min-h-screen max-w-2xl flex-col p-4">
-            <Header />
-            <main className="flex flex-grow flex-col px-3">{children}</main>
-            <Footer />
-          </div>
+          <SWRProvider>
+            <div className="mx-auto flex min-h-screen max-w-2xl flex-col p-4">
+              <Header />
+              <main className="flex flex-grow flex-col px-3">{children}</main>
+              <Footer />
+            </div>
+          </SWRProvider>
         </ThemeProvider>
       </body>
     </html>

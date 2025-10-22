@@ -11,24 +11,22 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { TeamStanding } from "@/types/api";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 export default function HomePage() {
   const {
     data: results,
     error: errorResults,
     isLoading: isLoadingResults,
-  } = useSWR("/api/results", fetcher);
+  } = useSWR("/api/results");
   const {
     data: fixtures,
     error: errorFixtures,
     isLoading: isLoadingFixtures,
-  } = useSWR("/api/fixtures", fetcher);
+  } = useSWR("/api/fixtures");
   const {
     data: standings,
     error: errorStandings,
     isLoading: isLoadingStandings,
-  } = useSWR("/api/standings", fetcher);
+  } = useSWR("/api/standings");
 
   const latestResult = results?.[0];
   const nextFixture = fixtures?.[0];

@@ -15,10 +15,8 @@ import {
 } from "@/components/ui/table";
 import { TeamStanding } from "@/types/api";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 export default function StandingsPage() {
-  const { data, error, isLoading } = useSWR("/api/standings", fetcher);
+  const { data, error, isLoading } = useSWR("/api/standings");
 
   return (
     <>

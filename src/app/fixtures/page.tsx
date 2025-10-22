@@ -8,10 +8,8 @@ import CardSkeleton from "@/components/card-skeleton";
 import CardWarning from "@/components/card-warning";
 import { Match } from "@/types/api";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 export default function FixturesPage() {
-  const { data, error, isLoading } = useSWR("/api/fixtures", fetcher);
+  const { data, error, isLoading } = useSWR("/api/fixtures");
 
   return (
     <>
