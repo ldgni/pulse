@@ -1,5 +1,6 @@
 "use client";
 
+import { Loader } from "lucide-react";
 import Image from "next/image";
 import useSWR from "swr";
 
@@ -26,7 +27,7 @@ export default function StandingsPage() {
         <p className="text-muted-foreground">Current Ligue 1 rankings</p>
       </div>
       {isLoading ? (
-        <div>Loading...</div>
+        <Loader className="mx-auto animate-spin" />
       ) : error ? (
         <ErrorCard />
       ) : (

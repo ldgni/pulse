@@ -3,10 +3,12 @@
 import Image from "next/image";
 import useSWR from "swr";
 
+import CardSkeleton from "@/components/card-skeleton";
 import EmptyState from "@/components/empty-state";
 import ErrorCard from "@/components/error-card";
 import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { TeamStanding } from "@/types/api";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -44,7 +46,7 @@ export default function HomePage() {
         {/* Latest result */}
         <h2 className="mb-4 text-xl font-semibold">Latest result</h2>
         {isLoadingResults ? (
-          <div>Loading...</div>
+          <CardSkeleton count={1} />
         ) : errorResults ? (
           <ErrorCard />
         ) : !latestResult ? (
@@ -56,7 +58,7 @@ export default function HomePage() {
         {/* Next fixture */}
         <h2 className="mb-4 text-xl font-semibold">Next fixture</h2>
         {isLoadingFixtures ? (
-          <div>Loading...</div>
+          <CardSkeleton count={1} />
         ) : errorFixtures ? (
           <ErrorCard />
         ) : !nextFixture ? (
@@ -68,7 +70,7 @@ export default function HomePage() {
         {/* League standing */}
         <h2 className="mb-4 text-xl font-semibold">Current ranking</h2>
         {isLoadingStandings ? (
-          <div>Loading...</div>
+          <Skeleton className="h-[106px] w-full rounded-xl shadow-sm" />
         ) : errorStandings ? (
           <ErrorCard />
         ) : !clubStanding ? (

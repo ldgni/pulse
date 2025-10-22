@@ -2,6 +2,7 @@
 
 import useSWR from "swr";
 
+import CardSkeleton from "@/components/card-skeleton";
 import EmptyState from "@/components/empty-state";
 import ErrorCard from "@/components/error-card";
 import MatchCard from "@/components/match-card";
@@ -19,7 +20,7 @@ export default function FixturesPage() {
         <p className="text-muted-foreground">All upcoming matches</p>
       </div>
       {isLoading ? (
-        <div>Loading...</div>
+        <CardSkeleton count={5} />
       ) : error ? (
         <ErrorCard />
       ) : data.length === 0 ? (
