@@ -18,7 +18,7 @@ interface MatchCardProps {
   type: "fixture" | "result";
 }
 
-export default function MatchCard({ match, type }: MatchCardProps) {
+export default function CardMatch({ match, type }: MatchCardProps) {
   return (
     <Card>
       <CardHeader className="text-center">

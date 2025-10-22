@@ -2,10 +2,10 @@
 
 import useSWR from "swr";
 
+import CardError from "@/components/card-error";
+import CardMatch from "@/components/card-match";
 import CardSkeleton from "@/components/card-skeleton";
-import EmptyState from "@/components/empty-state";
-import ErrorCard from "@/components/error-card";
-import MatchCard from "@/components/match-card";
+import CardWarning from "@/components/card-warning";
 import { Match } from "@/types/api";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -22,13 +22,13 @@ export default function ResultsPage() {
       {isLoading ? (
         <CardSkeleton count={5} />
       ) : error ? (
-        <ErrorCard />
+        <CardError />
       ) : data.length === 0 ? (
-        <EmptyState />
+        <CardWarning />
       ) : (
         <div className="space-y-4">
           {data.map((match: Match) => (
-            <MatchCard key={match.id} match={match} type="result" />
+            <CardMatch key={match.id} match={match} type="result" />
           ))}
         </div>
       )}

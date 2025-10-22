@@ -4,7 +4,7 @@ import { Loader } from "lucide-react";
 import Image from "next/image";
 import useSWR from "swr";
 
-import ErrorCard from "@/components/error-card";
+import CardError from "@/components/card-error";
 import {
   Table,
   TableBody,
@@ -29,7 +29,7 @@ export default function StandingsPage() {
       {isLoading ? (
         <Loader className="mx-auto animate-spin" />
       ) : error ? (
-        <ErrorCard />
+        <CardError />
       ) : (
         <Table>
           <TableHeader>

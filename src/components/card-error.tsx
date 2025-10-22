@@ -1,9 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 
-export default function ErrorCard() {
+export default function CardError() {
   return (
-    <Card className="border-destructive/50 bg-destructive/10">
-      <CardContent className="space-y-4 text-center">
+    <Card className="border-destructive/50 bg-destructive/10 h-[166px]">
+      <CardContent className="flex h-full flex-col justify-center gap-4 text-center">
         <p className="text-destructive text-lg font-semibold">
           Unable to load data
         </p>

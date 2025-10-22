@@ -3,10 +3,10 @@
 import Image from "next/image";
 import useSWR from "swr";
 
+import CardError from "@/components/card-error";
+import CardMatch from "@/components/card-match";
 import CardSkeleton from "@/components/card-skeleton";
-import EmptyState from "@/components/empty-state";
-import ErrorCard from "@/components/error-card";
-import MatchCard from "@/components/match-card";
+import CardWarning from "@/components/card-warning";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { TeamStanding } from "@/types/api";
@@ -48,11 +48,11 @@ export default function HomePage() {
         {isLoadingResults ? (
           <CardSkeleton count={1} />
         ) : errorResults ? (
-          <ErrorCard />
+          <CardError />
         ) : !latestResult ? (
-          <EmptyState />
+          <CardWarning />
         ) : (
-          <MatchCard match={latestResult} type="result" />
+          <CardMatch match={latestResult} type="result" />
         )}
 
         {/* Next fixture */}
@@ -60,11 +60,11 @@ export default function HomePage() {
         {isLoadingFixtures ? (
           <CardSkeleton count={1} />
         ) : errorFixtures ? (
-          <ErrorCard />
+          <CardError />
         ) : !nextFixture ? (
-          <EmptyState />
+          <CardWarning />
         ) : (
-          <MatchCard match={nextFixture} type="fixture" />
+          <CardMatch match={nextFixture} type="fixture" />
         )}
 
         {/* League standing */}
@@ -72,9 +72,9 @@ export default function HomePage() {
         {isLoadingStandings ? (
           <Skeleton className="h-[106px] w-full rounded-xl shadow-sm" />
         ) : errorStandings ? (
-          <ErrorCard />
+          <CardError />
         ) : !clubStanding ? (
-          <EmptyState />
+          <CardWarning />
         ) : (
           <Card>
             <CardContent>
