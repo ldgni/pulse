@@ -1,11 +1,16 @@
+"use client";
+
+import useSWR from "swr";
+
 import EmptyState from "@/components/empty-state";
 import ErrorCard from "@/components/error-card";
 import MatchCard from "@/components/match-card";
-import { getResults } from "@/lib/api";
 import { Match } from "@/types/api";
 
-export default async function ResultsPage() {
-  const matches = await getResults().catch(() => null);
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+export default function ResultsPage() {
+  const { data, error, isLoading } = useSWR("/api/results", fetcher);
 
   return (
     <>
@@ -13,13 +18,15 @@ export default async function ResultsPage() {
         <h1 className="text-2xl font-bold sm:text-3xl">Results</h1>
         <p className="text-muted-foreground">All matches played</p>
       </div>
-      {matches === null ? (
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : error ? (
         <ErrorCard />
-      ) : matches.length === 0 ? (
+      ) : data.length === 0 ? (
         <EmptyState />
       ) : (
         <div className="space-y-4">
-          {matches.map((match: Match) => (
+          {data.map((match: Match) => (
             <MatchCard key={match.id} match={match} type="result" />
           ))}
         </div>

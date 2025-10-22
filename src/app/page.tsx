@@ -1,21 +1,38 @@
+"use client";
+
 import Image from "next/image";
+import useSWR from "swr";
 
 import EmptyState from "@/components/empty-state";
 import ErrorCard from "@/components/error-card";
 import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
-import { getFixtures, getResults, getStandings } from "@/lib/api";
+import { TeamStanding } from "@/types/api";
 
-export default async function HomePage() {
-  const [results, fixtures, standings] = await Promise.all([
-    getResults().catch(() => null),
-    getFixtures().catch(() => null),
-    getStandings().catch(() => null),
-  ]);
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+export default function HomePage() {
+  const {
+    data: results,
+    error: errorResults,
+    isLoading: isLoadingResults,
+  } = useSWR("/api/results", fetcher);
+  const {
+    data: fixtures,
+    error: errorFixtures,
+    isLoading: isLoadingFixtures,
+  } = useSWR("/api/fixtures", fetcher);
+  const {
+    data: standings,
+    error: errorStandings,
+    isLoading: isLoadingStandings,
+  } = useSWR("/api/standings", fetcher);
 
   const latestResult = results?.[0];
   const nextFixture = fixtures?.[0];
-  const clubStanding = standings?.find((team) => team.team.tla === "PSG");
+  const clubStanding = standings?.find(
+    (team: TeamStanding) => team.team.tla === "PSG",
+  );
 
   return (
     <>
@@ -26,7 +43,9 @@ export default async function HomePage() {
       <div className="space-y-8">
         {/* Latest result */}
         <h2 className="mb-4 text-xl font-semibold">Latest result</h2>
-        {results === null ? (
+        {isLoadingResults ? (
+          <div>Loading...</div>
+        ) : errorResults ? (
           <ErrorCard />
         ) : !latestResult ? (
           <EmptyState />
@@ -36,7 +55,9 @@ export default async function HomePage() {
 
         {/* Next fixture */}
         <h2 className="mb-4 text-xl font-semibold">Next fixture</h2>
-        {fixtures === null ? (
+        {isLoadingFixtures ? (
+          <div>Loading...</div>
+        ) : errorFixtures ? (
           <ErrorCard />
         ) : !nextFixture ? (
           <EmptyState />
@@ -46,7 +67,13 @@ export default async function HomePage() {
 
         {/* League standing */}
         <h2 className="mb-4 text-xl font-semibold">Current ranking</h2>
-        {clubStanding ? (
+        {isLoadingStandings ? (
+          <div>Loading...</div>
+        ) : errorStandings ? (
+          <ErrorCard />
+        ) : !clubStanding ? (
+          <EmptyState />
+        ) : (
           <Card>
             <CardContent>
               <div className="flex justify-between">
@@ -81,8 +108,6 @@ export default async function HomePage() {
               </div>
             </CardContent>
           </Card>
-        ) : (
-          <ErrorCard />
         )}
       </div>
     </>

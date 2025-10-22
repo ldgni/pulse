@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import useSWR from "swr";
 
 import ErrorCard from "@/components/error-card";
 import {
@@ -9,10 +12,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getStandings } from "@/lib/api";
+import { TeamStanding } from "@/types/api";
 
-export default async function StandingsPage() {
-  const standings = await getStandings().catch(() => null);
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+export default function StandingsPage() {
+  const { data, error, isLoading } = useSWR("/api/standings", fetcher);
 
   return (
     <>
@@ -20,7 +25,11 @@ export default async function StandingsPage() {
         <h1 className="text-2xl font-bold sm:text-3xl">Standings</h1>
         <p className="text-muted-foreground">Current Ligue 1 rankings</p>
       </div>
-      {standings ? (
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <ErrorCard />
+      ) : (
         <Table>
           <TableHeader>
             <TableRow>
@@ -34,7 +43,7 @@ export default async function StandingsPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {standings.map((team) => (
+            {data.map((team: TeamStanding) => (
               <TableRow key={team.position}>
                 <TableCell className="text-center">{team.position}</TableCell>
                 <TableCell>
@@ -63,8 +72,6 @@ export default async function StandingsPage() {
             ))}
           </TableBody>
         </Table>
-      ) : (
-        <ErrorCard />
       )}
     </>
   );
