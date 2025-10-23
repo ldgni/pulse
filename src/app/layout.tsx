@@ -11,7 +11,7 @@ import ThemeProvider from "@/components/theme-provider";
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PSG Performance Tracker",
+  title: "Pulse - Track Paris Saint-Germain FC's performances",
   description: "Track Paris Saint-Germain's FC results, fixtures and standings",
 };
 
