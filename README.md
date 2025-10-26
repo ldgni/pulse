@@ -4,13 +4,13 @@
 
 ## Running Locally
 
-1. Clone the repository to your local machine
+1. Clone the repository
 
 ```sh
 git clone https://github.com/ldgni/pulse.git
 ```
 
-2. Navigate inside the project directory
+2. Navigate inside the repository
 
 ```sh
 cd pulse
@@ -37,7 +37,3 @@ npm run dev
 ## Contributing
 
 Pull requests are appreciated. For major changes, please open an issue first.
-
-## License
-
-This project is licensed under the terms of the [MIT License](LICENSE).
