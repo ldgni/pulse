@@ -13,12 +13,12 @@ import { Match } from "@/types/api";
 
 const geistMono = Geist_Mono({ subsets: ["latin"] });
 
-interface CardMatchProps {
+interface MatchCardProps {
   match: Match;
   type: "fixture" | "result";
 }
 
-export default function CardMatch({ match, type }: CardMatchProps) {
+export default function MatchCard({ match, type }: MatchCardProps) {
   return (
     <Card>
       <CardHeader className="text-center">
