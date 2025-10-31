@@ -10,6 +10,9 @@ async function fetchAPI(endpoint: string) {
     headers: {
       "X-Auth-Token": API_KEY,
     },
+    next: {
+      revalidate: 300,
+    },
   });
 
   if (!res.ok) {
