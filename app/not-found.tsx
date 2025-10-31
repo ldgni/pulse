@@ -1,3 +1,8 @@
 export default function NotFoundPage() {
-  return <h1>This page does not exist.</h1>;
+  return (
+    <div className="space-y-2 text-center">
+      <h1 className="text-2xl font-bold sm:text-3xl">Oops!</h1>
+      <p className="text-muted-foreground">This page doesn&apos;t exist.</p>
+    </div>
+  );
 }
