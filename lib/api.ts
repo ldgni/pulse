@@ -1,5 +1,5 @@
 const API_BASE_URL = "https://api.football-data.org/v4";
-const API_KEY = process.env.FOOTBALL_DATA_API_KEY || "";
+const API_KEY = process.env.FOOTBALL_DATA_API_KEY!;
 
 if (!API_KEY) {
   throw new Error("FOOTBALL_DATA_API_KEY is not set in environment variables");
