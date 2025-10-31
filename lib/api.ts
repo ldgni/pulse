@@ -11,6 +11,10 @@ async function fetchAPI(endpoint: string) {
     },
   });
 
+  if (!res.ok) {
+    throw new Error(`API error: ${res.status} ${res.statusText}`);
+  }
+
   return res.json();
 }
 
