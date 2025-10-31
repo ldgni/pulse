@@ -1,13 +1,7 @@
-"use client";
-
-import { Loader } from "lucide-react";
 import Image from "next/image";
-import useSWR from "swr";
 
-import { ErrorCard } from "@/components/status-card";
-import { WarningCard } from "@/components/status-card";
+import { ErrorCard, WarningCard } from "@/components/status-card";
 import { Card, CardContent } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
   TableBody,
@@ -16,16 +10,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getStandings } from "@/lib/api";
 import { TeamStanding } from "@/types/api";
 
-export default function StandingsTable() {
-  const { data, error, isLoading } = useSWR("/api/standings");
-
-  if (isLoading) {
-    return <Loader className="mx-auto animate-spin" />;
-  }
-
-  if (error) {
+export default async function StandingsTable() {
+  let data;
+  try {
+    data = await getStandings();
+  } catch {
     return <ErrorCard />;
   }
 
@@ -77,16 +69,11 @@ export default function StandingsTable() {
   );
 }
 
-export function CurrentRanking() {
-  const { data, error, isLoading } = useSWR("/api/standings");
-
-  if (isLoading) {
-    return (
-      <Skeleton className="h-[106px] w-full rounded-xl border shadow-sm" />
-    );
-  }
-
-  if (error) {
+export async function CurrentRanking() {
+  let data;
+  try {
+    data = await getStandings();
+  } catch {
     return <ErrorCard />;
   }
 
@@ -95,6 +82,10 @@ export function CurrentRanking() {
   }
 
   const psg = data.find((team: TeamStanding) => team.team.tla === "PSG");
+
+  if (!psg) {
+    return <WarningCard />;
+  }
 
   return (
     <Card>

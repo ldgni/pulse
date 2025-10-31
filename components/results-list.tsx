@@ -1,21 +1,13 @@
-"use client";
-
-import useSWR from "swr";
-
 import MatchCard from "@/components/match-card";
-import { SkeletonCard } from "@/components/status-card";
-import { ErrorCard } from "@/components/status-card";
-import { WarningCard } from "@/components/status-card";
+import { ErrorCard, WarningCard } from "@/components/status-card";
+import { getResults } from "@/lib/api";
 import { Match } from "@/types/api";
 
-export default function ResultsList() {
-  const { data, error, isLoading } = useSWR("/api/results");
-
-  if (isLoading) {
-    return <SkeletonCard count={10} />;
-  }
-
-  if (error) {
+export default async function ResultsList() {
+  let data;
+  try {
+    data = await getResults();
+  } catch {
     return <ErrorCard />;
   }
 
@@ -34,14 +26,11 @@ export default function ResultsList() {
   );
 }
 
-export function PreviousResult() {
-  const { data, error, isLoading } = useSWR("/api/results?limit=1");
-
-  if (isLoading) {
-    return <SkeletonCard count={1} />;
-  }
-
-  if (error) {
+export async function PreviousResult() {
+  let data;
+  try {
+    data = await getResults();
+  } catch {
     return <ErrorCard />;
   }
 

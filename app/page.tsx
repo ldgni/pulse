@@ -1,6 +1,10 @@
+import { Suspense } from "react";
+
 import { NextFixture } from "@/components/fixtures-list";
 import { PreviousResult } from "@/components/results-list";
 import { CurrentRanking } from "@/components/standings-table";
+import { SkeletonCard } from "@/components/status-card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function HomePage() {
   return (
@@ -12,15 +16,24 @@ export default function HomePage() {
       <div className="space-y-8">
         <>
           <h2 className="mb-4 text-xl font-semibold">Next fixture</h2>
-          <NextFixture />
+          <Suspense fallback={<SkeletonCard count={1} />}>
+            <NextFixture />
+          </Suspense>
         </>
         <>
           <h2 className="mb-4 text-xl font-semibold">Previous result</h2>
-          <PreviousResult />
+          <Suspense fallback={<SkeletonCard count={1} />}>
+            <PreviousResult />
+          </Suspense>
         </>
         <>
           <h2 className="mb-4 text-xl font-semibold">Current ranking</h2>
-          <CurrentRanking />
+          <Suspense
+            fallback={
+              <Skeleton className="h-[106px] w-full rounded-xl border shadow-sm" />
+            }>
+            <CurrentRanking />
+          </Suspense>
         </>
       </div>
     </>
