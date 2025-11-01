@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { formatMatchDate, formatMatchTime } from "@/lib/utils";
-import { Match } from "@/types/api";
+import type { Match } from "@/types/api";
 
 const geistMono = Geist_Mono({ subsets: ["latin"] });
 
