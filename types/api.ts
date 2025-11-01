@@ -4,13 +4,11 @@ export interface Match {
   homeTeam: {
     name: string;
     shortName: string;
-    tla: string;
     crest: string;
   };
   awayTeam: {
     name: string;
     shortName: string;
-    tla: string;
     crest: string;
   };
   score: {
