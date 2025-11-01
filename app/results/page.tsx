@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
 import ResultsList from "@/components/results-list";
-import { SkeletonCard } from "@/components/status-card";
+import SkeletonCard from "@/components/skeleton-card";
 
 export default function ResultsPage() {
   return (
