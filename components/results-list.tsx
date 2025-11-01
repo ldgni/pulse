@@ -1,19 +1,9 @@
 import MatchCard from "@/components/match-card";
-import { ErrorCard, WarningCard } from "@/components/status-card";
 import { getResults } from "@/lib/api";
 import { Match } from "@/types/api";
 
 export default async function ResultsList() {
-  let data;
-  try {
-    data = await getResults();
-  } catch {
-    return <ErrorCard />;
-  }
-
-  if (data.length === 0) {
-    return <WarningCard />;
-  }
+  const data = await getResults();
 
   return (
     <ol className="space-y-4">
@@ -27,16 +17,7 @@ export default async function ResultsList() {
 }
 
 export async function PreviousResult() {
-  let data;
-  try {
-    data = await getResults();
-  } catch {
-    return <ErrorCard />;
-  }
-
-  if (data.length === 0) {
-    return <WarningCard />;
-  }
+  const data = await getResults();
 
   return <MatchCard match={data[0]} type="result" />;
 }

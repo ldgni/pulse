@@ -1,19 +1,9 @@
 import MatchCard from "@/components/match-card";
-import { ErrorCard, WarningCard } from "@/components/status-card";
 import { getFixtures } from "@/lib/api";
 import { Match } from "@/types/api";
 
 export default async function FixturesList() {
-  let data;
-  try {
-    data = await getFixtures();
-  } catch {
-    return <ErrorCard />;
-  }
-
-  if (data.length === 0) {
-    return <WarningCard />;
-  }
+  const data = await getFixtures();
 
   return (
     <ol className="space-y-4">
@@ -27,16 +17,7 @@ export default async function FixturesList() {
 }
 
 export async function NextFixture() {
-  let data;
-  try {
-    data = await getFixtures();
-  } catch {
-    return <ErrorCard />;
-  }
-
-  if (data.length === 0) {
-    return <WarningCard />;
-  }
+  const data = await getFixtures();
 
   return <MatchCard match={data[0]} type="fixture" />;
 }

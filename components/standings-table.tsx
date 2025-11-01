@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { ErrorCard, WarningCard } from "@/components/status-card";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Table,
@@ -14,16 +13,7 @@ import { getStandings } from "@/lib/api";
 import { TeamStanding } from "@/types/api";
 
 export default async function StandingsTable() {
-  let data;
-  try {
-    data = await getStandings();
-  } catch {
-    return <ErrorCard />;
-  }
-
-  if (data.length === 0) {
-    return <WarningCard />;
-  }
+  const data = await getStandings();
 
   return (
     <Table>
@@ -70,22 +60,9 @@ export default async function StandingsTable() {
 }
 
 export async function CurrentRanking() {
-  let data;
-  try {
-    data = await getStandings();
-  } catch {
-    return <ErrorCard />;
-  }
-
-  if (data.length === 0) {
-    return <WarningCard />;
-  }
+  const data = await getStandings();
 
   const psg = data.find((team: TeamStanding) => team.team.tla === "PSG");
-
-  if (!psg) {
-    return <ErrorCard />;
-  }
 
   return (
     <Card>
