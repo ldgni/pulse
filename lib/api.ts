@@ -1,10 +1,6 @@
 const API_BASE_URL = "https://api.football-data.org/v4";
 const API_KEY = process.env.FOOTBALL_DATA_API_KEY!;
 
-if (!API_KEY) {
-  throw new Error("FOOTBALL_DATA_API_KEY is not set in environment variables");
-}
-
 async function fetchAPI(endpoint: string) {
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     headers: {
@@ -14,12 +10,8 @@ async function fetchAPI(endpoint: string) {
       revalidate: 300,
     },
   });
-
-  if (!res.ok) {
-    throw new Error(`API error: ${res.status} ${res.statusText}`);
-  }
-
-  return res.json();
+  const data = await res.json();
+  return data;
 }
 
 export async function getStandings() {
