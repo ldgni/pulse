@@ -6,7 +6,6 @@ export default function Footer() {
         <a
           href="https://ldgni.io/"
           target="_blank"
-          rel="noopener noreferrer"
           className="hover:text-foreground font-medium underline underline-offset-4 transition-colors">
           Luca Di Gianni
         </a>

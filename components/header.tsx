@@ -83,7 +83,6 @@ export default function Header() {
           <a
             href="https://github.com/ldgni/pulse"
             target="_blank"
-            rel="noopener noreferrer"
             aria-label="View source on GitHub">
             <Github />
           </a>
