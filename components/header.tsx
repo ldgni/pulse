@@ -39,7 +39,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="mb-6 flex items-center justify-between sm:mb-8">
+    <header className="mb-8 flex items-center justify-between">
       {/* Mobile Menu */}
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>

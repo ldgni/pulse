@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="text-muted-foreground mt-6 text-center">
+    <footer className="text-muted-foreground mt-8 text-center">
       <small>
         Built by{" "}
         <a
