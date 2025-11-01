@@ -10,7 +10,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { getStandings } from "@/lib/api";
-import { TeamStanding } from "@/types/api";
 
 export default async function StandingsTable() {
   const data = await getStandings();
@@ -29,7 +28,7 @@ export default async function StandingsTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((team: TeamStanding) => (
+        {data.map((team) => (
           <TableRow key={team.position}>
             <TableCell className="text-center">{team.position}</TableCell>
             <TableCell>
@@ -62,7 +61,7 @@ export default async function StandingsTable() {
 export async function CurrentRanking() {
   const data = await getStandings();
 
-  const psg = data.find((team: TeamStanding) => team.team.tla === "PSG");
+  const psg = data.find((team) => team.team.tla === "PSG")!;
 
   return (
     <Card>
