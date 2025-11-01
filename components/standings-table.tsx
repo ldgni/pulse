@@ -84,7 +84,7 @@ export async function CurrentRanking() {
   const psg = data.find((team: TeamStanding) => team.team.tla === "PSG");
 
   if (!psg) {
-    return <WarningCard />;
+    return <ErrorCard />;
   }
 
   return (
