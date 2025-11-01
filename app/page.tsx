@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function HomePage() {
   return (
     <>
-      <div className="mb-6 space-y-2 text-center">
+      <div className="mb-8 space-y-2 text-center">
         <h1 className="text-2xl font-bold sm:text-3xl">Welcome to Pulse</h1>
         <p className="text-muted-foreground">Paris Saint-Germain FC Tracker</p>
       </div>
