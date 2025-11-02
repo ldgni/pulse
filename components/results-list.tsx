@@ -14,9 +14,3 @@ export default async function ResultsList() {
     </ol>
   );
 }
-
-export async function PreviousResult() {
-  const data = await getResults();
-
-  return <MatchCard match={data[0]} type="result" />;
-}

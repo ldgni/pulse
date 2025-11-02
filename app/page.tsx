@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 
-import { NextFixture } from "@/components/fixtures-list";
-import { PreviousResult } from "@/components/results-list";
+import CurrentRanking from "@/components/current-ranking";
+import NextFixture from "@/components/next-fixture";
+import PreviousResult from "@/components/previous-result";
 import SkeletonCard from "@/components/skeleton-card";
-import { CurrentRanking } from "@/components/standings-table";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function HomePage() {

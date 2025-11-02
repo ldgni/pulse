@@ -14,9 +14,3 @@ export default async function FixturesList() {
     </ol>
   );
 }
-
-export async function NextFixture() {
-  const data = await getFixtures();
-
-  return <MatchCard match={data[0]} type="fixture" />;
-}
