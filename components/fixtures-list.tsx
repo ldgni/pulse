@@ -1,8 +1,13 @@
 import MatchCard from "@/components/match-card";
+import { Card } from "@/components/ui/card";
 import { getFixtures } from "@/lib/api";
 
 export default async function FixturesList() {
   const data = await getFixtures();
+
+  if (data.length === 0) {
+    return <Card className="text-center">No upcoming fixtures available</Card>;
+  }
 
   return (
     <ol className="space-y-4">
