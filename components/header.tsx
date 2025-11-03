@@ -56,26 +56,31 @@ export default function Header() {
             <SheetTitle>Menu</SheetTitle>
             <SheetDescription />
           </SheetHeader>
-          <nav className="flex flex-col gap-4 px-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}>
-                {link.label}
-              </Link>
-            ))}
+          <nav className="px-4">
+            <ul className="space-y-4">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} onClick={() => setOpen(false)}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         </SheetContent>
       </Sheet>
 
       {/* Desktop Menu */}
-      <nav className="hidden gap-2 sm:flex">
-        {navLinks.map((link) => (
-          <Button key={link.href} variant="ghost" size="sm" asChild>
-            <Link href={link.href}>{link.label}</Link>
-          </Button>
-        ))}
+      <nav className="hidden sm:block">
+        <ul className="flex gap-2">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href={link.href}>{link.label}</Link>
+              </Button>
+            </li>
+          ))}
+        </ul>
       </nav>
 
       <div className="flex h-4 items-center gap-2">
