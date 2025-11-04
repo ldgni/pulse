@@ -22,12 +22,12 @@ const navLinks = [
     label: "Home",
   },
   {
-    href: "/results",
-    label: "Results",
-  },
-  {
     href: "/fixtures",
     label: "Fixtures",
+  },
+  {
+    href: "/results",
+    label: "Results",
   },
   {
     href: "/standings",
