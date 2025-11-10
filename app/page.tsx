@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <>
       <div className="mb-8 space-y-2 text-center">
-        <h1 className="text-2xl font-bold sm:text-3xl">Welcome to Pulse</h1>
+        <h1 className="text-2xl font-bold sm:text-3xl">Pulse</h1>
         <p className="text-muted-foreground">Paris Saint-Germain FC Tracker</p>
       </div>
       <div className="space-y-8">
