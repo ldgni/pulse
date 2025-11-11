@@ -75,7 +75,7 @@ export default function Header() {
         <ul className="flex gap-2">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Button variant="ghost" size="sm" asChild>
+              <Button variant="ghost" asChild>
                 <Link href={link.href}>{link.label}</Link>
               </Button>
             </li>
