@@ -22,7 +22,7 @@ export interface Match {
   };
 }
 
-export interface TeamStanding {
+export interface Standing {
   position: number;
   team: {
     name: string;

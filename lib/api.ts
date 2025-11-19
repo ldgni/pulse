@@ -1,4 +1,4 @@
-import type { Match, TeamStanding } from "@/types/api";
+import type { Match, Standing } from "@/types/api";
 
 const API_BASE_URL = "https://api.football-data.org/v4";
 const API_KEY = process.env.FOOTBALL_DATA_API_KEY!;
@@ -20,7 +20,7 @@ async function fetchAPI(endpoint: string) {
   return res.json();
 }
 
-export async function getStandings(): Promise<TeamStanding[]> {
+export async function getStandings(): Promise<Standing[]> {
   const { standings } = await fetchAPI("/competitions/FL1/standings");
   return standings[0].table;
 }
