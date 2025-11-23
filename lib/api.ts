@@ -11,11 +11,7 @@ if (!API_KEY) {
 
 async function fetchAPI(endpoint: string) {
   "use cache";
-  cacheLife({
-    stale: 300, // 5 minutes until considered stale
-    revalidate: 600, // 10 minutes until revalidated
-    expire: 86400, // 24 hours until expired
-  });
+  cacheLife("minutes");
 
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     headers: { "X-Auth-Token": API_KEY },
