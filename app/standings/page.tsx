@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/table";
 import { getStandings } from "@/lib/api";
 
+export const revalidate = 0;
+
 export default async function StandingsPage() {
   const data = await getStandings();
 

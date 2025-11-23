@@ -2,6 +2,8 @@ import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getResults } from "@/lib/api";
 
+export const revalidate = 0;
+
 export default async function ResultsPage() {
   const data = await getResults();
 

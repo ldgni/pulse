@@ -2,6 +2,8 @@ import CurrentRanking from "@/components/current-ranking";
 import NextFixture from "@/components/next-fixture";
 import PreviousResult from "@/components/previous-result";
 
+export const revalidate = 0;
+
 export default function HomePage() {
   return (
     <>

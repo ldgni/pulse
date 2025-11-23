@@ -2,6 +2,8 @@ import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getFixtures } from "@/lib/api";
 
+export const revalidate = 0;
+
 export default async function FixturesPage() {
   const data = await getFixtures();
 
