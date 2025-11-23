@@ -19,7 +19,7 @@ cd pulse
 3. Install dependencies
 
 ```sh
-npm install
+pnpm install
 ```
 
 4. Copy [`.env.example`](.env.example) to `.env.local` and update the variables
@@ -31,7 +31,7 @@ cp .env.example .env.local
 5.  Start the development server
 
 ```sh
-npm run dev
+pnpm dev
 ```
 
 ## Contributing
