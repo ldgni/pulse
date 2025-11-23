@@ -1,8 +1,9 @@
+import { Suspense } from "react";
+
 import CurrentRanking from "@/components/current-ranking";
 import NextFixture from "@/components/next-fixture";
 import PreviousResult from "@/components/previous-result";
-
-export const revalidate = 0;
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function HomePage() {
   return (
@@ -14,15 +15,30 @@ export default function HomePage() {
       <div className="space-y-8">
         <div>
           <h2 className="mb-4 text-xl font-semibold">Next fixture</h2>
-          <NextFixture />
+          <Suspense
+            fallback={
+              <Skeleton className="h-[166px] w-full rounded-xl border shadow-sm" />
+            }>
+            <NextFixture />
+          </Suspense>
         </div>
         <div>
           <h2 className="mb-4 text-xl font-semibold">Previous result</h2>
-          <PreviousResult />
+          <Suspense
+            fallback={
+              <Skeleton className="h-[166px] w-full rounded-xl border shadow-sm" />
+            }>
+            <PreviousResult />
+          </Suspense>
         </div>
         <div>
           <h2 className="mb-4 text-xl font-semibold">Current ranking</h2>
-          <CurrentRanking />
+          <Suspense
+            fallback={
+              <Skeleton className="h-[106px] w-full rounded-xl border shadow-sm" />
+            }>
+            <CurrentRanking />
+          </Suspense>
         </div>
       </div>
     </>
