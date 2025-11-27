@@ -14,9 +14,9 @@ export default async function StandingsTable() {
   const data = await getStandings();
 
   return (
-    <Table>
+    <Table className="bg-card border">
       <TableHeader>
-        <TableRow>
+        <TableRow className="bg-muted/50">
           <TableHead className="text-center">#</TableHead>
           <TableHead>Club</TableHead>
           <TableHead className="text-center">MP</TableHead>
