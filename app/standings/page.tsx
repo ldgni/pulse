@@ -3,8 +3,6 @@ import { Suspense } from "react";
 import StandingsTable from "@/components/standings-table";
 import { Spinner } from "@/components/ui/spinner";
 
-export const revalidate = 0;
-
 export default function StandingsPage() {
   return (
     <>

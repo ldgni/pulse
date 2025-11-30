@@ -3,8 +3,6 @@ import { Suspense } from "react";
 import FixturesList from "@/components/fixtures-list";
 import { Spinner } from "@/components/ui/spinner";
 
-export const revalidate = 0;
-
 export default function FixturesPage() {
   return (
     <>
