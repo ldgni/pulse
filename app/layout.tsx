@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={geist.className} suppressHydrationWarning>
-      <body className="overflow-y-scroll antialiased">
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geist.className} overflow-y-scroll antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
