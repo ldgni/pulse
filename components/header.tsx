@@ -2,6 +2,7 @@
 
 import { Github, Menu } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import ModeToggle from "@/components/mode-toggle";
@@ -37,6 +38,7 @@ const navLinks = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="mb-8 flex items-center justify-between">
@@ -60,7 +62,10 @@ export default function Header() {
             <ul className="space-y-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} onClick={() => setOpen(false)}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className={pathname === link.href ? "font-semibold" : ""}>
                     {link.label}
                   </Link>
                 </li>
@@ -75,7 +80,10 @@ export default function Header() {
         <ul className="flex gap-2">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Button variant="ghost" asChild>
+              <Button
+                variant="ghost"
+                asChild
+                className={pathname === link.href ? "bg-accent" : ""}>
                 <Link href={link.href}>{link.label}</Link>
               </Button>
             </li>
