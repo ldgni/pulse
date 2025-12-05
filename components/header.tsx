@@ -62,10 +62,7 @@ export default function Header() {
             <ul className="space-y-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className={pathname === link.href ? "font-semibold" : ""}>
+                  <Link href={link.href} onClick={() => setOpen(false)}>
                     {link.label}
                   </Link>
                 </li>
