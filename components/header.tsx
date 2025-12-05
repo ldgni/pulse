@@ -3,13 +3,13 @@
 import { Github, Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 
 import ModeToggle from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,
@@ -37,13 +37,12 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   return (
     <header className="mb-8 flex items-center justify-between">
       {/* Mobile Menu */}
-      <Sheet open={open} onOpenChange={setOpen}>
+      <Sheet>
         <SheetTrigger asChild>
           <Button
             variant="ghost"
@@ -62,9 +61,13 @@ export default function Header() {
             <ul className="space-y-4">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} onClick={() => setOpen(false)}>
-                    {link.label}
-                  </Link>
+                  <SheetClose asChild>
+                    <Link
+                      href={link.href}
+                      className={pathname === link.href ? "font-semibold" : ""}>
+                      {link.label}
+                    </Link>
+                  </SheetClose>
                 </li>
               ))}
             </ul>
