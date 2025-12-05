@@ -15,7 +15,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const navItems = [
+const navLinks = [
   {
     href: "/",
     label: "Home",
@@ -34,7 +34,7 @@ const navItems = [
   },
 ];
 
-export default function NavLinks() {
+export default function NavMenu() {
   const pathname = usePathname();
 
   return (
@@ -57,14 +57,10 @@ export default function NavLinks() {
           </SheetHeader>
           <nav className="px-4">
             <ul className="space-y-4">
-              {navItems.map((item) => (
-                <li key={item.href}>
+              {navLinks.map((link) => (
+                <li key={link.href}>
                   <SheetClose asChild>
-                    <Link
-                      href={item.href}
-                      className={pathname === item.href ? "font-semibold" : ""}>
-                      {item.label}
-                    </Link>
+                    <Link href={link.href}>{link.label}</Link>
                   </SheetClose>
                 </li>
               ))}
@@ -76,13 +72,13 @@ export default function NavLinks() {
       {/* Desktop Menu */}
       <nav className="hidden sm:block">
         <ul className="flex gap-2">
-          {navItems.map((item) => (
-            <li key={item.href}>
+          {navLinks.map((link) => (
+            <li key={link.href}>
               <Button
                 variant="ghost"
                 asChild
-                className={pathname === item.href ? "bg-accent" : ""}>
-                <Link href={item.href}>{item.label}</Link>
+                className={pathname === link.href ? "bg-accent" : ""}>
+                <Link href={link.href}>{link.label}</Link>
               </Button>
             </li>
           ))}
