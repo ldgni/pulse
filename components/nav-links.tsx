@@ -60,7 +60,11 @@ export default function NavLinks() {
               {navItems.map((item) => (
                 <li key={item.href}>
                   <SheetClose asChild>
-                    <Link href={item.href}>{item.label}</Link>
+                    <Link
+                      href={item.href}
+                      className={pathname === item.href ? "font-semibold" : ""}>
+                      {item.label}
+                    </Link>
                   </SheetClose>
                 </li>
               ))}
@@ -70,18 +74,20 @@ export default function NavLinks() {
       </Sheet>
 
       {/* Desktop Menu */}
-      <ul className="hidden gap-2 sm:flex">
-        {navItems.map((item) => (
-          <li key={item.href}>
-            <Button
-              variant="ghost"
-              asChild
-              className={pathname === item.href ? "bg-accent" : ""}>
-              <Link href={item.href}>{item.label}</Link>
-            </Button>
-          </li>
-        ))}
-      </ul>
+      <nav className="hidden sm:block">
+        <ul className="flex gap-2">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <Button
+                variant="ghost"
+                asChild
+                className={pathname === item.href ? "bg-accent" : ""}>
+                <Link href={item.href}>{item.label}</Link>
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </>
   );
 }
