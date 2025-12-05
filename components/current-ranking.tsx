@@ -13,7 +13,7 @@ export default async function CurrentRanking() {
       <CardContent>
         <div className="flex justify-between">
           <div className="flex items-center gap-4">
-            <span className="mr-2 text-2xl font-bold">{psg.position}</span>
+            <span className="mr-2 text-2xl font-semibold">{psg.position}</span>
             <Image
               src={psg.team.crest}
               alt={psg.team.name}
@@ -30,7 +30,7 @@ export default async function CurrentRanking() {
           </div>
           <div className="text-center">
             <span className="text-muted-foreground uppercase">Points</span>
-            <div className="text-2xl font-bold">{psg.points}</div>
+            <div className="text-2xl font-semibold">{psg.points}</div>
           </div>
         </div>
       </CardContent>

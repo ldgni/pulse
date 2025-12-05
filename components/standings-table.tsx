@@ -24,7 +24,7 @@ export default async function StandingsTable() {
             <TableHead className="text-center">W</TableHead>
             <TableHead className="text-center">D</TableHead>
             <TableHead className="text-center">L</TableHead>
-            <TableHead className="text-center font-bold">Pts</TableHead>
+            <TableHead className="text-center font-semibold">Pts</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -48,7 +48,7 @@ export default async function StandingsTable() {
               <TableCell className="text-center">{team.won}</TableCell>
               <TableCell className="text-center">{team.draw}</TableCell>
               <TableCell className="text-center">{team.lost}</TableCell>
-              <TableCell className="text-center font-bold">
+              <TableCell className="text-center font-semibold">
                 {team.points}
               </TableCell>
             </TableRow>
