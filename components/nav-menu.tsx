@@ -66,7 +66,13 @@ export default function NavMenu() {
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <SheetClose asChild>
-                    <Link href={link.href}>{link.label}</Link>
+                    <Link
+                      href={link.href}
+                      className={
+                        clientPathname === link.href ? "font-semibold" : ""
+                      }>
+                      {link.label}
+                    </Link>
                   </SheetClose>
                 </li>
               ))}
