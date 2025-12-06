@@ -3,6 +3,7 @@
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -36,6 +37,11 @@ const navLinks = [
 
 export default function NavMenu() {
   const pathname = usePathname();
+  const [clientPathname, setClientPathname] = useState("");
+
+  useEffect(() => {
+    setClientPathname(pathname);
+  }, [pathname]);
 
   return (
     <>
@@ -77,7 +83,7 @@ export default function NavMenu() {
               <Button
                 variant="ghost"
                 asChild
-                className={pathname === link.href ? "bg-accent" : ""}>
+                className={clientPathname === link.href ? "bg-accent" : ""}>
                 <Link href={link.href}>{link.label}</Link>
               </Button>
             </li>
