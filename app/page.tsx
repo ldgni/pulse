@@ -5,6 +5,8 @@ import NextFixture from "@/components/next-fixture";
 import PreviousResult from "@/components/previous-result";
 import { Skeleton } from "@/components/ui/skeleton";
 
+export const revalidate = 300;
+
 export default function HomePage() {
   return (
     <>

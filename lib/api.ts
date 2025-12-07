@@ -10,7 +10,6 @@ if (!API_KEY) {
 async function fetchAPI(endpoint: string) {
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     headers: { "X-Auth-Token": API_KEY },
-    next: { revalidate: 300 },
   });
 
   if (!res.ok) {
