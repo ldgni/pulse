@@ -3,8 +3,6 @@ import { Suspense } from "react";
 import ResultsList from "@/components/results-list";
 import { Spinner } from "@/components/ui/spinner";
 
-export const revalidate = 300;
-
 export default function ResultsPage() {
   return (
     <>
