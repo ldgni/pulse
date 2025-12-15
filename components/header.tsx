@@ -1,6 +1,6 @@
 import { Github } from "lucide-react";
 
-import ModeToggle from "@/components/mode-toggle";
+import { ModeToggle } from "@/components/mode-toggle";
 import NavMenu from "@/components/nav-menu";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
