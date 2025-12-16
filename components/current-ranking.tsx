@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { getStandings } from "@/lib/api";
 
 export default async function CurrentRanking() {
-  const data = await getStandings();
+  const data = await getStandings("FL1");
 
   const psg = data.find((team) => team.team.tla === "PSG")!;
 
