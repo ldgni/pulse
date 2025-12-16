@@ -29,6 +29,7 @@ export async function getStandings(competition: string): Promise<Standing[]> {
 
 export async function getFixtures(competition?: string): Promise<Match[]> {
   const { matches } = await fetchAPI("/teams/524/matches?status=SCHEDULED");
+  if (!competition || competition === "all") return matches;
   return matches.filter((match: Match) =>
     match.competition.name.includes(
       competition === "CL" ? "Champions League" : "Ligue 1",
@@ -38,6 +39,9 @@ export async function getFixtures(competition?: string): Promise<Match[]> {
 
 export async function getResults(competition?: string): Promise<Match[]> {
   const { matches } = await fetchAPI("/teams/524/matches?status=FINISHED");
+  if (!competition || competition === "all") {
+    return matches.toReversed();
+  }
   const filtered = matches.filter((match: Match) =>
     match.competition.name.includes(
       competition === "CL" ? "Champions League" : "Ligue 1",

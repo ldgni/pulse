@@ -20,7 +20,7 @@ export default async function StandingsPage({
     <>
       <div className="mb-8 flex flex-col items-center gap-3 text-center">
         <h1 className="text-2xl font-bold sm:text-3xl">Standings</h1>
-        <CompetitionSelect value={competition} />
+        <CompetitionSelect value={competition} includeAll={false} />
       </div>
       <Suspense key={competition} fallback={<Spinner className="mx-auto" />}>
         <StandingsTable competition={competition} />
