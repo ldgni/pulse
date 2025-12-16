@@ -50,7 +50,7 @@ export default function CompetitionSelect({
       });
     });
   };
-  competitions;
+
   return (
     <Select value={value} onValueChange={handleChange} disabled={isPending}>
       <SelectTrigger aria-label="Select competition">
