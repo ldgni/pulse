@@ -20,8 +20,10 @@ async function fetchAPI(endpoint: string) {
   return res.json();
 }
 
-export async function getStandings(): Promise<Standing[]> {
-  const { standings } = await fetchAPI("/competitions/FL1/standings");
+export async function getStandings(competition: string): Promise<Standing[]> {
+  const { standings } = await fetchAPI(
+    `/competitions/${competition}/standings`,
+  );
   return standings[0].table;
 }
 

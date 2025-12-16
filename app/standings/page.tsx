@@ -1,17 +1,29 @@
 import { Suspense } from "react";
 
+import StandingsSelect from "@/components/standings-select";
 import StandingsTable from "@/components/standings-table";
 import { Spinner } from "@/components/ui/spinner";
 
-export default function StandingsPage() {
+type StandingsPageProps = {
+  searchParams: Promise<{
+    competition?: string;
+  }>;
+};
+
+export default async function StandingsPage({
+  searchParams,
+}: StandingsPageProps) {
+  const params = await searchParams;
+  const competition = params.competition === "CL" ? "CL" : "FL1";
+
   return (
     <>
-      <div className="mb-8 space-y-2 text-center">
+      <div className="mb-8 flex flex-col items-center gap-3 text-center">
         <h1 className="text-2xl font-bold sm:text-3xl">Standings</h1>
-        <p className="text-muted-foreground">Ligue 1 table</p>
+        <StandingsSelect value={competition} />
       </div>
-      <Suspense fallback={<Spinner className="mx-auto" />}>
-        <StandingsTable />
+      <Suspense key={competition} fallback={<Spinner className="mx-auto" />}>
+        <StandingsTable competition={competition} />
       </Suspense>
     </>
   );

@@ -10,8 +10,14 @@ import {
 } from "@/components/ui/table";
 import { getStandings } from "@/lib/api";
 
-export default async function StandingsTable() {
-  const data = await getStandings();
+type StandingsTableProps = {
+  competition: string;
+};
+
+export default async function StandingsTable({
+  competition,
+}: StandingsTableProps) {
+  const data = await getStandings(competition);
 
   return (
     <div className="bg-card overflow-hidden rounded-xl border shadow-sm">
