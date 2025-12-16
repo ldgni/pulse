@@ -44,7 +44,7 @@ export default function MatchCard({ match, type }: MatchCardProps) {
 
         {/* Score or Time */}
         <div
-          className={`${geistMono.className} bg-muted flex items-center gap-2 rounded-lg px-3 py-2 text-xl font-semibold sm:px-4 sm:text-2xl`}>
+          className={`${geistMono.className} bg-muted flex items-center gap-2 rounded-lg px-3 py-2 text-xl font-medium sm:px-4 sm:text-2xl`}>
           {type === "result" ? (
             <>
               {match.score.fullTime.home}
