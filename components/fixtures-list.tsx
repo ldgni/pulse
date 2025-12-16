@@ -2,8 +2,12 @@ import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getFixtures } from "@/lib/api";
 
-export default async function FixturesList() {
-  const data = await getFixtures();
+type FixturesListProps = {
+  competition: string;
+};
+
+export default async function FixturesList({ competition }: FixturesListProps) {
+  const data = await getFixtures(competition);
 
   if (data.length === 0) {
     return (

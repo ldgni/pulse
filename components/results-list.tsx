@@ -2,8 +2,12 @@ import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getResults } from "@/lib/api";
 
-export default async function ResultsList() {
-  const data = await getResults();
+type ResultsListProps = {
+  competition: string;
+};
+
+export default async function ResultsList({ competition }: ResultsListProps) {
+  const data = await getResults(competition);
 
   if (data.length === 0) {
     return (

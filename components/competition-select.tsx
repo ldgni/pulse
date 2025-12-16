@@ -16,11 +16,11 @@ const COMPETITIONS = [
   { value: "CL", label: "Champions League" },
 ];
 
-type StandingsSelectProps = {
+type CompetitionSelectProps = {
   value: string;
 };
 
-export default function StandingsSelect({ value }: StandingsSelectProps) {
+export default function CompetitionSelect({ value }: CompetitionSelectProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
