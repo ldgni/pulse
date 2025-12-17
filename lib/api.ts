@@ -1,3 +1,5 @@
+import { cacheLife } from "next/cache";
+
 import type { Match, Standing } from "@/types/api";
 
 const API_BASE_URL = "https://api.football-data.org/v4";
@@ -8,9 +10,11 @@ if (!API_KEY) {
 }
 
 async function fetchAPI(endpoint: string) {
+  "use cache";
+  cacheLife("minutes");
+
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     headers: { "X-Auth-Token": API_KEY },
-    next: { revalidate: 300 },
   });
 
   if (!res.ok) {
