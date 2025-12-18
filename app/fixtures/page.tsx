@@ -14,6 +14,7 @@ export default async function FixturesPage({
   searchParams,
 }: FixturesPageProps) {
   const params = await searchParams;
+
   const competition =
     params.competition === "CL"
       ? "CL"

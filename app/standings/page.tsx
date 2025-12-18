@@ -14,7 +14,9 @@ export default async function StandingsPage({
   searchParams,
 }: StandingsPageProps) {
   const params = await searchParams;
+
   const competition = params.competition === "CL" ? "CL" : "FL1";
+
   const description =
     competition === "FL1" ? "Ligue 1 table" : "Champions League table";
 

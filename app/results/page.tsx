@@ -12,6 +12,7 @@ type ResultsPageProps = {
 
 export default async function ResultsPage({ searchParams }: ResultsPageProps) {
   const params = await searchParams;
+
   const competition =
     params.competition === "CL"
       ? "CL"
