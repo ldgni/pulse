@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { COMPETITION_CODES } from "@/lib/constants";
-import type { Competition } from "@/types/api";
+import type { Competition } from "@/types";
 
 const COMPETITIONS: { value: Competition; label: string }[] = [
   { value: COMPETITION_CODES.ALL, label: "All" },

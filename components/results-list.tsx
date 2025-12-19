@@ -1,7 +1,7 @@
 import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getResults } from "@/lib/api";
-import type { Competition } from "@/types/api";
+import type { Competition } from "@/types";
 
 type ResultsListProps = {
   competition: Competition;

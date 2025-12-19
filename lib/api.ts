@@ -1,6 +1,7 @@
 import { PSG_TEAM_ID } from "@/lib/constants";
 import { filterByCompetition } from "@/lib/utils";
-import type { Competition, Match, Standing } from "@/types/api";
+import type { Competition } from "@/types";
+import type { Match, Standing } from "@/types/api";
 
 const API_BASE_URL = "https://api.football-data.org/v4";
 const API_KEY = process.env.FOOTBALL_DATA_API_KEY;
@@ -62,4 +63,11 @@ export async function getResults(competition?: Competition): Promise<Match[]> {
       `Failed to fetch results: ${error instanceof Error ? error.message : "Unknown error"}`,
     );
   }
+}
+
+export async function getRecentForm(
+  competition?: Competition,
+): Promise<Match[]> {
+  const results = await getResults(competition);
+  return results.slice(0, 5);
 }
