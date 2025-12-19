@@ -19,7 +19,7 @@ export default function HomePage() {
           <h2 className="mb-4 text-xl font-semibold">Recent form</h2>
           <Suspense
             fallback={
-              <Skeleton className="h-[106px] w-full rounded-xl border shadow-sm" />
+              <Skeleton className="h-[146px] w-full rounded-xl border shadow-sm" />
             }>
             <RecentForm />
           </Suspense>
