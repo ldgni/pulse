@@ -6,7 +6,17 @@ import { getStandings } from "@/lib/api";
 export default async function CurrentRanking() {
   const data = await getStandings("FL1");
 
-  const psg = data.find((team) => team.team.tla === "PSG")!;
+  const psg = data.find((team) => team.team.tla === "PSG");
+
+  if (!psg) {
+    return (
+      <Card>
+        <CardContent className="text-center">
+          PSG ranking not available
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card>
