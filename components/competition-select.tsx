@@ -10,15 +10,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { COMPETITION_CODES } from "@/lib/constants";
+import type { Competition } from "@/types/api";
 
-const COMPETITIONS = [
-  { value: "all", label: "All" },
-  { value: "FL1", label: "Ligue 1" },
-  { value: "CL", label: "Champions League" },
+const COMPETITIONS: { value: Competition; label: string }[] = [
+  { value: COMPETITION_CODES.ALL, label: "All" },
+  { value: COMPETITION_CODES.LIGUE_1, label: "Ligue 1" },
+  { value: COMPETITION_CODES.CHAMPIONS_LEAGUE, label: "Champions League" },
 ];
 
 type CompetitionSelectProps = {
-  value: string;
+  value: Competition;
   includeAll?: boolean;
 };
 
@@ -35,9 +37,9 @@ export default function CompetitionSelect({
     ? COMPETITIONS
     : COMPETITIONS.filter((c) => c.value !== "all");
 
-  const handleChange = (nextValue: string) => {
+  const handleChange = (nextValue: Competition) => {
     const params = new URLSearchParams(searchParams.toString());
-    if (nextValue === "all") {
+    if (nextValue === COMPETITION_CODES.ALL) {
       params.delete("competition");
     } else {
       params.set("competition", nextValue);

@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import CompetitionSelect from "@/components/competition-select";
 import ResultsList from "@/components/results-list";
 import { Spinner } from "@/components/ui/spinner";
+import { COMPETITION_CODES } from "@/lib/constants";
+import { parseCompetition } from "@/lib/utils";
 
 type ResultsPageProps = {
   searchParams: Promise<{
@@ -12,18 +14,11 @@ type ResultsPageProps = {
 
 export default async function ResultsPage({ searchParams }: ResultsPageProps) {
   const params = await searchParams;
-
-  const competition =
-    params.competition === "CL"
-      ? "CL"
-      : params.competition === "FL1"
-        ? "FL1"
-        : "all";
-
+  const competition = parseCompetition(params.competition);
   const description =
-    competition === "all"
+    competition === COMPETITION_CODES.ALL
       ? "All matches played"
-      : competition === "FL1"
+      : competition === COMPETITION_CODES.LIGUE_1
         ? "Ligue 1 matches played"
         : "Champions League matches played";
 

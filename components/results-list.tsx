@@ -1,9 +1,10 @@
 import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getResults } from "@/lib/api";
+import type { Competition } from "@/types/api";
 
 type ResultsListProps = {
-  competition: string;
+  competition: Competition;
 };
 
 export default async function ResultsList({ competition }: ResultsListProps) {

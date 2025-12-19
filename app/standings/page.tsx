@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import CompetitionSelect from "@/components/competition-select";
 import StandingsTable from "@/components/standings-table";
 import { Spinner } from "@/components/ui/spinner";
+import { COMPETITION_CODES } from "@/lib/constants";
+import { parseCompetition } from "@/lib/utils";
 
 type StandingsPageProps = {
   searchParams: Promise<{
@@ -14,11 +16,14 @@ export default async function StandingsPage({
   searchParams,
 }: StandingsPageProps) {
   const params = await searchParams;
-
-  const competition = params.competition === "CL" ? "CL" : "FL1";
-
+  const competition =
+    parseCompetition(params.competition) === COMPETITION_CODES.CHAMPIONS_LEAGUE
+      ? COMPETITION_CODES.CHAMPIONS_LEAGUE
+      : COMPETITION_CODES.LIGUE_1;
   const description =
-    competition === "FL1" ? "Ligue 1 table" : "Champions League table";
+    competition === COMPETITION_CODES.LIGUE_1
+      ? "Ligue 1 table"
+      : "Champions League table";
 
   return (
     <>

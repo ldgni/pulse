@@ -1,9 +1,10 @@
 import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getFixtures } from "@/lib/api";
+import type { Competition } from "@/types/api";
 
 type FixturesListProps = {
-  competition: string;
+  competition: Competition;
 };
 
 export default async function FixturesList({ competition }: FixturesListProps) {

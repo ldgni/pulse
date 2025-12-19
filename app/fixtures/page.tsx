@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import CompetitionSelect from "@/components/competition-select";
 import FixturesList from "@/components/fixtures-list";
 import { Spinner } from "@/components/ui/spinner";
+import { COMPETITION_CODES } from "@/lib/constants";
+import { parseCompetition } from "@/lib/utils";
 
 type FixturesPageProps = {
   searchParams: Promise<{
@@ -14,18 +16,11 @@ export default async function FixturesPage({
   searchParams,
 }: FixturesPageProps) {
   const params = await searchParams;
-
-  const competition =
-    params.competition === "CL"
-      ? "CL"
-      : params.competition === "FL1"
-        ? "FL1"
-        : "all";
-
+  const competition = parseCompetition(params.competition);
   const description =
-    competition === "all"
+    competition === COMPETITION_CODES.ALL
       ? "All upcoming matches"
-      : competition === "FL1"
+      : competition === COMPETITION_CODES.LIGUE_1
         ? "Ligue 1 upcoming matches"
         : "Champions League upcoming matches";
 

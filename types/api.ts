@@ -1,3 +1,5 @@
+export type Competition = "all" | "FL1" | "CL";
+
 export interface Match {
   id: number;
   utcDate: string;
