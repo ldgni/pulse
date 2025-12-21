@@ -9,12 +9,14 @@ import { parseCompetition } from "@/lib/utils";
 type ResultsPageProps = {
   searchParams: Promise<{
     competition?: string;
+    page?: string;
   }>;
 };
 
 export default async function ResultsPage({ searchParams }: ResultsPageProps) {
   const params = await searchParams;
   const competition = parseCompetition(params.competition);
+  const page = params.page ? parseInt(params.page, 10) : 1;
   const description =
     competition === COMPETITION_CODES.ALL
       ? "All matches played"
@@ -33,8 +35,10 @@ export default async function ResultsPage({ searchParams }: ResultsPageProps) {
           <CompetitionSelect value={competition} />
         </div>
       </div>
-      <Suspense key={competition} fallback={<Spinner className="mx-auto" />}>
-        <ResultsList competition={competition} />
+      <Suspense
+        key={`${competition}-${page}`}
+        fallback={<Spinner className="mx-auto" />}>
+        <ResultsList competition={competition} page={page} />
       </Suspense>
     </>
   );

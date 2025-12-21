@@ -9,6 +9,7 @@ import { parseCompetition } from "@/lib/utils";
 type FixturesPageProps = {
   searchParams: Promise<{
     competition?: string;
+    page?: string;
   }>;
 };
 
@@ -17,6 +18,7 @@ export default async function FixturesPage({
 }: FixturesPageProps) {
   const params = await searchParams;
   const competition = parseCompetition(params.competition);
+  const page = params.page ? parseInt(params.page, 10) : 1;
   const description =
     competition === COMPETITION_CODES.ALL
       ? "All upcoming matches"
@@ -35,8 +37,10 @@ export default async function FixturesPage({
           <CompetitionSelect value={competition} />
         </div>
       </div>
-      <Suspense key={competition} fallback={<Spinner className="mx-auto" />}>
-        <FixturesList competition={competition} />
+      <Suspense
+        key={`${competition}-${page}`}
+        fallback={<Spinner className="mx-auto" />}>
+        <FixturesList competition={competition} page={page} />
       </Suspense>
     </>
   );

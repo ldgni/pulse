@@ -44,6 +44,8 @@ export default function CompetitionSelect({
     } else {
       params.set("competition", nextValue);
     }
+    // Reset to page 1 when competition changes
+    params.delete("page");
 
     startTransition(() => {
       const query = params.toString();

@@ -1,32 +1,26 @@
-import MatchCard from "@/components/match-card";
-import { Card, CardContent } from "@/components/ui/card";
+import MatchesList from "@/components/matches-list";
 import { getFixtures } from "@/lib/api";
 import type { Competition } from "@/types";
 
 type FixturesListProps = {
   competition: Competition;
+  page?: number;
 };
 
-export default async function FixturesList({ competition }: FixturesListProps) {
+export default async function FixturesList({
+  competition,
+  page = 1,
+}: FixturesListProps) {
   const data = await getFixtures(competition);
 
-  if (data.length === 0) {
-    return (
-      <Card>
-        <CardContent className="text-center">
-          No upcoming fixtures available
-        </CardContent>
-      </Card>
-    );
-  }
-
   return (
-    <ol className="space-y-4">
-      {data.map((match) => (
-        <li key={match.id}>
-          <MatchCard match={match} type="fixture" />
-        </li>
-      ))}
-    </ol>
+    <MatchesList
+      matches={data}
+      competition={competition}
+      page={page}
+      basePath="/fixtures"
+      emptyMessage="No upcoming fixtures available"
+      matchType="fixture"
+    />
   );
 }
