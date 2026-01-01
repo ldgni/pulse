@@ -10,9 +10,11 @@ export const dynamic = "force-dynamic";
 export default function HomePage() {
   return (
     <>
-      <div className="mb-8 space-y-2 text-center">
-        <h1 className="text-2xl font-bold sm:text-3xl">Pulse</h1>
-        <p className="text-muted-foreground">Paris Saint-Germain FC Tracker</p>
+      <div className="space-y-2 text-center">
+        <h1 className="text-4xl font-bold sm:text-6xl">Pulse</h1>
+        <p className="text-muted-foreground mb-4 italic">
+          Track PSG&apos;s performances
+        </p>
       </div>
       <div className="space-y-8">
         <div>
