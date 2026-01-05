@@ -5,8 +5,6 @@ import PreviousResult from "@/components/previous-result";
 import RecentForm from "@/components/recent-form";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const dynamic = "force-dynamic";
-
 export default function HomePage() {
   return (
     <>
