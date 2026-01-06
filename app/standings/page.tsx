@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import CompetitionSelect from "@/components/competition-select";
@@ -5,6 +6,11 @@ import StandingsTable from "@/components/standings-table";
 import { Spinner } from "@/components/ui/spinner";
 import { COMPETITION_CODES } from "@/lib/constants";
 import { parseCompetition } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Pulse - Standings",
+  description: "League tables and standings for PSG competitions",
+};
 
 type StandingsPageProps = {
   searchParams: Promise<{

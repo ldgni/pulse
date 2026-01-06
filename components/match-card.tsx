@@ -1,4 +1,3 @@
-import { Geist_Mono } from "next/font/google";
 import Image from "next/image";
 
 import {
@@ -10,8 +9,6 @@ import {
 } from "@/components/ui/card";
 import { formatMatchDate, formatMatchTime } from "@/lib/utils";
 import type { Match } from "@/types/api";
-
-const geistMono = Geist_Mono({ subsets: ["latin"] });
 
 interface MatchCardProps {
   match: Match;
@@ -43,8 +40,7 @@ export default function MatchCard({ match, type }: MatchCardProps) {
         </div>
 
         {/* Score or Time */}
-        <div
-          className={`${geistMono.className} bg-muted flex items-center gap-2 rounded-lg px-3 py-2 text-xl font-medium sm:px-4 sm:text-2xl`}>
+        <div className="bg-muted flex items-center gap-2 rounded-lg px-3 py-2 font-mono text-xl font-medium sm:px-4 sm:text-2xl">
           {type === "result" ? (
             <>
               {match.score.fullTime.home}

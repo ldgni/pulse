@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import CompetitionSelect from "@/components/competition-select";
@@ -5,6 +6,11 @@ import ResultsList from "@/components/results-list";
 import { Spinner } from "@/components/ui/spinner";
 import { COMPETITION_CODES } from "@/lib/constants";
 import { parseCompetition } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Pulse - Results",
+  description: "Recent PSG match results and scores",
+};
 
 type ResultsPageProps = {
   searchParams: Promise<{
