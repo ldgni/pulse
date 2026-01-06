@@ -10,7 +10,6 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -59,7 +58,6 @@ export default function NavMenu() {
         <SheetContent side="left">
           <SheetHeader>
             <SheetTitle>Menu</SheetTitle>
-            <SheetDescription />
           </SheetHeader>
           <nav className="px-4">
             <ul className="space-y-4">
