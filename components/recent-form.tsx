@@ -1,5 +1,3 @@
-import { Geist_Mono } from "next/font/google";
-
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -8,11 +6,9 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { getRecentForm } from "@/lib/api";
-import { formatMatchDate, getMatchResult } from "@/lib/utils";
+import { formatMatchDate, getMatchResult, isPSGHome } from "@/lib/utils";
 import type { FormResult } from "@/types";
 import type { Match } from "@/types/api";
-
-const geistMono = Geist_Mono({ subsets: ["latin"] });
 
 function getBadgeClassName(result: FormResult): string {
   if (result === "W") {
@@ -38,10 +34,7 @@ function calculateStats(formResults: FormResult[], matches: Match[]) {
   let goalsConceded = 0;
 
   matches.forEach((match) => {
-    const isPSGHome =
-      match.homeTeam.name.includes("Paris") ||
-      match.homeTeam.shortName.includes("PSG");
-    if (isPSGHome) {
+    if (isPSGHome(match)) {
       goalsScored += match.score.fullTime.home;
       goalsConceded += match.score.fullTime.away;
     } else {
@@ -82,15 +75,13 @@ export default async function RecentForm() {
         <div className="mb-6 flex flex-wrap items-center justify-center gap-4">
           <div className="flex items-center gap-2">
             <span className="text-muted-foreground">Win rate:</span>
-            <span className={`${geistMono.className} font-semibold`}>
-              {stats.winRate}%
-            </span>
+            <span className="font-mono font-semibold">{stats.winRate}%</span>
           </div>
           <div className="bg-border h-4 w-px" />
           <div className="flex items-center gap-2">
             <span className="text-muted-foreground">Goal diff:</span>
             <span
-              className={`${geistMono.className} font-semibold ${
+              className={`font-mono font-semibold ${
                 stats.goalDifference > 0
                   ? "text-green-600 dark:text-green-400"
                   : stats.goalDifference < 0

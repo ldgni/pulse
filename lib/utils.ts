@@ -37,14 +37,19 @@ export function filterByCompetition(
   );
 }
 
-export function getMatchResult(match: Match): FormResult {
-  const isPSGHome =
+export function isPSGHome(match: Match): boolean {
+  return (
     match.homeTeam.name.includes("Paris") ||
-    match.homeTeam.shortName.includes("PSG");
-  const psgScore = isPSGHome
+    match.homeTeam.shortName.includes("PSG")
+  );
+}
+
+export function getMatchResult(match: Match): FormResult {
+  const psgHome = isPSGHome(match);
+  const psgScore = psgHome
     ? match.score.fullTime.home
     : match.score.fullTime.away;
-  const opponentScore = isPSGHome
+  const opponentScore = psgHome
     ? match.score.fullTime.away
     : match.score.fullTime.home;
 
