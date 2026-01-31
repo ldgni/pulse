@@ -3,44 +3,39 @@
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const navLinks = [
+const navItems = [
   {
-    href: "/",
-    label: "Home",
+    url: "/",
+    name: "Home",
   },
   {
-    href: "/fixtures",
-    label: "Fixtures",
+    url: "/fixtures",
+    name: "Fixtures",
   },
   {
-    href: "/results",
-    label: "Results",
+    url: "/results",
+    name: "Results",
   },
   {
-    href: "/standings",
-    label: "Standings",
+    url: "/standings",
+    name: "Standings",
   },
 ];
 
 export default function NavMenu() {
   const pathname = usePathname();
-  const [clientPathname, setClientPathname] = useState("");
-
-  useEffect(() => {
-    setClientPathname(pathname);
-  }, [pathname]);
 
   return (
     <>
@@ -57,20 +52,15 @@ export default function NavMenu() {
         </SheetTrigger>
         <SheetContent side="left">
           <SheetHeader>
-            <SheetTitle>Menu</SheetTitle>
+            <SheetTitle>Pulse</SheetTitle>
+            <SheetDescription>Menu</SheetDescription>
           </SheetHeader>
           <nav className="px-4">
             <ul className="space-y-4">
-              {navLinks.map((link) => (
-                <li key={link.href}>
+              {navItems.map((item) => (
+                <li key={item.url}>
                   <SheetClose asChild>
-                    <Link
-                      href={link.href}
-                      className={
-                        clientPathname === link.href ? "font-semibold" : ""
-                      }>
-                      {link.label}
-                    </Link>
+                    <Link href={item.url}>{item.name}</Link>
                   </SheetClose>
                 </li>
               ))}
@@ -81,14 +71,14 @@ export default function NavMenu() {
 
       {/* Desktop Menu */}
       <nav className="hidden sm:block">
-        <ul className="flex gap-2">
-          {navLinks.map((link) => (
-            <li key={link.href}>
+        <ul className="flex gap-4">
+          {navItems.map((item) => (
+            <li key={item.url}>
               <Button
                 variant="ghost"
-                asChild
-                className={clientPathname === link.href ? "bg-accent" : ""}>
-                <Link href={link.href}>{link.label}</Link>
+                className={pathname === item.url ? "bg-accent" : ""}
+                asChild>
+                <Link href={item.url}>{item.name}</Link>
               </Button>
             </li>
           ))}
