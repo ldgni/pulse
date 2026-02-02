@@ -70,7 +70,7 @@ export default function NavMenu() {
 
       {/* Desktop Menu */}
       <NavigationMenu className="hidden sm:block">
-        <NavigationMenuList>
+        <NavigationMenuList className="gap-4 font-medium">
           {navItems.map((item) => (
             <NavigationMenuItem key={item.url}>
               <NavigationMenuLink asChild>
