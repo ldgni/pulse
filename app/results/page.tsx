@@ -35,7 +35,7 @@ export default async function ResultsPage() {
               <CardContent className="flex items-center gap-4">
                 {/* Home Team */}
                 <div className="flex flex-1 items-center justify-end gap-4">
-                  <span className="hidden font-semibold sm:block">
+                  <span className="hidden font-semibold sm:inline">
                     {match.homeTeam.shortName}
                   </span>
                   <Image
@@ -61,7 +61,7 @@ export default async function ResultsPage() {
                     width={48}
                     height={48}
                   />
-                  <span className="hidden font-semibold sm:block">
+                  <span className="hidden font-semibold sm:inline">
                     {match.awayTeam.shortName}
                   </span>
                 </div>
