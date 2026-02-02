@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import {
   Card,
   CardContent,
@@ -5,42 +7,69 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getPSGResults } from "@/lib/api";
+import type { Match } from "@/lib/types";
+import { formatMatchDate } from "@/lib/utils";
 
-export default function ResultsPage() {
+export default async function ResultsPage() {
+  const results = await getPSGResults();
+
   return (
     <>
       <div className="mb-4 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight">Results</h1>
         <p className="text-muted-foreground text-sm">All matches played</p>
       </div>
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle>Competition</CardTitle>
-          <CardDescription>Date</CardDescription>
-        </CardHeader>
-        <CardContent className="flex items-center gap-4">
-          {/* Home Team */}
-          <div className="flex flex-1 items-center justify-end gap-4">
-            <span className="hidden font-semibold sm:block">Home Team</span>
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-blue-500 font-bold text-white">
-              HT
-            </div>
-          </div>
+      <div className="space-y-4">
+        {results.map((match: Match) => {
+          return (
+            <Card key={match.id}>
+              <CardHeader className="text-center">
+                <CardTitle>{match.competition.name}</CardTitle>
+                <CardDescription>
+                  <time dateTime={match.utcDate}>
+                    {formatMatchDate(match.utcDate)}
+                  </time>
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex items-center gap-4">
+                {/* Home Team */}
+                <div className="flex flex-1 items-center justify-end gap-4">
+                  <span className="hidden font-semibold sm:block">
+                    {match.homeTeam.shortName}
+                  </span>
+                  <Image
+                    src={match.homeTeam.crest}
+                    alt={match.homeTeam.name}
+                    width={48}
+                    height={48}
+                  />
+                </div>
 
-          {/* Score */}
-          <time className="bg-accent rounded-xl px-4 py-2 font-mono text-xl font-bold">
-            2 - 1
-          </time>
+                {/* Score */}
+                <time
+                  dateTime={match.utcDate}
+                  className="bg-accent rounded-xl px-4 py-2 font-mono text-xl font-bold">
+                  {match.score.fullTime.home} - {match.score.fullTime.away}
+                </time>
 
-          {/* Away Team */}
-          <div className="flex flex-1 items-center gap-4">
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-red-500 font-bold text-white">
-              AT
-            </div>
-            <span className="hidden font-semibold sm:block">Away Team</span>
-          </div>
-        </CardContent>
-      </Card>
+                {/* Away Team */}
+                <div className="flex flex-1 items-center gap-4">
+                  <Image
+                    src={match.awayTeam.crest}
+                    alt={match.awayTeam.name}
+                    width={48}
+                    height={48}
+                  />
+                  <span className="hidden font-semibold sm:block">
+                    {match.awayTeam.shortName}
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
     </>
   );
 }

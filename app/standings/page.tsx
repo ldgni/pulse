@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import {
   Table,
   TableBody,
@@ -7,8 +9,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getLigue1Standings } from "@/lib/api";
+import type { Standing } from "@/lib/types";
 
-export default function StandingsPage() {
+export default async function StandingsPage() {
+  const standings = await getLigue1Standings();
+
   return (
     <>
       <div className="mb-4 text-center">
@@ -31,15 +37,36 @@ export default function StandingsPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="text-center">1</TableCell>
-            <TableCell>PSG</TableCell>
-            <TableCell className="text-center">12</TableCell>
-            <TableCell className="text-center">8</TableCell>
-            <TableCell className="text-center">2</TableCell>
-            <TableCell className="text-center">2</TableCell>
-            <TableCell className="text-center font-semibold">26</TableCell>
-          </TableRow>
+          {standings.map((standing: Standing) => (
+            <TableRow
+              key={standing.team.id}
+              className={
+                standing.team.id === 524 ? "bg-blue-50 dark:bg-blue-950" : ""
+              }>
+              <TableCell className="text-center">{standing.position}</TableCell>
+              <TableCell className="font-medium">
+                <div className="flex items-center gap-2">
+                  <Image
+                    src={standing.team.crest}
+                    alt={standing.team.name}
+                    width={24}
+                    height={24}
+                  />
+                  <span className="sm:hidden">{standing.team.tla}</span>
+                  <span className="hidden sm:inline">{standing.team.name}</span>
+                </div>
+              </TableCell>
+              <TableCell className="text-center">
+                {standing.playedGames}
+              </TableCell>
+              <TableCell className="text-center">{standing.won}</TableCell>
+              <TableCell className="text-center">{standing.draw}</TableCell>
+              <TableCell className="text-center">{standing.lost}</TableCell>
+              <TableCell className="text-center font-semibold">
+                {standing.points}
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </>
