@@ -33,7 +33,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning>
-      <body className="font-sans antialiased">
+      <body className="overflow-y-scroll font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
