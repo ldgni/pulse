@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { getLigue1Standings, getPSGFixtures, getPSGResults } from "@/lib/api";
 import { PSG_TEAM_ID } from "@/lib/constants";
-import type { Match, Standing } from "@/lib/types";
 import { formatMatchDate, formatMatchTime } from "@/lib/utils";
 
 export default async function HomePage() {
@@ -19,11 +18,9 @@ export default async function HomePage() {
     getLigue1Standings(),
   ]);
 
-  const nextFixture: Match | undefined = fixtures[0];
-  const previousResult: Match | undefined = results[0];
-  const currentRanking: Standing | undefined = standings.find(
-    (s: Standing) => s.team.id === PSG_TEAM_ID,
-  );
+  const nextFixture = fixtures[0];
+  const previousResult = results[0];
+  const currentRanking = standings.find((s) => s.team.id === PSG_TEAM_ID);
 
   return (
     <>

@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getPSGResults } from "@/lib/api";
-import type { Match } from "@/lib/types";
 import { formatMatchDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -26,7 +25,7 @@ export default async function ResultsPage() {
         <p className="text-muted-foreground text-sm">All matches played</p>
       </div>
       <div className="space-y-4">
-        {results.map((match: Match) => {
+        {results.map((match) => {
           return (
             <Card key={match.id}>
               <CardHeader className="text-center">

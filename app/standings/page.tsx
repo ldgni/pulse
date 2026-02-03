@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/table";
 import { getLigue1Standings } from "@/lib/api";
 import { PSG_TEAM_ID } from "@/lib/constants";
-import type { Standing } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Standings",
@@ -43,7 +42,7 @@ export default async function StandingsPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {standings.map((standing: Standing) => (
+          {standings.map((standing) => (
             <TableRow
               key={standing.team.id}
               className={

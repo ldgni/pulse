@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getPSGFixtures } from "@/lib/api";
-import type { Match } from "@/lib/types";
 import { formatMatchDate, formatMatchTime } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -26,7 +25,7 @@ export default async function FixturesPage() {
         <p className="text-muted-foreground text-sm">All upcoming matches</p>
       </div>
       <div className="space-y-4">
-        {fixtures.map((match: Match) => {
+        {fixtures.map((match) => {
           return (
             <Card key={match.id}>
               <CardHeader className="text-center">

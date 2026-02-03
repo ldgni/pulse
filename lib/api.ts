@@ -1,4 +1,5 @@
 import { LIGUE_1_CODE, PSG_TEAM_ID } from "@/lib/constants";
+import type { Match, Standing } from "@/lib/types";
 
 const API_KEY = process.env.FOOTBALL_DATA_API_KEY;
 const BASE_URL = "https://api.football-data.org/v4";
@@ -17,16 +18,16 @@ async function fetchFromAPI(endpoint: string) {
   return response.json();
 }
 
-// Fetch PSG's upcoming fixtures
-export async function getPSGFixtures() {
+// Fetch PSG's fixtures
+export async function getPSGFixtures(): Promise<Match[]> {
   const data = await fetchFromAPI(
     `/teams/${PSG_TEAM_ID}/matches?status=SCHEDULED`,
   );
   return data.matches;
 }
 
-// Fetch PSG's recent results
-export async function getPSGResults() {
+// Fetch PSG's results
+export async function getPSGResults(): Promise<Match[]> {
   const data = await fetchFromAPI(
     `/teams/${PSG_TEAM_ID}/matches?status=FINISHED`,
   );
@@ -34,7 +35,7 @@ export async function getPSGResults() {
 }
 
 // Fetch Ligue 1 standings
-export async function getLigue1Standings() {
+export async function getLigue1Standings(): Promise<Standing[]> {
   const data = await fetchFromAPI(`/competitions/${LIGUE_1_CODE}/standings`);
   return data.standings[0].table;
 }
