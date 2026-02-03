@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 
 import {
@@ -10,6 +11,10 @@ import {
 import { getPSGResults } from "@/lib/api";
 import type { Match } from "@/lib/types";
 import { formatMatchDate } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Results",
+};
 
 export default async function ResultsPage() {
   const results = await getPSGResults();

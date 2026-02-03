@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 
 import {
@@ -10,6 +11,10 @@ import {
 import { getPSGFixtures } from "@/lib/api";
 import type { Match } from "@/lib/types";
 import { formatMatchDate, formatMatchTime } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Fixtures",
+};
 
 export default async function FixturesPage() {
   const fixtures = await getPSGFixtures();

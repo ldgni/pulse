@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 
 import {
@@ -12,6 +13,10 @@ import {
 import { getLigue1Standings } from "@/lib/api";
 import { PSG_TEAM_ID } from "@/lib/constants";
 import type { Standing } from "@/lib/types";
+
+export const metadata: Metadata = {
+  title: "Standings",
+};
 
 export default async function StandingsPage() {
   const standings = await getLigue1Standings();
