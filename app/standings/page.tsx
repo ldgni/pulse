@@ -10,6 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { getLigue1Standings } from "@/lib/api";
+import { PSG_TEAM_ID } from "@/lib/constants";
 import type { Standing } from "@/lib/types";
 
 export default async function StandingsPage() {
@@ -41,7 +42,9 @@ export default async function StandingsPage() {
             <TableRow
               key={standing.team.id}
               className={
-                standing.team.id === 524 ? "bg-blue-50 dark:bg-blue-950" : ""
+                standing.team.id === PSG_TEAM_ID
+                  ? "bg-blue-50 dark:bg-blue-950"
+                  : ""
               }>
               <TableCell className="text-center">{standing.position}</TableCell>
               <TableCell className="font-medium">

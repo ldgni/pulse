@@ -1,7 +1,7 @@
+import { LIGUE_1_CODE, PSG_TEAM_ID } from "@/lib/constants";
+
 const API_KEY = process.env.FOOTBALL_DATA_API_KEY;
 const BASE_URL = "https://api.football-data.org/v4";
-const PSG_TEAM_ID = 524;
-const LIGUE_1_CODE = "FL1";
 
 // Generic fetch function for football-data.org API
 async function fetchFromAPI(endpoint: string) {
