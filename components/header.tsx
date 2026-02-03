@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 
 export default function Header() {
   return (
-    <header className="mb-8 flex items-center justify-between">
+    <header className="mx-auto flex w-full max-w-2xl items-center justify-between p-4">
       <NavMenu />
       <div className="flex h-4 items-center gap-2">
         <Button variant="ghost" size="icon" asChild>

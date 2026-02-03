@@ -6,6 +6,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Separator } from "@/components/ui/separator";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,9 +43,13 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          <div className="mx-auto flex min-h-screen max-w-2xl flex-col p-4">
+          <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="grow px-2">{children}</main>
+            <Separator orientation="horizontal" />
+            <main className="mx-auto w-full max-w-2xl grow px-4 py-8">
+              {children}
+            </main>
+            <Separator orientation="horizontal" />
             <Footer />
           </div>
         </ThemeProvider>
