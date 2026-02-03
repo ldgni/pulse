@@ -24,7 +24,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className="mb-4 text-center">
+      <div className="mb-8 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight">Pulse</h1>
         <p className="text-muted-foreground text-sm italic">
           &quot;Ici c&apos;est Paris&quot;
@@ -32,7 +32,7 @@ export default async function HomePage() {
       </div>
       <div className="space-y-8">
         <div>
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight">
+          <h2 className="mb-2 text-xl font-semibold tracking-tight">
             Next fixture
           </h2>
           {nextFixture && (
@@ -83,7 +83,7 @@ export default async function HomePage() {
           )}
         </div>
         <div>
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight">
+          <h2 className="mb-2 text-xl font-semibold tracking-tight">
             Previous result
           </h2>
           {previousResult && (
@@ -133,7 +133,7 @@ export default async function HomePage() {
           )}
         </div>
         <div>
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight">
+          <h2 className="mb-2 text-xl font-semibold tracking-tight">
             Current ranking
           </h2>
           {currentRanking && (

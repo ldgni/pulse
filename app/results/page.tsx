@@ -20,7 +20,7 @@ export default async function ResultsPage() {
 
   return (
     <>
-      <div className="mb-4 text-center">
+      <div className="mb-8 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight">Results</h1>
         <p className="text-muted-foreground text-sm">All matches played</p>
       </div>

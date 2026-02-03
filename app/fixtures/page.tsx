@@ -20,7 +20,7 @@ export default async function FixturesPage() {
 
   return (
     <>
-      <div className="mb-4 text-center">
+      <div className="mb-8 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight">Fixtures</h1>
         <p className="text-muted-foreground text-sm">All upcoming matches</p>
       </div>

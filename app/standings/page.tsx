@@ -22,7 +22,7 @@ export default async function StandingsPage() {
 
   return (
     <>
-      <div className="mb-4 text-center">
+      <div className="mb-8 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight">Standings</h1>
         <p className="text-muted-foreground text-sm">
           Current league standings
