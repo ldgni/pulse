@@ -1,50 +1,74 @@
-import type { Metadata } from "next";
-import { Suspense } from "react";
+import Image from "next/image";
 
-import CompetitionSelect from "@/components/competition-select";
-import StandingsTable from "@/components/standings-table";
-import { Spinner } from "@/components/ui/spinner";
-import { COMPETITION_CODES } from "@/lib/constants";
-import { parseCompetition } from "@/lib/utils";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { getLigue1Standings } from "@/lib/api";
+import type { Standing } from "@/lib/types";
 
-export const metadata: Metadata = {
-  title: "Pulse - Standings",
-  description: "League tables and standings for PSG competitions",
-};
-
-type StandingsPageProps = {
-  searchParams: Promise<{
-    competition?: string;
-  }>;
-};
-
-export default async function StandingsPage({
-  searchParams,
-}: StandingsPageProps) {
-  const params = await searchParams;
-  const competition =
-    parseCompetition(params.competition) === COMPETITION_CODES.CHAMPIONS_LEAGUE
-      ? COMPETITION_CODES.CHAMPIONS_LEAGUE
-      : COMPETITION_CODES.LIGUE_1;
-  const description =
-    competition === COMPETITION_CODES.LIGUE_1
-      ? "Ligue 1 table"
-      : "Champions League table";
+export default async function StandingsPage() {
+  const standings = await getLigue1Standings();
 
   return (
     <>
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="space-y-2 text-center sm:text-left">
-          <h1 className="text-2xl font-bold sm:text-3xl">Standings</h1>
-          <p className="text-muted-foreground">{description}</p>
-        </div>
-        <div className="flex justify-center">
-          <CompetitionSelect value={competition} includeAll={false} />
-        </div>
+      <div className="mb-4 text-center">
+        <h1 className="text-4xl font-extrabold tracking-tight">Standings</h1>
+        <p className="text-muted-foreground text-sm">
+          Current league standings
+        </p>
       </div>
-      <Suspense key={competition} fallback={<Spinner className="mx-auto" />}>
-        <StandingsTable competition={competition} />
-      </Suspense>
+      <Table>
+        <TableCaption>Ligue 1</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="text-center">#</TableHead>
+            <TableHead>Club</TableHead>
+            <TableHead className="text-center">MP</TableHead>
+            <TableHead className="text-center">W</TableHead>
+            <TableHead className="text-center">D</TableHead>
+            <TableHead className="text-center">L</TableHead>
+            <TableHead className="text-center font-semibold">Pts</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {standings.map((standing: Standing) => (
+            <TableRow
+              key={standing.team.id}
+              className={
+                standing.team.id === 524 ? "bg-blue-50 dark:bg-blue-950" : ""
+              }>
+              <TableCell className="text-center">{standing.position}</TableCell>
+              <TableCell className="font-medium">
+                <div className="flex items-center gap-2">
+                  <Image
+                    src={standing.team.crest}
+                    alt={standing.team.name}
+                    width={24}
+                    height={24}
+                  />
+                  <span className="sm:hidden">{standing.team.tla}</span>
+                  <span className="hidden sm:inline">{standing.team.name}</span>
+                </div>
+              </TableCell>
+              <TableCell className="text-center">
+                {standing.playedGames}
+              </TableCell>
+              <TableCell className="text-center">{standing.won}</TableCell>
+              <TableCell className="text-center">{standing.draw}</TableCell>
+              <TableCell className="text-center">{standing.lost}</TableCell>
+              <TableCell className="text-center font-semibold">
+                {standing.points}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </>
   );
 }

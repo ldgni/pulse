@@ -7,12 +7,20 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Pulse - Track Paris Saint-Germain FC's performances",
-  description: "Track Paris Saint-Germain's FC results, fixtures and standings",
+  description:
+    "Pulse is a web app that helps you keep track of Paris Saint-Germain FC's latest results, upcoming fixtures and current league standings.",
 };
 
 export default function RootLayout({
@@ -21,8 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geist.variable} ${geistMono.variable} overflow-y-scroll antialiased`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning>
+      <body className="overflow-y-scroll font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -30,7 +41,7 @@ export default function RootLayout({
           disableTransitionOnChange>
           <div className="mx-auto flex min-h-screen max-w-2xl flex-col p-4">
             <Header />
-            <main className="grow">{children}</main>
+            <main className="grow px-2">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

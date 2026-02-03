@@ -1,51 +1,75 @@
-import type { Metadata } from "next";
-import { Suspense } from "react";
+import Image from "next/image";
 
-import CompetitionSelect from "@/components/competition-select";
-import ResultsList from "@/components/results-list";
-import { Spinner } from "@/components/ui/spinner";
-import { COMPETITION_CODES } from "@/lib/constants";
-import { parseCompetition } from "@/lib/utils";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { getPSGResults } from "@/lib/api";
+import type { Match } from "@/lib/types";
+import { formatMatchDate } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Pulse - Results",
-  description: "Recent PSG match results and scores",
-};
-
-type ResultsPageProps = {
-  searchParams: Promise<{
-    competition?: string;
-    page?: string;
-  }>;
-};
-
-export default async function ResultsPage({ searchParams }: ResultsPageProps) {
-  const params = await searchParams;
-  const competition = parseCompetition(params.competition);
-  const page = params.page ? parseInt(params.page, 10) : 1;
-  const description =
-    competition === COMPETITION_CODES.ALL
-      ? "All matches played"
-      : competition === COMPETITION_CODES.LIGUE_1
-        ? "Ligue 1 matches played"
-        : "Champions League matches played";
+export default async function ResultsPage() {
+  const results = await getPSGResults();
 
   return (
     <>
-      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="space-y-2 text-center sm:text-left">
-          <h1 className="text-2xl font-bold sm:text-3xl">Results</h1>
-          <p className="text-muted-foreground">{description}</p>
-        </div>
-        <div className="flex justify-center">
-          <CompetitionSelect value={competition} />
-        </div>
+      <div className="mb-4 text-center">
+        <h1 className="text-4xl font-extrabold tracking-tight">Results</h1>
+        <p className="text-muted-foreground text-sm">All matches played</p>
       </div>
-      <Suspense
-        key={`${competition}-${page}`}
-        fallback={<Spinner className="mx-auto" />}>
-        <ResultsList competition={competition} page={page} />
-      </Suspense>
+      <div className="space-y-4">
+        {results.map((match: Match) => {
+          return (
+            <Card key={match.id}>
+              <CardHeader className="text-center">
+                <CardTitle>{match.competition.name}</CardTitle>
+                <CardDescription>
+                  <time dateTime={match.utcDate}>
+                    {formatMatchDate(match.utcDate)}
+                  </time>
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex items-center gap-4">
+                {/* Home Team */}
+                <div className="flex flex-1 items-center justify-end gap-4">
+                  <span className="hidden font-semibold sm:inline">
+                    {match.homeTeam.shortName}
+                  </span>
+                  <Image
+                    src={match.homeTeam.crest}
+                    alt={match.homeTeam.name}
+                    width={48}
+                    height={48}
+                  />
+                </div>
+
+                {/* Score */}
+                <time
+                  dateTime={match.utcDate}
+                  className="bg-accent rounded-xl px-4 py-2 font-mono text-xl font-bold">
+                  {match.score.fullTime.home} - {match.score.fullTime.away}
+                </time>
+
+                {/* Away Team */}
+                <div className="flex flex-1 items-center gap-4">
+                  <Image
+                    src={match.awayTeam.crest}
+                    alt={match.awayTeam.name}
+                    width={48}
+                    height={48}
+                  />
+                  <span className="hidden font-semibold sm:inline">
+                    {match.awayTeam.shortName}
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
     </>
   );
 }

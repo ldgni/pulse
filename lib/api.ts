@@ -1,73 +1,40 @@
-import { PSG_TEAM_ID } from "@/lib/constants";
-import { filterByCompetition } from "@/lib/utils";
-import type { Competition } from "@/types";
-import type { Match, Standing } from "@/types/api";
-
-const API_BASE_URL = "https://api.football-data.org/v4";
 const API_KEY = process.env.FOOTBALL_DATA_API_KEY;
+const BASE_URL = "https://api.football-data.org/v4";
+const PSG_TEAM_ID = 524;
+const LIGUE_1_CODE = "FL1";
 
-if (!API_KEY) {
-  throw new Error("FOOTBALL_DATA_API_KEY is not defined");
-}
-
-async function fetchAPI(endpoint: string) {
-  const res = await fetch(`${API_BASE_URL}${endpoint}`, {
-    headers: { "X-Auth-Token": API_KEY! },
-    next: { revalidate: 300 },
+// Generic fetch function for football-data.org API
+async function fetchFromAPI(endpoint: string) {
+  const response = await fetch(`${BASE_URL}${endpoint}`, {
+    headers: { "X-Auth-Token": API_KEY || "" },
+    next: { revalidate: 3600 },
   });
 
-  if (!res.ok) {
-    throw new Error(
-      `API request failed: ${res.status} ${res.statusText}. Endpoint: ${endpoint}`,
-    );
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${endpoint}`);
   }
 
-  return res.json();
+  return response.json();
 }
 
-export async function getStandings(competition: string): Promise<Standing[]> {
-  try {
-    const { standings } = await fetchAPI(
-      `/competitions/${competition}/standings`,
-    );
-    return standings[0].table;
-  } catch (error) {
-    throw new Error(
-      `Failed to fetch standings for competition ${competition}: ${error instanceof Error ? error.message : "Unknown error"}`,
-    );
-  }
+// Fetch PSG's upcoming fixtures
+export async function getPSGFixtures() {
+  const data = await fetchFromAPI(
+    `/teams/${PSG_TEAM_ID}/matches?status=SCHEDULED`,
+  );
+  return data.matches;
 }
 
-export async function getFixtures(competition?: Competition): Promise<Match[]> {
-  try {
-    const { matches } = await fetchAPI(
-      `/teams/${PSG_TEAM_ID}/matches?status=SCHEDULED`,
-    );
-    return filterByCompetition(matches, competition);
-  } catch (error) {
-    throw new Error(
-      `Failed to fetch fixtures: ${error instanceof Error ? error.message : "Unknown error"}`,
-    );
-  }
+// Fetch PSG's recent results
+export async function getPSGResults() {
+  const data = await fetchFromAPI(
+    `/teams/${PSG_TEAM_ID}/matches?status=FINISHED`,
+  );
+  return data.matches.toReversed();
 }
 
-export async function getResults(competition?: Competition): Promise<Match[]> {
-  try {
-    const { matches } = await fetchAPI(
-      `/teams/${PSG_TEAM_ID}/matches?status=FINISHED`,
-    );
-    const filtered = filterByCompetition(matches, competition);
-    return filtered.toReversed();
-  } catch (error) {
-    throw new Error(
-      `Failed to fetch results: ${error instanceof Error ? error.message : "Unknown error"}`,
-    );
-  }
-}
-
-export async function getRecentForm(
-  competition?: Competition,
-): Promise<Match[]> {
-  const results = await getResults(competition);
-  return results.slice(0, 5);
+// Fetch Ligue 1 standings
+export async function getLigue1Standings() {
+  const data = await fetchFromAPI(`/competitions/${LIGUE_1_CODE}/standings`);
+  return data.standings[0].table;
 }

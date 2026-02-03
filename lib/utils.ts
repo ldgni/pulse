@@ -1,79 +1,31 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-import { COMPETITION_CODES, COMPETITION_NAMES } from "@/lib/constants";
-import type { Competition, FormResult } from "@/types";
-import type { Match } from "@/types/api";
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function parseCompetition(competition?: string): Competition {
-  if (competition === COMPETITION_CODES.CHAMPIONS_LEAGUE) {
-    return COMPETITION_CODES.CHAMPIONS_LEAGUE;
-  }
-  if (competition === COMPETITION_CODES.LIGUE_1) {
-    return COMPETITION_CODES.LIGUE_1;
-  }
-  return COMPETITION_CODES.ALL;
-}
-
-export function filterByCompetition(
-  matches: Match[],
-  competition: Competition | undefined,
-): Match[] {
-  if (!competition || competition === "all") {
-    return matches;
-  }
-
-  const competitionName =
-    competition === "CL"
-      ? COMPETITION_NAMES.CHAMPIONS_LEAGUE
-      : COMPETITION_NAMES.LIGUE_1;
-
-  return matches.filter((match) =>
-    match.competition.name.includes(competitionName),
-  );
-}
-
-export function isPSGHome(match: Match): boolean {
-  return (
-    match.homeTeam.name.includes("Paris") ||
-    match.homeTeam.shortName.includes("PSG")
-  );
-}
-
-export function getMatchResult(match: Match): FormResult {
-  const psgHome = isPSGHome(match);
-  const psgScore = psgHome
-    ? match.score.fullTime.home
-    : match.score.fullTime.away;
-  const opponentScore = psgHome
-    ? match.score.fullTime.away
-    : match.score.fullTime.home;
-
-  if (psgScore > opponentScore) return "W";
-  if (psgScore === opponentScore) return "D";
-  return "L";
-}
-
-export function formatMatchDate(utcDate: string): string {
-  return new Date(utcDate).toLocaleDateString("en-GB", {
-    day: "numeric",
+export function formatMatchDate(dateString: string): string {
+  return new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
     month: "short",
-    year: "numeric",
+    day: "numeric",
     timeZone: "Europe/Paris",
-  });
+  }).format(new Date(dateString));
 }
 
-export function formatMatchTime(utcDate: string): string {
-  const timeStr = new Date(utcDate).toLocaleTimeString("en-GB", {
+export function formatMatchTime(dateString: string): string {
+  const formattedTime = new Intl.DateTimeFormat("en-US", {
     hour: "2-digit",
     minute: "2-digit",
+    hour12: false,
     timeZone: "Europe/Paris",
-  });
+  }).format(new Date(dateString));
 
-  // Display "TBD" if the time is 01:00 or 02:00 (API placeholder for unknown times)
-  return timeStr === "01:00" || timeStr === "02:00" ? "TBD" : timeStr;
+  // Check if time is a placeholder (01:00 or 02:00)
+  if (formattedTime === "01:00" || formattedTime === "02:00") {
+    return "TBA";
+  }
+
+  return formattedTime;
 }
