@@ -12,8 +12,8 @@ export interface Competition {
 
 export interface Score {
   fullTime: {
-    home: number | null;
-    away: number | null;
+    home: number;
+    away: number;
   };
 }
 
