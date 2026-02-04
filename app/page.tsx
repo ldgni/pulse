@@ -1,15 +1,9 @@
 import Image from "next/image";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import MatchCard from "@/components/match-card";
+import { Card, CardContent } from "@/components/ui/card";
 import { getLigue1Standings, getPSGFixtures, getPSGResults } from "@/lib/api";
 import { PSG_TEAM_ID } from "@/lib/constants";
-import { formatMatchDate, formatMatchTime } from "@/lib/utils";
 
 export default async function HomePage() {
   const [fixtures, results, standings] = await Promise.all([
@@ -35,102 +29,13 @@ export default async function HomePage() {
           <h2 className="mb-2 text-xl font-semibold tracking-tight">
             Next fixture
           </h2>
-          {nextFixture && (
-            <Card>
-              <CardHeader className="text-center">
-                <CardTitle>{nextFixture.competition.name}</CardTitle>
-                <CardDescription>
-                  <time dateTime={nextFixture.utcDate}>
-                    {formatMatchDate(nextFixture.utcDate)}
-                  </time>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex items-center gap-4">
-                {/* Home Team */}
-                <div className="flex flex-1 items-center justify-end gap-4">
-                  <span className="hidden font-semibold sm:inline">
-                    {nextFixture.homeTeam.shortName}
-                  </span>
-                  <Image
-                    src={nextFixture.homeTeam.crest}
-                    alt={nextFixture.homeTeam.name}
-                    width={48}
-                    height={48}
-                  />
-                </div>
-
-                {/* Time */}
-                <time
-                  dateTime={nextFixture.utcDate}
-                  className="bg-accent rounded-xl px-4 py-2 font-mono text-xl font-bold">
-                  {formatMatchTime(nextFixture.utcDate)}
-                </time>
-
-                {/* Away Team */}
-                <div className="flex flex-1 items-center gap-4">
-                  <Image
-                    src={nextFixture.awayTeam.crest}
-                    alt={nextFixture.awayTeam.name}
-                    width={48}
-                    height={48}
-                  />
-                  <span className="hidden font-semibold sm:inline">
-                    {nextFixture.awayTeam.shortName}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-          )}
+          <MatchCard match={nextFixture} variant="fixture" />
         </div>
         <div>
           <h2 className="mb-2 text-xl font-semibold tracking-tight">
             Previous result
           </h2>
-          {previousResult && (
-            <Card>
-              <CardHeader className="text-center">
-                <CardTitle>{previousResult.competition.name}</CardTitle>
-                <CardDescription>
-                  <time dateTime={previousResult.utcDate}>
-                    {formatMatchDate(previousResult.utcDate)}
-                  </time>
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex items-center gap-4">
-                {/* Home Team */}
-                <div className="flex flex-1 items-center justify-end gap-4">
-                  <span className="hidden font-semibold sm:inline">
-                    {previousResult.homeTeam.shortName}
-                  </span>
-                  <Image
-                    src={previousResult.homeTeam.crest}
-                    alt={previousResult.homeTeam.name}
-                    width={48}
-                    height={48}
-                  />
-                </div>
-
-                {/* Score */}
-                <div className="bg-accent rounded-xl px-4 py-2 font-mono text-xl font-bold">
-                  {previousResult.score.fullTime.home} -{" "}
-                  {previousResult.score.fullTime.away}
-                </div>
-
-                {/* Away Team */}
-                <div className="flex flex-1 items-center gap-4">
-                  <Image
-                    src={previousResult.awayTeam.crest}
-                    alt={previousResult.awayTeam.name}
-                    width={48}
-                    height={48}
-                  />
-                  <span className="hidden font-semibold sm:inline">
-                    {previousResult.awayTeam.shortName}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-          )}
+          <MatchCard match={previousResult} variant="result" />
         </div>
         <div>
           <h2 className="mb-2 text-xl font-semibold tracking-tight">
