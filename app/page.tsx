@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import EmptyState from "@/components/empty-state";
 import MatchCard from "@/components/match-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getLigue1Standings, getPSGFixtures, getPSGResults } from "@/lib/api";
@@ -29,13 +30,21 @@ export default async function HomePage() {
           <h2 className="mb-2 text-xl font-semibold tracking-tight">
             Next fixture
           </h2>
-          <MatchCard match={nextFixture} variant="fixture" />
+          {nextFixture ? (
+            <MatchCard match={nextFixture} variant="fixture" />
+          ) : (
+            <EmptyState variant="fixture" />
+          )}
         </section>
         <section>
           <h2 className="mb-2 text-xl font-semibold tracking-tight">
             Previous result
           </h2>
-          <MatchCard match={previousResult} variant="result" />
+          {previousResult ? (
+            <MatchCard match={previousResult} variant="result" />
+          ) : (
+            <EmptyState variant="result" />
+          )}
         </section>
         <section>
           <h2 className="mb-2 text-xl font-semibold tracking-tight">

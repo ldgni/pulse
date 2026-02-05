@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
+import EmptyState from "@/components/empty-state";
 import MatchCard from "@/components/match-card";
-import { Card, CardContent } from "@/components/ui/card";
 import { getPSGResults } from "@/lib/api";
 
 export const metadata: Metadata = {
@@ -18,11 +18,7 @@ export default async function ResultsPage() {
         <p className="text-muted-foreground text-sm">All matches played</p>
       </div>
       {results.length === 0 ? (
-        <Card>
-          <CardContent className="text-muted-foreground text-center">
-            No matches played yet
-          </CardContent>
-        </Card>
+        <EmptyState variant="result" />
       ) : (
         <div className="space-y-4">
           {results.map((match) => (

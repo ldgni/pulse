@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
+import EmptyState from "@/components/empty-state";
 import MatchCard from "@/components/match-card";
-import { Card, CardContent } from "@/components/ui/card";
 import { getPSGFixtures } from "@/lib/api";
 
 export const metadata: Metadata = {
@@ -18,11 +18,7 @@ export default async function FixturesPage() {
         <p className="text-muted-foreground text-sm">All upcoming matches</p>
       </div>
       {fixtures.length === 0 ? (
-        <Card>
-          <CardContent className="text-muted-foreground text-center">
-            No upcoming matches scheduled
-          </CardContent>
-        </Card>
+        <EmptyState variant="fixture" />
       ) : (
         <div className="space-y-4">
           {fixtures.map((match) => (
