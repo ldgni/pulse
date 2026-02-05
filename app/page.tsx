@@ -25,19 +25,19 @@ export default async function HomePage() {
         </p>
       </div>
       <div className="space-y-8">
-        <div>
+        <section>
           <h2 className="mb-2 text-xl font-semibold tracking-tight">
             Next fixture
           </h2>
           <MatchCard match={nextFixture} variant="fixture" />
-        </div>
-        <div>
+        </section>
+        <section>
           <h2 className="mb-2 text-xl font-semibold tracking-tight">
             Previous result
           </h2>
           <MatchCard match={previousResult} variant="result" />
-        </div>
-        <div>
+        </section>
+        <section>
           <h2 className="mb-2 text-xl font-semibold tracking-tight">
             Current ranking
           </h2>
@@ -72,7 +72,7 @@ export default async function HomePage() {
               </CardContent>
             </Card>
           )}
-        </div>
+        </section>
       </div>
     </>
   );
