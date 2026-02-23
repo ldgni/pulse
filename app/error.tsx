@@ -17,7 +17,7 @@ export default function Error({
 
   return (
     <div className="space-y-2 text-center">
-      <h1 className="text-2xl font-extrabold tracking-tight sm:text-4xl">
+      <h1 className="text-2xl font-extrabold tracking-tight">
         Something went wrong!
       </h1>
       <Button variant="outline" onClick={() => reset()}>
