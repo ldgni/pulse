@@ -47,7 +47,7 @@ export default async function StandingsPage() {
               key={standing.team.id}
               className={
                 standing.team.id === PSG_TEAM_ID
-                  ? "bg-blue-100 dark:bg-blue-900"
+                  ? "border-l-4 border-l-blue-500"
                   : ""
               }>
               <TableCell className="text-center">{standing.position}</TableCell>
