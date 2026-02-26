@@ -54,7 +54,7 @@ export default async function HomePage() {
             <Card>
               <CardContent className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <span className="text-xl font-semibold">
+                  <span className="bg-muted rounded-full px-4 py-2 text-xl font-semibold">
                     {currentRanking.position}
                   </span>
                   <Image
