@@ -30,12 +30,16 @@ export default function MatchCard({ match, variant }: MatchCardProps) {
           <span className="hidden font-semibold sm:inline">
             {match.homeTeam.shortName}
           </span>
-          <Image
-            src={match.homeTeam.crest}
-            alt={match.homeTeam.name}
-            width={48}
-            height={48}
-          />
+          {match.homeTeam.crest ? (
+            <Image
+              src={match.homeTeam.crest}
+              alt={match.homeTeam.name}
+              width={48}
+              height={48}
+            />
+          ) : (
+            <div className="bg-muted size-12 rounded-full" />
+          )}
         </div>
 
         {/* Time or Score */}
@@ -49,12 +53,16 @@ export default function MatchCard({ match, variant }: MatchCardProps) {
 
         {/* Away Team */}
         <div className="flex flex-1 items-center gap-4">
-          <Image
-            src={match.awayTeam.crest}
-            alt={match.awayTeam.name}
-            width={48}
-            height={48}
-          />
+          {match.awayTeam.crest ? (
+            <Image
+              src={match.awayTeam.crest}
+              alt={match.awayTeam.name}
+              width={48}
+              height={48}
+            />
+          ) : (
+            <div className="bg-muted size-12 rounded-full" />
+          )}
           <span className="hidden font-semibold sm:inline">
             {match.awayTeam.shortName}
           </span>
