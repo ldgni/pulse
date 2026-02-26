@@ -1,4 +1,4 @@
-export interface Team {
+interface Team {
   id: number;
   name: string;
   shortName: string;
@@ -6,11 +6,11 @@ export interface Team {
   crest: string;
 }
 
-export interface Competition {
+interface Competition {
   name: string;
 }
 
-export interface Score {
+interface Score {
   fullTime: {
     home: number;
     away: number;
