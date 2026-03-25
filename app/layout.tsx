@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     default: "Pulse - Track Paris Saint-Germain FC's performances",
-    template: "Pulse - %s",
+    template: "%s - Pulse",
   },
   description:
     "Pulse is a web app that helps you keep track of Paris Saint-Germain FC's latest results, upcoming fixtures and current league standings.",
